@@ -1,8 +1,8 @@
+package actionDetect;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
-
 
 
 public class GlobalKeyListenerExample implements NativeKeyListener {
@@ -23,7 +23,8 @@ public class GlobalKeyListenerExample implements NativeKeyListener {
         System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
     }
 
-    public void nativeKeyTyped(NativeKeyEvent e) {
+    @SuppressWarnings("static-access")
+	public void nativeKeyTyped(NativeKeyEvent e) {
         System.out.println("Key Typed: " + e.getKeyText(e.getKeyCode()));
     }
 
@@ -41,6 +42,7 @@ public class GlobalKeyListenerExample implements NativeKeyListener {
         //­ì©l½X¿ù»~
         //GlobalScreen.addNativeKeyListener(new GlobalKeyListenerExample());
         
+        GlobalScreen.getInstance().addNativeKeyListener(new GlobalKeyListenerExample());
         
     }
 }
