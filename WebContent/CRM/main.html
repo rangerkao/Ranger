@@ -1,0 +1,58 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="main col-xs-12 max_height" ng-controller="MenuCtrl as mCtrl">
+	<div class="info">
+		<label>使用者資訊</label>
+		<table border="1" class="col-xs-12">
+			<tr>
+				<td>Service ID:</td><td ng-bind="mCtrl.custInfo.Serviceid"></td>
+				<td>中華號碼:</td><td ng-bind="mCtrl.custInfo.TWNcode"></td>
+				<td>香港主號:</td><td ng-bind="mCtrl.custInfo.S2Tcode"></td>
+			</tr>
+			<tr>
+				<td>姓名:</td><td ng-bind="mCtrl.custInfo.Name"></td>
+				<td>統一編號/身份證字號:</td><td ng-bind="mCtrl.custInfo.IDCardNumber"></td>
+				<td>生日：</td><td ng-bind="mCtrl.custInfo.Birthday"></td>
+				
+			</tr>
+			<tr>
+				<td>聯絡電話：</td><td ng-bind="mCtrl.custInfo.ContactPhone"></td>
+				<td>公司戶負責人姓名：</td><td ng-bind="mCtrl.custInfo.EntCharge"></td>
+				<td hidden="true">公司戶負責人身份證字號：</td><td hidden="true" ng-bind="mCtrl.custInfo.EntChargeID"></td>
+				<td>代辦處代號:</td><td ng-bind="mCtrl.custInfo.DAffaires"></td>
+			</tr>
+			<tr>
+				<td>戶籍地址：</td><td colspan="2" ng-bind="mCtrl.custInfo.RegisterAddr"></td>
+				<td>帳單地址：</td><td colspan="2" ng-bind="mCtrl.custInfo.BillAddr"></td>
+			</tr>
+			<tr>
+				<td>Email：</td><td colspan="2" ng-bind="mCtrl.custInfo.Email"></td>
+				<td>其他：</td><td colspan="2" ng-bind="mCtrl.custInfo.Remark"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="detail">
+		<div class="tabs">
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="{{$index===mCtrl.selectedTab?'active':''}}" ng-repeat="tab in mCtrl.tabs">
+					<a class="tab bg-info" href="#" ng-click="mCtrl.selectTab($index)">{{tab.title}}</a>
+				</li>
+			</ul>
+		</div>
+		<div ng-show="mCtrl.selectedTab===0" class="tabContent" >
+			<!-- 費用記錄 -->
+			客戶費用記錄
+		</div>
+		<div  ng-show="mCtrl.selectedTab===1" class="tabContent">
+			<!-- 租退記錄 -->
+			客戶租退記錄
+		</div>
+		<div class="tabContent" ng-show="mCtrl.selectedTab===2">
+			<!-- 使用記錄 -->
+			客戶使用記錄
+		</div>
+		<div class="tabContent" ng-show="mCtrl.selectedTab===3">
+			<!-- 申訴紀錄 -->
+			客戶申訴紀錄
+		</div>
+	</div>
+</div>

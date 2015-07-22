@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="resources"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jar/activation_JAVA_1.4可用/activation.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jar/Apache.commons/commons-beanutils-1.9.2.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jar/Apache.commons/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jar/Apache.commons/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jar/Apache.commons/org.apache.commons.collections.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jsoup-1.8.1.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jsmpp-2.1.0-all/jsmpp-2.1.0/jsmpp-2.1.0.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jar/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/jar/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="G:/Dropbox/download/JNativeHook/jar/JNativeHook.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

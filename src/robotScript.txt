@@ -1,0 +1,36 @@
+
+wait	5000	
+
+move	553,237	移動至查詢輸入位置
+click
+click
+
+type		 輸入電話號碼
+
+move	599,230	點擊查詢
+click
+click
+wait	10000
+
+move	598,81	點擊修改
+click
+wait	5000
+
+move	777,780	將捲軸拉到最底	
+click
+click
+click
+click
+
+move	171,163
+click
+
+move	171,209
+click
+
+move	171,252
+click
+
+move	435,825
+click
+wait	5000

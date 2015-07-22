@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="MainApp">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+	<title>CRM</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<style type="text/css">
+	html, body{
+      height:100%;
+	}
+	.max_height {
+		height: 100%;
+		min-height: 100%; 
+		max-height: 100%; 
+		margin:0px;
+		padding:0px; 
+	}
+	.info{
+		height: 140px;
+	}
+	.detail{
+		
+	}
+	.tab{
+		height:10%
+		border: 1px;
+		border-color: green;
+	}
+	.tabContent{
+		height: 90%;
+		background-color: #80E8E8;
+	}
+	.nav-tabs>li.active>a,.nav-tabs>li>a:hover,.nav-tabs>li.active>a:focus{
+		color: #555;
+		background-color: #80E8E8;
+	}
+
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.js"></script>
+</head>
+<body class="max_height">
+<div class="container-fluid max_height" ng-controller="MainCtrl as ctrl">
+	<table class="col-xs-12 max_height">
+		<tr>
+			<td bgcolor="#AFFFB0" ng-include="ctrl.menu" class="col-xs-2 max_height">
+			</td>
+			<td bgcolor="#AFFFD8" ng-include="'main.html'" class="col-xs-10 max_height">
+			</td>
+		</tr>
+	</table>
+</div>
+</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js" ></script>
+	<script src="ui-bootstrap-tpls-0.13.0.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="app.js" ></script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<head>
+<title>angular Test</title>
+<style type="text/css">
+.done{
+	background-color: green;
+}
+.pending{
+	background-color: red;
+}
+
+</style>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+
+	<div>
+		<h3>ctrl function practice</h3>
+		{{ctrl.Message}} AngularJS.
+		<button ng-click="ctrl.changeMessage()">
+			Change Message
+		</button>
+	</div>
+	<div>
+		<h3>ctrl array practice</h3>
+		<div ng-repeat="(author,note) in ctrl.notes" ng-class="ctrl.getNoteClass(note.done)">
+			<span class="label" >{{author}}</span>
+			<span class="label" >{{note.label}}</span>
+			<span class="status" ng-bind="note.done"></span>
+		</div>
+	</div>
+	
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+<script type="text/javascript">
+	angular.module('notesApp',[])
+		.controller('MainCtrl',[function(){
+			var self = this;
+			//ctrl function practice
+			self.Message = 'Hello ';
+			self.changeMessage = function(){
+				self.Message = 'Goodbye ';
+			};
+			
+			//ctrl array practice
+			self.notes = {
+			              shyam:{id:1,label:'First' ,done:false},
+			              Misko:{id:3,label:'Third' ,done:true },
+			              brad: {id:2,label:'Second',done:false}};
+			
+			//ctrl return practice
+			self.getNoteClass = function(status){
+				return{
+					done:status,
+					pending:!status
+				};
+			};
+		}]);
+</script>
+</html>
