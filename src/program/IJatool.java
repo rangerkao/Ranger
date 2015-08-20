@@ -24,55 +24,55 @@ import org.apache.log4j.Logger;
 public interface IJatool {
 
 	/**
-	 *        ®É¶¡¤é´Á
+	 *        ï¿½É¶ï¿½ï¿½ï¿½ï¿½
 	 */
 	
 	/**
-	 * ¨ú±o°Ñ¼Æ®É¶¡·í¤ëªº²Ä¤@¤Ñ
+	 * ï¿½ï¿½oï¿½Ñ¼Æ®É¶ï¿½ï¿½ï¿½ëªºï¿½Ä¤@ï¿½ï¿½
 	 * @param date
 	 * @return
 	 */
 	Date getMonthFirstDate(Date date);
 	
 	/**
-	 * ¨ú±o°Ñ¼Æ®É¶¡·í¤ëªº³Ì«á¤@¤Ñ
+	 * ï¿½ï¿½oï¿½Ñ¼Æ®É¶ï¿½ï¿½ï¿½ëªºï¿½Ì«ï¿½@ï¿½ï¿½
 	 * @param date
 	 * @return
 	 */
 	Date getMonthLastDate(Date date);
 	
 	/**
-	 * ¨ú±o°Ñ¼Æ®É¶¡·í¤éªº¹sÂI
+	 * ï¿½ï¿½oï¿½Ñ¼Æ®É¶ï¿½ï¿½ï¿½éªºï¿½sï¿½I
 	 * @param date
 	 * @return
 	 */
 	Date getDayFirstDate(Date date);
 	
 	/**
-	 * ¨ú±o°Ñ¼Æ®É¶¡·í¤ëªº23ÂI59¤À
+	 * ï¿½ï¿½oï¿½Ñ¼Æ®É¶ï¿½ï¿½ï¿½ëªº23ï¿½I59ï¿½ï¿½
 	 * @param date
 	 * @return
 	 */
 	Date getDayLastDate(Date date);
 	
 	/**
-	 * ±Nutil Date Âà´«¦Üsql Date
-	 * ®É¶¡HH:Mi:SS ·|³Qµô±¼
+	 * ï¿½Nutil Date ï¿½à´«ï¿½ï¿½sql Date
+	 * ï¿½É¶ï¿½HH:Mi:SS ï¿½|ï¿½Qï¿½ï¿½ï¿½ï¿½
 	 * @param date
 	 * @return
 	 */
 	java.sql.Date convertJaveUtilDate_To_JavaSqlDate(java.util.Date date);
 	
 	/**
-	 * ±Nsql Date Âà´«¦Üutil Date
+	 * ï¿½Nsql Date ï¿½à´«ï¿½ï¿½util Date
 	 * @param date
 	 * @return
 	 */
 	java.util.Date convertJaveSqlDate_To_JavaUtilDate(java.sql.Date date);
 	
 	/**
-	 * ±N¤é´ÁÂà´«¦¨¦r¦ê
-	 *  new SimpleDateFormat(form,locale.¦ì¸m) «ü©w°Ï°ìªº®æ¦¡
+	 * ï¿½Nï¿½ï¿½ï¿½ï¿½à´«ï¿½ï¿½ï¿½rï¿½ï¿½
+	 *  new SimpleDateFormat(form,locale.ï¿½ï¿½m) ï¿½ï¿½wï¿½Ï°ìªºï¿½æ¦¡
 	 * @param date
 	 * @param form
 	 * @return
@@ -81,8 +81,8 @@ public interface IJatool {
 	String DateFormat(Date date,String form);
 	
 	/**
-	 * ±N¦r¦êÂà´«¦¨¤é´Á
-	 *  new SimpleDateFormat(form,locale.¦ì¸m) «ü©w°Ï°ìªº®æ¦¡
+	 * ï¿½Nï¿½rï¿½ï¿½ï¿½à´«ï¿½ï¿½ï¿½ï¿½ï¿½
+	 *  new SimpleDateFormat(form,locale.ï¿½ï¿½m) ï¿½ï¿½wï¿½Ï°ìªºï¿½æ¦¡
 	 * @param dateString
 	 * @param form
 	 * @return
@@ -95,7 +95,7 @@ public interface IJatool {
 	 */
 	
 	/**
-	 *	µo°e¶l¥ó
+	 *	ï¿½oï¿½eï¿½lï¿½ï¿½
 	 * 
 	 * @param logger
 	 * @param sender
@@ -110,12 +110,12 @@ public interface IJatool {
 	void sendMail(Logger logger,String sender,String receiver,String subject,String content) throws AddressException, MessagingException, IOException, Exception;
 	
 	/**
-	 * µo°e¶l¥ó
+	 * ï¿½oï¿½eï¿½lï¿½ï¿½
 	 * 
 	 * @param logger
 	 * @param props
-	 * @param sender ¥¼¶ñª½±µ±q³]©wÀÉÅª¨ú
-	 * @param receiver ¦h±µ¦¬ªÌ¤¹³\¥H","¹j¶}
+	 * @param sender ï¿½ï¿½ï¿½ñª½±ï¿½ï¿½qï¿½]ï¿½wï¿½ï¿½Åªï¿½ï¿½
+	 * @param receiver ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ì¤ï¿½ï¿½\ï¿½H","ï¿½jï¿½}
 	 * @param subject
 	 * @param content
 	 * @throws MessagingException 
@@ -126,7 +126,7 @@ public interface IJatool {
 	void sendMail(Logger logger,Properties props,String sender,String receiver,String subject,String content) throws AddressException, MessagingException, IOException, Exception;
 	
 	/**
-	 * DB³s½u
+	 * DBï¿½sï¿½u
 	 * 
 	 * @param logger
 	 * @param DriverClass
@@ -162,8 +162,8 @@ public interface IJatool {
 	String parseDBURL(String DBType,String ip,String port,String DB,String charSet);
 	
 	/**
-	 * ¶Ç°e¸ê®Æ¨ìWSDL Server
-	 * »Ý­n«Ø¥ßWSDL Client¥²¶·ÀÉ®×
+	 * ï¿½Ç°eï¿½ï¿½Æ¨ï¿½WSDL Server
+	 * ï¿½Ý­nï¿½Ø¥ï¿½WSDL Clientï¿½ï¿½ï¿½ï¿½ï¿½É®ï¿½
 	 * new Web Client
 	 * 
 	 * @param param
@@ -176,7 +176,7 @@ public interface IJatool {
 	
 	
 	/**
-	 * ¥HHttp Post ¤è¦¡¶Ç°e°Ñ¼Æ
+	 * ï¿½HHttp Post ï¿½è¦¡ï¿½Ç°eï¿½Ñ¼ï¿½
 	 * @param url "https://selfsolve.apple.com/wcResults.do"
 	 * @param param "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345"
 	 * @return
@@ -185,7 +185,7 @@ public interface IJatool {
 	String HttpPost(String url,String param,String charset) throws IOException;
 
 	/**
-	 * ¥ÎDecimalFormat ¹ï Double®æ¦¡¤Æ
+	 * ï¿½ï¿½DecimalFormat ï¿½ï¿½ Doubleï¿½æ¦¡ï¿½ï¿½
 	 * @param value
 	 * @param form
 	 * @return
@@ -193,7 +193,7 @@ public interface IJatool {
 	Double FormatDouble(Double value, String form);
 
 	/**
-	 * ¥ÎDecimalFormat ¹ï ¼Æ­È®æ¦¡¤Æ¦¨¦r¦ê
+	 * ï¿½ï¿½DecimalFormat ï¿½ï¿½ ï¿½Æ­È®æ¦¡ï¿½Æ¦ï¿½ï¿½rï¿½ï¿½
 	 * @param value
 	 * @param form
 	 * @return
@@ -214,10 +214,10 @@ public interface IJatool {
 	void writetxt(String content);
 
 	/**
-	 * §Q¥Î¥¿³Wªí¥ÜªkÅçÃÒ¦r¦ê¸ê®Æ
+	 * ï¿½Qï¿½Î¥ï¿½ï¿½Wï¿½ï¿½Üªkï¿½ï¿½ï¿½Ò¦rï¿½ï¿½ï¿½ï¿½
 	 * 
-	 * "^\\d+$"  ¯Â¼Æ¦r
-	 * "^\\d+(.\\d+)?"  ¾ã¼Æ©Î¥N¦³¤p¼Æ¦ì
+	 * "^\\d+$"  ï¿½Â¼Æ¦r
+	 * "^\\d+(.\\d+)?"  ï¿½ï¿½Æ©Î¥Nï¿½ï¿½ï¿½pï¿½Æ¦ï¿½
 	 * 
 	 * @param content
 	 * @param regex
@@ -227,9 +227,9 @@ public interface IJatool {
 	
 	
 	/**
-	 * «ùÄò¤Æªí¥Üªk
-	 * ¶Ç¦^Pattern
-	 * ¥H pattern.matcher(testString)¨Ï¥Î
+	 * ï¿½ï¿½ï¿½ï¿½Æªï¿½Üªk
+	 * ï¿½Ç¦^Pattern
+	 * ï¿½H pattern.matcher(testString)ï¿½Ï¥ï¿½
 	 * 
 	 * @param regex
 	 * @return
@@ -239,11 +239,11 @@ public interface IJatool {
 	
 	
 	/**
-	 * §Q¥Î¥¿³Wªí¥Üªk
-	 * §ä¥X¤º®e²Å¦Xªí¥Üªkªº³¡¤À
+	 * ï¿½Qï¿½Î¥ï¿½ï¿½Wï¿½ï¿½Üªk
+	 * ï¿½ï¿½Xï¿½ï¿½ï¿½eï¿½Å¦Xï¿½ï¿½Üªkï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * "\\d{4}-\\d{6}"
-	 * 4¦ì¼Æ¦r-6¦ì¼Æ¦r ex:1111-555663
+	 * 4ï¿½ï¿½Æ¦r-6ï¿½ï¿½Æ¦r ex:1111-555663
 	 * 
 	 * 
 	 * @param content
@@ -260,33 +260,33 @@ public interface IJatool {
 	 * @param value
 	 * @param method
 	 * 
-	 * 			ROUND_CEILING 	¼Æ­È¥¿­È 	ROUND_UP
-	 * 							¼Æ­È­t­È	
+	 * 			ROUND_CEILING 	ï¿½Æ­È¥ï¿½ï¿½ï¿½ 	ROUND_UP
+	 * 							ï¿½Æ­È­tï¿½ï¿½	
 	 * 
-	 * 			ROUND_HALF_EVEN ´Â¦V°¸¼Æªñ¦ü
+	 * 			ROUND_HALF_EVEN ï¿½Â¦Vï¿½ï¿½ï¿½Æªï¿½ï¿½
 	 * 
-	 * 			ROUND_HALF_UP	ªñ¦ü¦ì¼Æ¤j©ó5 ROUND_UP
-	 * 			ROUND_HALF_DOWN	ªñ¦ü¦ì¼Æ¤j©ó6 ROUND_UP
+	 * 			ROUND_HALF_UP	ï¿½ï¿½ï¿½ï¿½Æ¤jï¿½ï¿½5 ROUND_UP
+	 * 			ROUND_HALF_DOWN	ï¿½ï¿½ï¿½ï¿½Æ¤jï¿½ï¿½6 ROUND_UP
 	 * 
-	 * @param digit ¤p¼Æ«á¦ì¼Æ
+	 * @param digit ï¿½pï¿½Æ«ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	Double roundUpOrDdown(Double value,String method,int digit);
 	
 	/**
-	 * ¶Ç¦^¥Ø«e®É¶¡
+	 * ï¿½Ç¦^ï¿½Ø«eï¿½É¶ï¿½
 	 * @return
 	 */
 	Calendar getCalendar();
 	/**
-	 * ¥HDate ©Î¬O ¦r¶Ç¶Ç¦^«ü©w®É¶¡
+	 * ï¿½HDate ï¿½Î¬O ï¿½rï¿½Ç¶Ç¦^ï¿½ï¿½wï¿½É¶ï¿½
 	 * @param date
 	 * @return
 	 */
 	Calendar getCalendar(Date date);
 	Calendar getCalendar(String date,String formate) throws ParseException;
 	/**
-	 * ¥H°Ñ¼Æ¬Û¹ï­È³]©w®É¶¡
+	 * ï¿½Hï¿½Ñ¼Æ¬Û¹ï¿½È³]ï¿½wï¿½É¶ï¿½
 	 * @param year
 	 * @param month
 	 * @param day
@@ -306,12 +306,12 @@ public interface IJatool {
 	/**
 	 * 
 	 * @param ip
-	 * @return ±N¦r¦ê©î¸Ñ¦¨array
+	 * @return ï¿½Nï¿½rï¿½ï¿½ï¿½Ñ¦ï¿½array
 	 */
 	String [] splitIP(String ip);
 	
 	/**
-	 * ¤Þ¤JªºClass ¥²¶· extends  TimerTask
+	 * ï¿½Þ¤Jï¿½ï¿½Class ï¿½ï¿½ï¿½ï¿½ extends  TimerTask
 	 * implement run function
 	 * @param periodTime
 	 * @param run
@@ -319,19 +319,25 @@ public interface IJatool {
 	void regularExcute(long periodTime,TimerTask run);
 	void regularExcute(long periodTime,long delay,TimerTask run);
 	void regularExcute(long periodTime,Date FirstExecuteTime,TimerTask run);
-	
+	/**
+	 * 
+	 * @param e
+	 * @return
+	 */
 	String getExceptionMsg(Exception e);
 	
 	/**
-	 * §Q¥Îlinux¤º³¡ªº¶l¥ó¥\¯àµo°e
+	 * ï¿½Qï¿½ï¿½linuxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½\ï¿½ï¿½oï¿½e
 	 * 
-	 * linux ¨Ï¥Îmail «ü¥O
+	 * linux ï¿½Ï¥ï¿½mail ï¿½ï¿½O
 	 * 
-	 * solarix ¨Ï¥Î mailx «ü¥O¡A³Ì«á¥²¶·.µ²§À
+	 * solarix ï¿½Ï¥ï¿½ mailx ï¿½ï¿½Oï¿½Aï¿½Ì«á¥²ï¿½ï¿½.ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param msg
 	 * @throws Exception 
 	 */
 	void sendMailforLinux(String msg) throws Exception;
 	void sendMailforLinux(String msg,String receiver) throws Exception;
+
+	void newFolder(String folderPath);
 }

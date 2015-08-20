@@ -8,7 +8,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -48,6 +50,10 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPReply;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -225,7 +231,7 @@ public class Jatool implements IJatool{
 		
 		result.setProperty("mail.smtp.host", "202.133.250.242");
 		result.setProperty("mail.transport.protocol", "smtp");
-		//result.setProperty("mail.smtp.port", "");//¥¼³]©w¹w³]¬°25
+		//result.setProperty("mail.smtp.port", "");//ï¿½ï¿½ï¿½]ï¿½wï¿½wï¿½]ï¿½ï¿½25
 		
 		result.setProperty("mail.smtp.auth", "true");
 		
@@ -237,7 +243,7 @@ public class Jatool implements IJatool{
 		//result.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");		
 		
 		
-		//¦Û­q°Ñ¼Æ
+		//ï¿½Û­qï¿½Ñ¼ï¿½
 		result.setProperty("mail.username", "ranger.kao@sim2Travel.com");
 		result.setProperty("mail.password", "kkk770204");
 		
@@ -290,7 +296,7 @@ public class Jatool implements IJatool{
 	@Override
 	public Date getMonthFirstDate(Date date) {
 		
-		Calendar calendar = Calendar.getInstance();//Àq»{¬°·í«e®É¶¡
+		Calendar calendar = Calendar.getInstance();//ï¿½qï¿½{ï¿½ï¿½ï¿½ï¿½eï¿½É¶ï¿½
 		Date monthFirstDate=null;
 
 		calendar.setTime(date);
@@ -303,7 +309,7 @@ public class Jatool implements IJatool{
 
 	@Override
 	public Date getMonthLastDate(Date date) {
-		Calendar calendar = Calendar.getInstance();//Àq»{¬°·í«e®É¶¡
+		Calendar calendar = Calendar.getInstance();//ï¿½qï¿½{ï¿½ï¿½ï¿½ï¿½eï¿½É¶ï¿½
 		Date monthLastDate=null;
 		
 		calendar.setTime(date);
@@ -316,7 +322,7 @@ public class Jatool implements IJatool{
 	@Override
 	public Date getDayFirstDate(Date date) {
 		
-		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));//Àq»{¬°·í«e®É¶¡
+		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));//ï¿½qï¿½{ï¿½ï¿½ï¿½ï¿½eï¿½É¶ï¿½
 		Date monthFirstDate=null;
 
 		calendar.setTime(date);
@@ -331,7 +337,7 @@ public class Jatool implements IJatool{
 
 	@Override
 	public Date getDayLastDate(Date date) {
-		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));//Àq»{¬°·í«e®É¶¡
+		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));//ï¿½qï¿½{ï¿½ï¿½ï¿½ï¿½eï¿½É¶ï¿½
 		Date monthLastDate=null;
 		
 		calendar.setTime(date);
@@ -463,7 +469,7 @@ public class Jatool implements IJatool{
 
 		try {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8")); 
-			// «ü©wÅª¨ú¤å¥óªº½s½X®æ¦¡¡A¥H§K¥X²{¤¤¤å¶Ã½X
+			// ï¿½ï¿½wÅªï¿½ï¿½ï¿½óªº½sï¿½Xï¿½æ¦¡ï¿½Aï¿½Hï¿½Kï¿½Xï¿½{ï¿½ï¿½ï¿½ï¿½Ã½X
 			
 			String str = null;
 			
@@ -491,11 +497,13 @@ public class Jatool implements IJatool{
 		
 		try {
 			File file = new File("c://text.txt");
-			fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF-8")); // «üÂI½s½X®æ¦¡¡A¥H§KÅª¨ú®É¤¤¤å¦r²Å²§±`
-			fw.append("§Ú¼g¤Jªº¤º®e");
+			if(!file.exists())
+				file.createNewFile();
+			fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF-8")); // ï¿½ï¿½ï¿½Iï¿½sï¿½Xï¿½æ¦¡ï¿½Aï¿½Hï¿½KÅªï¿½ï¿½É¤ï¿½ï¿½ï¿½rï¿½Å²ï¿½ï¿½`
+			fw.append("ï¿½Ú¼gï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½e");
 			fw.newLine();
-			fw.append("§Ú¤S¼g¤Jªº¤º®e");
-			fw.flush(); // ¥ş³¡¼g¤J½w¦s¤¤ªº¤º®e
+			fw.append("ï¿½Ú¤Sï¿½gï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½e");
+			fw.flush(); // ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Jï¿½wï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½e
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -507,6 +515,21 @@ public class Jatool implements IJatool{
 				}
 			}
 		}		
+	}
+	
+	@Override
+	public void newFolder(String folderPath) {
+		try {
+			String filePath = folderPath;
+			filePath = filePath.toString();
+			java.io.File myFilePath = new java.io.File(filePath);
+			if (!myFilePath.exists()) {
+				myFilePath.mkdir();
+			}
+		}catch(Exception e) {
+			System.out.println("æ–°å»ºç›®éŒ„æ“ä½œå‡ºéŒ¯");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -669,6 +692,80 @@ public class Jatool implements IJatool{
 		return errors.toString();
 	}
 	
+	public static void UpdatToFTP(FTPClient ftp,InputStream input,String destFileName) throws IOException{
+
+		ftp.setBufferSize(1024);  
+        ftp.setControlEncoding("GBK");
+        // è®¾ç½®æ–‡ä»¶ç±»å‹ï¼ˆäºŒè¿›åˆ¶ï¼‰  
+        ftp.setFileType(FTPClient.BINARY_FILE_TYPE);  
+
+		if(ftp.storeFile(destFileName, input)){
+			System.out.println("Update Success!");
+		}else{
+			System.out.println("Update fail!");
+		}
+
+		input.close();
+		
+	}
 	
+	public static void newFTPDir(FTPClient ftp,String folderName) throws IOException{
+		if(ftp.makeDirectory(folderName)){
+        	System.out.println("Create folder Success!");
+        }else{
+        	System.out.println("Create folder fail!");
+        }
+	}
+	
+	public FTPClient connectFTP() throws Exception{
+		
+
+		FTPClient ftp = new FTPClient();
+		//å»ºç«‹é€£ç·š
+		ftp.connect("10.42.1.110");
+   	
+
+		//ç™»å…¥
+		if (!ftp.login("wacos", "wacos")) {
+			ftp.logout();
+			throw new Exception("ç™»å…¥å¤±æ•—");
+		}
+		//å–å¾—å›æ‡‰ç¢¼
+		int reply = ftp.getReplyCode();
+
+		System.out.println("reply:"+reply);
+		//ç™»å…¥ç‹€æ…‹
+		if (!FTPReply.isPositiveCompletion(reply)) {
+			ftp.disconnect();
+			throw new Exception("ç„¡å›æ‡‰");
+		}           
+  
+		//FTPæ”¹ç‚ºè¢«å‹•æ¨¡å¼
+		ftp.enterLocalPassiveMode();
+   
+		//æ”¹è·¯å¾‘
+		ftp.changeWorkingDirectory("/CDR/script/tool/GPRS_flatrate/inputfile/test");   
+   
+		System.out.println("connectFtp Success!");
+		
+		return ftp;
+	}
+	
+	public static void readFTPFile(FTPClient ftp) throws IOException{
+		FTPFile[] fList = ftp.listFiles();
+		
+		 System.out.println("File List:");
+		 
+		for(FTPFile f : fList){
+			 System.out.println((f.isDirectory()?"folder:":"file")+f.getName());
+		}
+		
+	}
+
+	public static void moveFile(String sourceDir,String DestDir,String fileName){
+		File f = new File(sourceDir+"\\"+fileName);
+		File f2 = new File(DestDir+"\\"+fileName);
+		f.renameTo(f2);
+	}
 	
 }

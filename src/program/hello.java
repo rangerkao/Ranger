@@ -30,16 +30,25 @@ public class hello {
 	static IJatool tool =new Jatool();
 	public static void main(String[] args) throws UnknownHostException {
 		
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("中文", "chinese");
+		map.put("英文", "eng");
+		
+		
+		System.out.println(map.get("英文"));
+		
+		
 		//簡訊發送測試
 		String phone=null;
 		String msg=null;
 	
 		try {
 			
-			phone="886989235253";	msg="¿Ë·Rªº¤¤µØ«È¤á¡G±z¶}³qªº¡uÀô²y¥d¡v­»´ä°Æ¸¹¬°+85256092046¡C¦b±z©è¹F­»´ä­«·s¶}¾÷«á¡A°Æ¸¹±NÅã¥Ü¦b¤â¾÷¤W¡C½Ð°È¥²Æ[¬ÝÀô²y¥d¼·¸¹¤è¦¡»¡©ú¼v¤ù¡G http://goo.gl/sUSCHa¡C­»´ä/¤j³°µL­­¤Wºô¥]¤W½uÅo¡A¨C¤ë¥u­nNTD599/999¡AÅwªï¥[¿ï¡AÀô²y¥d·PÁÂ±z¡I¦p»Ý¿Ô¸ß½Ð¹q«ÈªA¡C";
+			phone="886989235253";	msg="測試";
 			
 			
-			setSMSPostParam(msg,phone);
+			setSMSPostParam(new String(msg.getBytes("big5"),"ISO-8859-1"),phone);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

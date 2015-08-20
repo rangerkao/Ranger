@@ -1,4 +1,4 @@
-package test;
+package JSmpp;
 
 import java.io.IOException;
 import java.util.ArrayList;
