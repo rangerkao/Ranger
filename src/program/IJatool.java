@@ -2,6 +2,7 @@ package program;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.UnknownHostException;
 import java.rmi.RemoteException;
@@ -19,6 +20,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
 import org.apache.axis2.AxisFault;
+import org.apache.commons.net.ftp.FTPClient;
 import org.apache.log4j.Logger;
 
 public interface IJatool {
@@ -340,4 +342,19 @@ public interface IJatool {
 	void sendMailforLinux(String msg,String receiver) throws Exception;
 
 	void newFolder(String folderPath);
+
+	Properties getProperties1();
+
+	Properties getProperties2();
+
+	void UpdatToFTP(FTPClient ftp, InputStream input, String destFileName)
+			throws IOException;
+
+	void newFTPDir(FTPClient ftp, String folderName) throws IOException;
+
+	FTPClient connectFTP() throws Exception;
+
+	void readFTPFile(FTPClient ftp) throws IOException;
+
+	void moveFile(String sourceDir, String DestDir, String fileName);
 }

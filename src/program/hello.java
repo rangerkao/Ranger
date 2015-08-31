@@ -24,14 +24,23 @@ import org.apache.tomcat.jni.Local;
 import org.apache.tomcat.util.buf.UDecoder;
 import org.apache.tomcat.util.buf.UEncoder;
 import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+import org.jsmpp.bean.DeliverSm;
+import org.jsmpp.bean.DeliveryReceipt;
+import org.jsmpp.util.DeliveryReceiptState;
 
 public class hello {
 	private static String msg;
 	static IJatool tool =new Jatool();
 	public static void main(String[] args) throws UnknownHostException {
 		
+		DeliveryReceipt delReceipt = new DeliveryReceipt();
+		delReceipt.setFinalStatus(DeliveryReceiptState.ACCEPTD);
 		
-		Map<String,String> map = new HashMap<String,String>();
+		System.out.println(delReceipt.getFinalStatus().value()+1);
+		
+		
+		
+		/*Map<String,String> map = new HashMap<String,String>();
 		map.put("中文", "chinese");
 		map.put("英文", "eng");
 		
@@ -53,7 +62,7 @@ public class hello {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		
 		//indexOf 測試
 		

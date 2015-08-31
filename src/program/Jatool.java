@@ -94,7 +94,7 @@ public class Jatool implements IJatool{
 	public void sendMail(Logger logger,Properties props,String sender,String receiver,String subject,String content) throws Exception {
 
 		if(props==null){
-			props=getProperties();
+			props=getProperties1();
 		}
 		logControl(logger,"info","get Properites!");			
 		
@@ -226,7 +226,9 @@ public class Jatool implements IJatool{
 		}
 	}
 	
-	private Properties getProperties(){
+	//mail
+	@Override
+	public Properties getProperties1(){
 		Properties result=new Properties();
 		
 		result.setProperty("mail.smtp.host", "202.133.250.242");
@@ -247,6 +249,25 @@ public class Jatool implements IJatool{
 		result.setProperty("mail.username", "ranger.kao@sim2Travel.com");
 		result.setProperty("mail.password", "kkk770204");
 		
+		return result;
+	}
+	//Log
+	@Override
+	public Properties getProperties2(){
+		Properties result=new Properties();
+		
+		result.setProperty("log4j.rootCategory", "DEBUG, stdout, FileOutput");
+		
+		result.setProperty("log4j.appender.stdout", "org.apache.log4j.ConsoleAppender");
+		result.setProperty("log4j.appender.stdout.layout", "org.apache.log4j.PatternLayout");
+		result.setProperty("log4j.appender.stdout.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
+		
+		result.setProperty("log4j.appender.FileOutput", "org.apache.log4j.DailyRollingFileAppender");
+		result.setProperty("log4j.appender.FileOutput.layout", "org.apache.log4j.PatternLayout");
+		result.setProperty("log4j.appender.FileOutput.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
+		result.setProperty("log4j.appender.FileOutput.DatePattern", "'.'yyyyMMdd");
+		result.setProperty("log4j.appender.FileOutput.File", "AddonService.log");
+
 		return result;
 	}
 
@@ -691,8 +712,8 @@ public class Jatool implements IJatool{
 		e.printStackTrace(new PrintWriter(errors)); 
 		return errors.toString();
 	}
-	
-	public static void UpdatToFTP(FTPClient ftp,InputStream input,String destFileName) throws IOException{
+	@Override
+	public void UpdatToFTP(FTPClient ftp,InputStream input,String destFileName) throws IOException{
 
 		ftp.setBufferSize(1024);  
         ftp.setControlEncoding("GBK");
@@ -708,15 +729,15 @@ public class Jatool implements IJatool{
 		input.close();
 		
 	}
-	
-	public static void newFTPDir(FTPClient ftp,String folderName) throws IOException{
+	@Override
+	public void newFTPDir(FTPClient ftp,String folderName) throws IOException{
 		if(ftp.makeDirectory(folderName)){
         	System.out.println("Create folder Success!");
         }else{
         	System.out.println("Create folder fail!");
         }
 	}
-	
+	@Override
 	public FTPClient connectFTP() throws Exception{
 		
 
@@ -751,7 +772,8 @@ public class Jatool implements IJatool{
 		return ftp;
 	}
 	
-	public static void readFTPFile(FTPClient ftp) throws IOException{
+	@Override
+	public void readFTPFile(FTPClient ftp) throws IOException{
 		FTPFile[] fList = ftp.listFiles();
 		
 		 System.out.println("File List:");
@@ -762,7 +784,8 @@ public class Jatool implements IJatool{
 		
 	}
 
-	public static void moveFile(String sourceDir,String DestDir,String fileName){
+	@Override
+	public void moveFile(String sourceDir,String DestDir,String fileName){
 		File f = new File(sourceDir+"\\"+fileName);
 		File f2 = new File(DestDir+"\\"+fileName);
 		f.renameTo(f2);
