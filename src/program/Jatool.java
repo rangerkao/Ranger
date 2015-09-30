@@ -1,6 +1,6 @@
 package program;
 
-
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
@@ -40,10 +40,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.GZIPInputStream;
 
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -85,111 +88,44 @@ public class Jatool implements IJatool{
 	}
 	
 	@Override
-	public void sendMail(Logger logger,String sender, String receiver, String subject,String content) throws Exception {
-		sendMail(logger,null,sender,receiver,subject,content);
+	public void sendMail(Properties props,String subject,String content) throws Exception {
+		sendMail(props,null,null,subject,content);
 	}
 	
 
 	@Override
-	public void sendMail(Logger logger,Properties props,String sender,String receiver,String subject,String content) throws Exception {
+	public void sendMail(Properties props,String sender, String receiver, String subject,String content) throws Exception {
 
 		if(props==null){
 			props=getProperties1();
 		}
-		logControl(logger,"info","get Properites!");			
-		
-		final String host=props.getProperty("mail.smtp.host");
-		logControl(logger,"info","Connect to Host : "+ host);
-		
-		String p=props.getProperty("mail.smtp.port");
-		final Integer port=((p==null||"".equals(p))?null:Integer.valueOf(p));
-		logControl(logger,"info","port : "+port);
-		
-		final String username=props.getProperty("mail.username");
-		final String passwd=props.getProperty("mail.password");		
-		
-		String auth = props.getProperty("mail.smtp.auth");
-		boolean authFlag = true;
-		if(auth==null||"".equals(auth)||"false".equals(auth)){
-			authFlag=false;
-		}
-		logControl(logger,"info","use authority : "+authFlag);
-		
-		boolean sessionDebug = false; 
-		boolean singleBody=true;
-		
-		/*if(sender==null || "".equals(sender)){
-			if(username==null){
-				logControl(logger,"error","No sender and No UserName Set!");
-				throw new Exception("No sender and No UserName Set!");
-			}
-			sender=username;			
-		}else{
-			if(username!=null && !"".equals(username) &&!sender.equalsIgnoreCase(username)){
-				logControl(logger,"error","sender is not equals to UserName !");
-				return;
-			}
-		}*/
-		
-		InternetAddress[] address = null; 
-		String ccList="";
-		
-		
-		StringBuilder messageText = new StringBuilder(); 
-		messageText.append("<html><body>"); 
-		messageText.append(content); 
-		messageText.append("</body></html>"); 
-		
-		javax.mail.Session mailSession=null;
-		logControl(logger,"debug","Creat mail Session!");
-		if(authFlag){
-			// construct a mail session 
-			mailSession = javax.mail.Session.getInstance(props,new javax.mail.Authenticator() {
-			    protected PasswordAuthentication getPasswordAuthentication() {
-			        return new PasswordAuthentication(username, passwd);
-			    }
-			}); 
-		}else{
-			mailSession = javax.mail.Session.getDefaultInstance(props);
-		}
-		
-		mailSession.setDebug(sessionDebug); 
-		
-			Message msg = new MimeMessage(mailSession); 
-			
-			try {
-				msg.setFrom(new InternetAddress(sender));			// mail sender 
-			} catch (Exception e) {
-				msg.setFrom();
-			}
-			
-			address = InternetAddress.parse(receiver, false); // mail recievers 
-			msg.setRecipients(Message.RecipientType.TO, address); 
-			msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse(ccList)); // mail cc 
-			
-			msg.setSubject(subject); // mail's subject 
-			msg.setSentDate(new Date());// mail's sending time 
-			logControl(logger,"debug","set mail content!");
-			if(singleBody){
-				//msg.setText(messageText.toString());
-			    msg.setContent(messageText.toString(), "text/html;charset=UTF-8");
-			}else{
-				MimeBodyPart mbp = new MimeBodyPart();// mail's charset
-				mbp.setContent(messageText.toString(), "text/html; charset=utf8"); 
-				Multipart mp = new MimeMultipart(); 
-				mp.addBodyPart(mbp); 
-				msg.setContent(mp); 
-			}
 
-			if(receiver==null ||"".equals(receiver)){
-				System.out.println("Can't send email without receiver!");
-			}else{
-				Transport.send(msg);
-			}
-			logControl(logger,"info","sending mail from "+sender+" to "+receiver+"\n<br>"+
-										"Subject : "+msg.getSubject()+"\n<br>"+
-										"Content : "+msg.getContent()+"\n<br>"+
-										"SendDate: "+msg.getSentDate());			
+		final String host=props.getProperty("mail.smtp.host");
+				
+		final String username = props.getProperty("mail.username");
+		final String passwd = props.getProperty("mail.password");		
+		
+		if(sender==null)
+			sender = props.getProperty("mail.Sender");	
+		if(receiver ==null)
+			receiver = props.getProperty("mail.Receiver");	
+		
+		Session session = javax.mail.Session.getInstance(props);
+
+		try {
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(sender));
+			message.setRecipients(Message.RecipientType.TO,	InternetAddress.parse(receiver));
+			message.setSubject(subject);
+			message.setText(content);
+
+			Transport transport = session.getTransport("smtp");
+		    transport.connect(host,username,passwd);
+		    transport.sendMessage(message, message.getAllRecipients());
+			System.out.println("Done");
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	@Override
 	public void sendMailforLinux(String msg) throws Exception{
@@ -230,25 +166,17 @@ public class Jatool implements IJatool{
 	@Override
 	public Properties getProperties1(){
 		Properties result=new Properties();
-		
-		result.setProperty("mail.smtp.host", "202.133.250.242");
-		result.setProperty("mail.transport.protocol", "smtp");
-		//result.setProperty("mail.smtp.port", "");//���]�w�w�]��25
-		
-		result.setProperty("mail.smtp.auth", "true");
-		
-		//TLS authentication 
-		//result.setProperty("mail.smtp.starttls.enable", "true");
 
-		//SSL authentication 
-		//result.setProperty("mail.smtp.socketFactory.port", "465");
-		//result.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");		
-		
-		
-		//�ۭq�Ѽ�
-		result.setProperty("mail.username", "ranger.kao@sim2Travel.com");
-		result.setProperty("mail.password", "kkk770204");
-		
+		//mail setting
+		result.put("mail.smtp.auth", "true");
+		result.put("mail.smtp.host", "202.133.250.242");
+		result.put("mail.smtp.port", "25");
+		result.put("mail.transport.protocol", "smtp");
+		result.put("mail.username", "ranger.kao@sim2travel.com");
+		result.put("mail.password", "kkk770204");
+		result.put("mail.Sender", "Send Program");
+		result.put("mail.Receiver", "ranger.kao@sim2travel.com,k1988242001@gmail.com");
+
 		return result;
 	}
 	//Log
@@ -256,18 +184,27 @@ public class Jatool implements IJatool{
 	public Properties getProperties2(){
 		Properties result=new Properties();
 		
-		result.setProperty("log4j.rootCategory", "DEBUG, stdout, FileOutput");
+		result.put("log4j.rootCategory", "DEBUG, stdout, FileOutput");
 		
-		result.setProperty("log4j.appender.stdout", "org.apache.log4j.ConsoleAppender");
-		result.setProperty("log4j.appender.stdout.layout", "org.apache.log4j.PatternLayout");
-		result.setProperty("log4j.appender.stdout.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
+		result.put("log4j.appender.stdout", "org.apache.log4j.ConsoleAppender");
+		result.put("log4j.appender.stdout.layout", "org.apache.log4j.PatternLayout");
+		result.put("log4j.appender.stdout.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
 		
-		result.setProperty("log4j.appender.FileOutput", "org.apache.log4j.DailyRollingFileAppender");
-		result.setProperty("log4j.appender.FileOutput.layout", "org.apache.log4j.PatternLayout");
-		result.setProperty("log4j.appender.FileOutput.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
-		result.setProperty("log4j.appender.FileOutput.DatePattern", "'.'yyyyMMdd");
-		result.setProperty("log4j.appender.FileOutput.File", "AddonService.log");
+		result.put("log4j.appender.FileOutput", "org.apache.log4j.DailyRollingFileAppender");
+		result.put("log4j.appender.FileOutput.layout", "org.apache.log4j.PatternLayout");
+		result.put("log4j.appender.FileOutput.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
+		result.put("log4j.appender.FileOutput.DatePattern", "'.'yyyyMMdd");
+		result.put("log4j.appender.FileOutput.File", "AddonService.log");
 
+		//use Logger.getLogger(StressClientTest.class);
+		result.put("log4j.logger.StressClient", "INFO, StressClient");
+		result.put("log4j.appender.StressClient", "org.apache.log4j.DailyRollingFileAppender");
+		result.put("log4j.appender.StressClient.File", "StressClient.log");
+		result.put("log4j.appender.StressClient.DatePattern", "'.'yyyyMMdd");
+		result.put("log4j.appender.StressClient.layout", "org.apache.log4j.PatternLayout");
+		result.put("log4j.appender.StressClient.layout.ConversionPattern", "%-d{yyyy-MM-dd HH:mm:ss} [%c:%L]-[%p] %m%n");
+		
+		
 		return result;
 	}
 
@@ -789,6 +726,45 @@ public class Jatool implements IJatool{
 		File f = new File(sourceDir+"\\"+fileName);
 		File f2 = new File(DestDir+"\\"+fileName);
 		f.renameTo(f2);
+	}
+	@Override
+	public void unGZIP(String workDir,String fName,String tempDir){
+		String fileName = fName;
+		GZIPInputStream gzi = null;
+		BufferedOutputStream bos = null;
+		try {
+			gzi = new GZIPInputStream(new FileInputStream(new File(workDir,fName)));
+			int to = fileName.lastIndexOf('.');
+
+	        String toFileName = fileName.substring(0, to);
+	        System.out.println(tempDir);
+	        File targetFile = new File(tempDir,toFileName);
+	        bos = new BufferedOutputStream(new FileOutputStream(targetFile));
+	        int b;
+	        byte[] d = new byte[1024];
+	        while ((b = gzi.read(d)) > 0) {
+                bos.write(d, 0, b);
+            }
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				if(gzi!=null){
+					gzi.close();
+				}
+				if(bos!=null){
+					bos.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }

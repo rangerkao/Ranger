@@ -2,7 +2,15 @@ package program;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.net.UnknownHostException;
+import java.security.InvalidKeyException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,81 +28,68 @@ import java.util.TimeZone;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.tomcat.jni.Local;
 import org.apache.tomcat.util.buf.UDecoder;
 import org.apache.tomcat.util.buf.UEncoder;
 import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 import org.jsmpp.bean.DeliverSm;
 import org.jsmpp.bean.DeliveryReceipt;
+import org.jsmpp.bean.MessageType;
 import org.jsmpp.util.DeliveryReceiptState;
 
 public class hello {
 	private static String msg;
 	static IJatool tool =new Jatool();
-	public static void main(String[] args) throws UnknownHostException {
+	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
+		//one way encode
+		//System.out.println("MD5 encodeing result : "+md5Encode("Sim217Life"));	
+		//System.out.println("SHA encodeing result : "+SHAEncode("Sim217Life"));	
+		System.out.println(MessageType.SMSC_DEL_RECEIPT.value());
+		System.out.println(MessageType.DEFAULT.value());
 		
-		DeliveryReceipt delReceipt = new DeliveryReceipt();
-		delReceipt.setFinalStatus(DeliveryReceiptState.ACCEPTD);
+		//非對稱加密(解密必須保留當初建立的key)
+		/*//KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象  
+        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");  
+        //初始化密钥对生成器，密钥大小为1024位  
+        keyPairGen.initialize(1024);  
+        //生成一个密钥对，保存在keyPair中  
+        KeyPair keyPair = keyPairGen.generateKeyPair();  
+        //得到私钥  
+        RSAPrivateKey privateKey = (RSAPrivateKey)keyPair.getPrivate();   
+        System.out.println("private Key:"+privateKey.toString());
+        //得到公钥  
+        RSAPublicKey publicKey = (RSAPublicKey)keyPair.getPublic();
+        System.out.println("publicKey Key:"+publicKey.toString());
+        
+        String s = RSAEncode("source",publicKey);
+        System.out.println("RSA encodeing result : "+RSAEncode("source",publicKey));
+        System.out.println("RSA Decodeing result : "+RSADecode(s,privateKey));*/
 		
-		System.out.println(delReceipt.getFinalStatus().value()+1);
-		
-		
-		
-		/*Map<String,String> map = new HashMap<String,String>();
-		map.put("中文", "chinese");
-		map.put("英文", "eng");
-		
-		
-		System.out.println(map.get("英文"));
-		
-		
-		//簡訊發送測試
-		String phone=null;
-		String msg=null;
+	}
 	
-		try {
-			
-			phone="886989235253";	msg="測試";
-			
-			
-			setSMSPostParam(new String(msg.getBytes("big5"),"ISO-8859-1"),phone);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-		
-		//indexOf 測試
-		
-		/*String tesmsg="send message result : <HTML><HEAD><TITLE>Message Submitted"
-				+ "</TITLE></HEAD><BODY><p>Message Submitted<p><a href=\"javascript:history.back()\">Continue"
-				+ "</a><p></BODY></HTML>";
-		
-		if(tesmsg.indexOf("Message Submitted")==-1)
-				System.out.println("index:"+tesmsg.indexOf("Message Submitted"));*/
-		//時間測試
-		/*try {
-			Date testTime = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2015/06/23 15:35:44");
-			
-			Calendar startTime = Calendar.getInstance(),endTime = Calendar.getInstance();
-			startTime.setTime(testTime);
-			startTime.set(Calendar.HOUR_OF_DAY, 0);
-			startTime.set(Calendar.MINUTE, 0);
-			startTime.set(Calendar.SECOND, 0);
-			System.out.println(startTime.getTime());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-
-		//簡訊測試   分段
-		/*String msg = "*環球卡高用量提醒*提醒您本月數據用量上網金額統計至前{{bp}}一小時加部份推估，已約達NT65,000.00，"
-				+ "實際用量及使用金額以帳單為準。另您已{{bp}}約定上網金額不設限，感謝您的留意。如需諮詢請電客服*123#。";*/
-		
-		
+	public static void CalendarTest(){
+		Calendar calendar =Calendar.getInstance();
+		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)+1,0,0,0);
+		System.out.println("calendar:"+calendar.getTime());
+	}
 	
-		/*int number = 100;
+	//簡訊測試   分段
+	public static void breakSMSTest(){
+		
+		String msg = "*環球卡高用量提醒*提醒您本月數據用量上網金額統計至前{{bp}}一小時加部份推估，已約達NT65,000.00，"
+				+ "實際用量及使用金額以帳單為準。另您已{{bp}}約定上網金額不設限，感謝您的留意。如需諮詢請電客服*123#。";
+		
+		int number = 100;
 		int length = msg.length();
 		byte[] b = msg.getBytes();
 		length = b.length;
@@ -115,45 +110,101 @@ public class hello {
 				sub[i]=new String(c);
 	
 			sub[i]=msg.substring(i*number,last);
-		}*/
-		
-		/*String [] sub ={msg.replaceAll("\\{\\{bp\\}\\}","")};
+		}
 		//String [] sub =msg.split("\\{\\{bp\\}\\}");
 		for(String s: sub){
 			System.out.println(s);
-		}*/
-		/*
+		}
+	}
+	
+	public static void DBTest(){
+		
+		String param="測試123.33215測次側側側";
+		query();
 		try {
-			setSMSPostParam(new String("中文測試".getBytes("BIG5"), "ISO-8859-1"), "886989235253");
+			updateDB(999,param);
+			updateDB(999,null);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void jsmppTest(){
+		//狀態測試
+		DeliveryReceipt delReceipt = new DeliveryReceipt();
+		delReceipt.setFinalStatus(DeliveryReceiptState.ACCEPTD);
+		System.out.println(delReceipt.getFinalStatus().value()+1);
+
+	}
+	//簡訊發送測試
+	public static void sendSMSTest(){
+		
+		String phone=null;
+		String msg=null;
+	
+		try {
+			
+			phone="886989235253";	msg="測試";
+			
+			
+			setSMSPostParam(new String(msg.getBytes("big5"),"ISO-8859-1"),phone);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-	
-		//DB測試
-		//String param="測試123.33215測次側側側";
-		
-		//query();
-		//updateDB(999,param);
-		//updateDB(999,null);
-		/*Calendar calendar =Calendar.getInstance();
-		//System.out.println(new SimpleDateFormat("yyyy MMM dd HH:mm:ss", Locale.US).format(calendar.getTime()));
-		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)+1,0,0,0);
-		System.out.println("calendar:"+calendar.getTime());
-		
-		List<String> list = tool.regularFind("32321,dsd,434,11,aas,4356,643,234,rer,123,442,1,1233,331", "^\\d{3}\\D|\\D\\d{3}\\D|\\D\\d{3}$");
-		
-		
-		System.out.println("Double Max\t:\t"+Double.MAX_VALUE);
-		System.out.println("Long Max\t:\t"+Long.MAX_VALUE);
-		System.out.println("Integer Max\t:\t"+Integer.MAX_VALUE);*/
-		
-		
-		
-
+		}
 	}
-
 	
+	
+	public static String byteToString1(byte[] source){
+		BigInteger number = new BigInteger(1, source);
+        String hashtext = number.toString(16);
+        // Now we need to zero pad it if you actually want the full 32 chars.
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        return hashtext;
+	}
+	public static String byteToString2(byte[] source){
+        return new String(Hex.encodeHex(source));
+	}
+	
+	//RSA EncodeTest
+	public static String RSAEncode(String source,RSAPublicKey publicKey) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+		 //Cipher负责完成加密或解密工作，基于RSA  
+        Cipher cipher = Cipher.getInstance("RSA");  
+        //根据公钥，对Cipher对象进行初始化  
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey);  
+        byte[] resultBytes = cipher.doFinal(source.getBytes());  
+        
+        return byteToString2(resultBytes);  
+	}
+	//RSA DecodeTest
+	public static String RSADecode(String source,RSAPrivateKey  privateKey) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
+		//Cipher负责完成加密或解密工作，基于RSA  
+        Cipher cipher = Cipher.getInstance("RSA");  
+        //根据公钥，对Cipher对象进行初始化  
+        cipher.init(Cipher.DECRYPT_MODE, privateKey);  
+        byte[] resultBytes = cipher.doFinal(Hex.decodeHex(source.toCharArray()));  
+        return new String(resultBytes);  
+	}
+	
+	//md5 EncodeTest
+	public static String md5Encode(String source) throws NoSuchAlgorithmException{
+		String input=source;
+		 MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] messageDigest = md.digest(input.getBytes());
+        return byteToString1(messageDigest);
+	}
+	
+	//SHA EncodeTest
+	public static String SHAEncode(String source) throws NoSuchAlgorithmException{
+		MessageDigest md = MessageDigest.getInstance("SHA");  
+        byte[] srcBytes = source.getBytes();  
+        md.update(srcBytes);  
+        byte[] resultBytes = md.digest();
+        return byteToString1(resultBytes);  
+	}
 	
 	static Connection getConnection()
 	  {

@@ -109,7 +109,7 @@ public interface IJatool {
 	 * @throws IOException 
 	 * @throws Exception
 	 */
-	void sendMail(Logger logger,String sender,String receiver,String subject,String content) throws AddressException, MessagingException, IOException, Exception;
+	void sendMail(Properties props,String subject,String content) throws AddressException, MessagingException, IOException, Exception;
 	
 	/**
 	 * �o�e�l��
@@ -125,7 +125,7 @@ public interface IJatool {
 	 * @throws IOException 
 	 * @throws Exception
 	 */
-	void sendMail(Logger logger,Properties props,String sender,String receiver,String subject,String content) throws AddressException, MessagingException, IOException, Exception;
+	void sendMail(Properties props,String sender,String receiver,String subject,String content) throws AddressException, MessagingException, IOException, Exception;
 	
 	/**
 	 * DB�s�u
@@ -357,4 +357,6 @@ public interface IJatool {
 	void readFTPFile(FTPClient ftp) throws IOException;
 
 	void moveFile(String sourceDir, String DestDir, String fileName);
+
+	void unGZIP(String workDir, String fName, String tempDir);
 }
