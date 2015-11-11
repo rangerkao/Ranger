@@ -1,5 +1,6 @@
 package program;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -51,11 +52,24 @@ public class hello {
 	private static String msg;
 	static IJatool tool =new Jatool();
 	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
+		
+		/*System.out.println(Integer.MAX_VALUE);
+		System.out.println(Double.MAX_VALUE);
+
+		File f = new File("C:\\Users\\ranger.kao\\Desktop\\Table.xls");
+		long t = f.lastModified();
+		System.out.println(t);
+		System.out.println(new Date(t));*/
+		
+		
+		
+		/*System.out.println(MessageType.SMSC_DEL_RECEIPT.value());
+		System.out.println(MessageType.DEFAULT.value());*/
+		
+		
 		//one way encode
-		//System.out.println("MD5 encodeing result : "+md5Encode("Sim217Life"));	
+		//System.out.println("MD5 encodeing result : "+md5Encode("ranger"));	
 		//System.out.println("SHA encodeing result : "+SHAEncode("Sim217Life"));	
-		System.out.println(MessageType.SMSC_DEL_RECEIPT.value());
-		System.out.println(MessageType.DEFAULT.value());
 		
 		//非對稱加密(解密必須保留當初建立的key)
 		/*//KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象  
@@ -241,7 +255,6 @@ public class hello {
 	
 	static void updateDB(int num,String param) throws UnsupportedEncodingException{
 		Connection conn=getConnection();
-		
 		if(conn==null){
 			System.out.println("connection is null");
 			
@@ -311,11 +324,7 @@ public class hello {
 				}*/
 				
 				Map<String,String> setcountry = new HashMap<String,String>();
-				
-				
 	
-
-				
 				sql = "update MARKETING_DB_DATA A set A.country=? where country=? ";
 				
 				ps = conn.prepareStatement(sql);

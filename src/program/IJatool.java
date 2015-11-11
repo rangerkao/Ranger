@@ -22,6 +22,7 @@ import javax.mail.internet.AddressException;
 import org.apache.axis2.AxisFault;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 
 public interface IJatool {
 
@@ -359,4 +360,10 @@ public interface IJatool {
 	void moveFile(String sourceDir, String DestDir, String fileName);
 
 	void unGZIP(String workDir, String fName, String tempDir);
+	
+	String transCharSet(String s,String charSet);
+	
+	String nullProccess(String s);
+	
+	JSONObject jsoneUrlget(String url) throws IOException, Exception;
 }

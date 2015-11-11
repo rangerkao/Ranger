@@ -59,6 +59,7 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.json.JSONObject;
 
 //190
 /*import com.infotech.smpp.SMPPServicesStub;
@@ -156,7 +157,7 @@ public class Jatool implements IJatool{
 		try{
 			Process p = Runtime.getRuntime().exec (cmd);
 			p.waitFor();
-			System.out.println("send mail cmd:"+cmd);
+			System.out.println("send mail cmd:"+cmd[0]+" "+cmd[1]+" "+cmd[2]);
 		}catch (Exception e){
 			System.out.println("send mail fail:"+msg);
 		}
@@ -765,6 +766,61 @@ public class Jatool implements IJatool{
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public String transCharSet(String s, String charSet) {
+		String result = s;
+		
+		//result = result.replace("'", "''").replace("&", "'||'&'||'");
+		
+		if(result==null)
+			result="";
+		else
+			try {
+				result=new String(result.getBytes("BIG5"),"ISO8859-1");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		
+		return result;
+	}
+
+	@Override
+	public String nullProccess(String s) {
+		if(s==null)
+			return "";
+		else
+			return s;
+	}
+
+	@Override
+	public JSONObject jsoneUrlget(String urls) throws Exception {
+		BufferedReader reader = null;
+		
+		String jsonS = null;
+		
+		try {
+	        URL url = new URL(urls);
+	        reader = new BufferedReader(new InputStreamReader(url.openStream()));
+	        StringBuffer buffer = new StringBuffer();
+	        int read;
+	        char[] chars = new char[1024];
+	        while ((read = reader.read(chars)) != -1)
+	            buffer.append(chars, 0, read); 
+
+	        jsonS = buffer.toString();
+	    } finally {
+	        if (reader != null)
+	            reader.close();
+	    }
+		
+		if(jsonS==null)
+			throw new Exception("Get JSon String Fail!");
+		
+		JSONObject json = new JSONObject(jsonS);
+		
+		return json;
 	}
 	
 }
