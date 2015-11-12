@@ -15,13 +15,13 @@
 	<classpathentry kind="lib" path="G:/MegaSync/download/jar/Apache.commons/commons-digester-1.7.jar"/>
 	<classpathentry kind="lib" path="G:/MegaSync/download/jar/Apache.commons/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="G:/MegaSync/download/jar/commons-lang-2.4.jar"/>
-	<classpathentry kind="lib" path="G:/MegaSync/download/commons-net-3.3/commons-net-3.3.jar"/>
-	<classpathentry kind="lib" path="G:/MegaSync/download/JNativeHook/jar/JNativeHook.jar"/>
-	<classpathentry kind="lib" path="G:/MegaSync/download/jsmpp-2.1.0-all/jsmpp-2.1.0/jsmpp-2.1.0.jar"/>
 	<classpathentry kind="lib" path="G:/MegaSync/download/jar/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="G:/MegaSync/download/jsoup-1.8.1.jar"/>
 	<classpathentry kind="lib" path="G:/MegaSync/download/jar/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="G:/MegaSync/download/jar/Apache.commons/org.apache.commons.collections.jar"/>
 	<classpathentry kind="lib" path="G:/MegaSync/download/json-20140107.jar"/>
+	<classpathentry kind="lib" path="G:/MegaSync/download/jar/commons-net-3.3/commons-net-3.3.jar"/>
+	<classpathentry kind="lib" path="G:/MegaSync/download/jar/JNativeHook/jar/JNativeHook.jar"/>
+	<classpathentry kind="lib" path="G:/MegaSync/download/jar/jsmpp-2.1.0-all/jsmpp-2.1.0/jsmpp-2.1.0.jar"/>
+	<classpathentry kind="lib" path="G:/MegaSync/download/jar/jsoup-1.8.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
