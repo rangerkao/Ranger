@@ -163,6 +163,37 @@ public class Jatool implements IJatool{
 		}
 	}
 	
+	@Override
+	public void sendMailforsolaris(String msg) throws Exception{
+		sendMailforLinux(msg,null);
+	}
+	@Override
+	public void sendMailforsolaris(String msg,String receiver) throws Exception{
+		String ip ="";
+		try {
+			ip = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+
+		}
+		
+		String mailReceiver = "Douglas.Chuang@sim2travel.com,ranger.kao@sim2travel.com";
+		
+		msg=msg+" from location "+ip;			
+		
+		String [] cmd=new String[3];
+		cmd[0]="/bin/bash";
+		cmd[1]="-c";
+		cmd[2]= "/bin/echo \""+msg+"\" | /bin/mailx -s \"AddonService alert\" -r  ADDON_SERVICE_ALERT_MAIL "+receiver+"." ; ;
+
+		try{
+			Process p = Runtime.getRuntime().exec (cmd);
+			p.waitFor();
+			System.out.println("send mail cmd:"+cmd[0]+" "+cmd[1]+" "+cmd[2]);
+		}catch (Exception e){
+			System.out.println("send mail fail:"+msg);
+		}
+	}
+	
 	//mail
 	@Override
 	public Properties getProperties1(){
@@ -208,6 +239,8 @@ public class Jatool implements IJatool{
 		
 		return result;
 	}
+	
+	
 
 	
 	@Override

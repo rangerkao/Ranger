@@ -366,4 +366,8 @@ public interface IJatool {
 	String nullProccess(String s);
 	
 	JSONObject jsoneUrlget(String url) throws IOException, Exception;
+
+	void sendMailforsolaris(String msg, String receiver) throws Exception;
+
+	void sendMailforsolaris(String msg) throws Exception;
 }
