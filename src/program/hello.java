@@ -54,7 +54,6 @@ public class hello {
 	static IJatool tool =new Jatool();
 	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
 		
-
 		for(Field f : SubscriberExcel.class.getDeclaredFields()){
 			System.out.println(f.getName());
 		}
