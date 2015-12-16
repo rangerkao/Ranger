@@ -54,11 +54,12 @@ public class hello {
 	static IJatool tool =new Jatool();
 	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
 		
-		for(Field f : SubscriberExcel.class.getDeclaredFields()){
-			System.out.println(f.getName());
+		try {
+			System.out.println(new String("迷稱".getBytes("BIG5"),"ISO-8859-1"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		System.out.println("2344");
 		/*System.out.println(Integer.MAX_VALUE);
 		System.out.println(Double.MAX_VALUE);
 
