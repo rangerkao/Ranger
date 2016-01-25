@@ -40,10 +40,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
-import org.apache.tomcat.jni.Local;
-import org.apache.tomcat.util.buf.UDecoder;
-import org.apache.tomcat.util.buf.UEncoder;
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 import org.jsmpp.bean.DeliverSm;
 import org.jsmpp.bean.DeliveryReceipt;
 import org.jsmpp.bean.MessageType;
@@ -54,19 +50,21 @@ public class hello {
 	static IJatool tool =new Jatool();
 	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
 		
-		try {
-			System.out.println(new String("迷稱".getBytes("BIG5"),"ISO-8859-1"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DBTest();
+		
+		/*Calendar c = Calendar.getInstance();
+		c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR)-59);
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		System.out.println(c.getTime());*/
+		
 		/*System.out.println(Integer.MAX_VALUE);
 		System.out.println(Double.MAX_VALUE);
+		*/
 
-		File f = new File("C:\\Users\\ranger.kao\\Desktop\\Table.xls");
-		long t = f.lastModified();
-		System.out.println(t);
-		System.out.println(new Date(t));*/
+		/*File f = new File("C:\\Users\\ranger.kao\\Desktop\\1104Addon\\20151223\\AddServer.002.454120260258715.20151221.txt");
+		System.out.println(f.length());*/
 		
 		
 		
@@ -75,7 +73,10 @@ public class hello {
 		
 		
 		//one way encode
-		//System.out.println("MD5 encodeing result : "+md5Encode("ranger"));	
+		System.out.println("MD5 encodeing result : "+md5Encode("yvonne"));	
+		System.out.println("MD5 encodeing result : "+md5Encode("zora"));	
+		System.out.println("MD5 encodeing result : "+md5Encode("helen"));	
+		System.out.println("MD5 encodeing result : "+md5Encode("wendy"));	
 		//System.out.println("SHA encodeing result : "+SHAEncode("Sim217Life"));	
 		
 		//非對稱加密(解密必須保留當初建立的key)
@@ -141,14 +142,19 @@ public class hello {
 	public static void DBTest(){
 		
 		String param="測試123.33215測次側側側";
-		query();
 		try {
+			query();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*try {
 			updateDB(999,param);
 			updateDB(999,null);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public static void jsmppTest(){
@@ -232,8 +238,9 @@ public class hello {
 		
 		try
 	    {
-	      //Class.forName("org.postgresql.Driver");
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("org.postgresql.Driver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 	    }
 	    catch (Exception localException)
 	    {
@@ -249,8 +256,9 @@ public class hello {
 	      DriverManager.setLoginTimeout(10);
 	      //System.Environment.SetEnvironmentVariable("NLS_LANG", "AMERICAN_AMERICA.WE8ISO8859P1");
 	      //localConnection = DriverManager.getConnection("jdbc:postgresql://192.168.10.197:5432/smppdb", "smpper", "SmIpp3r");
-	      localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.101:1521:S2TBSDEV", "foyadev", "foyadev");
+	      //localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.101:1521:S2TBSDEV", "foyadev", "foyadev");
 	      //localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.80:1521:s2tbs", "s2tbsadm", "s2tbsadm");
+	      localConnection = DriverManager.getConnection("jdbc:mysql://192.168.10.199:3306/CRM_DB?characterEncoding=utf8", "crmuser", "crm");
 	    }
 	    catch (Exception localException)
 	    {
@@ -304,9 +312,17 @@ public class hello {
 		}
 	}
 	
-	static void query(){
+	static void query() throws UnsupportedEncodingException{
 		Connection conn=getConnection();
-		String sql = "select ch_name from MARKETING_DB_COUNTRY A ";
+
+		
+		//String sql = "SELECT SUBS_NAME FROM CRM_SUBSCRIBERS A WHERE A.SUBS_NAME like to_nchar('%"+name+"%') ";
+		String sql=
+				"SELECT * "
+				+ "FROM CRM_SUBSCRIBERS "
+				+ "WHERE `SUBS_NAME` = '劉衍芳'";
+
+		
 		if(conn==null){
 			System.out.println("connection is null");
 			
@@ -317,67 +333,63 @@ public class hello {
 			PreparedStatement ps = null ;
 			try {
 
+				
 				st=conn.createStatement();
-				st.executeUpdate(sql);
-				/*rs=st.executeQuery(sql);
+				rs = st.executeQuery(sql);
+				System.out.println("SQL:"+sql);
+				
+				String ip = "117.142.24.200";
+				
+				List<Map<String,Object>> IPtoMccmncList = new ArrayList<Map<String,Object>>();
 				
 				while(rs.next()){
-					String rss=rs.getString("ch_name");
+					System.out.println(rs.getString("SEQ"));
+			
+				}
+				
+			/*	
+				System.out.println(ip.matches("^\\d+\\.\\d+\\.\\d+\\.\\d+$"));
+				String [] ips = ip.split("\\.");
+				long ipNumber =0L;
+				for(int j=0;j<ips.length;j++){
+					ipNumber+=Integer.parseInt(ips[j])*Math.pow(256, 3-j);
+				}
+				System.out.println("ipNumber="+ipNumber);
+				
+				System.out.println("end");
+				
+				for(Map<String,Object> m : IPtoMccmncList){
+					long startNum = (Long) m.get("START_NUM");
+					long EndNum = (Long) m.get("END_NUM");
 					
-					if(rss!=null){
-						rss=new String(rss.getBytes("ISO8859-1"),"BIG5");
-						System.out.println(rss);
+					if(startNum <= ipNumber && ipNumber <= EndNum){
+						break;
 					}
 				}*/
-				
-				Map<String,String> setcountry = new HashMap<String,String>();
-	
-				sql = "update MARKETING_DB_DATA A set A.country=? where country=? ";
-				
-				ps = conn.prepareStatement(sql);
-				
-				for(String s : setcountry.keySet()){
-					ps.setString(1, setcountry.get(s));
-					ps.setString(2, new String(s.getBytes("BIG5"),"ISO8859-1"));
-					System.out.println("effected row "+ps.executeUpdate());
-				}
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (UnsupportedEncodingException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally{
-				if(ps!=null){
-					try {
-						ps.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				if(st!=null){
-					try {
-						st.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				if(rs!=null){
-					try {
-						rs.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
 				try {
+					if (ps != null)
+						ps.close();
+
+					if (st != null)
+						st.close();
+
+					if (rs != null)
+						rs.close();
+
 					conn.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 			}
 			
 			

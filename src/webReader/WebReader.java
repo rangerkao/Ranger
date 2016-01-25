@@ -51,10 +51,12 @@ public class WebReader {
 	String baseURL;
 	String baseURL2;
 	
+	List<String> cUrl = new ArrayList<String>();
+	
 	public static void main(String[] args) {
 		
 		
-		conn = getConnection();
+		/*conn = getConnection();
 		
 		if(conn==null)
 			return;
@@ -63,7 +65,7 @@ public class WebReader {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		try {
 			loadProperties();
@@ -105,36 +107,28 @@ public class WebReader {
 	
 	
 	public WebReader(){
-		
-		Set<String> stkIdSet=new HashSet<String>();
-		stkIdSet = dl.getSTKIdSet();
-		//taxIdSet.clear();
-		baseURL = "http://ic.tpex.org.tw/company_basic.php?stk_code={{stkId}}";
-		baseURL2 = "http://ic.tpex.org.tw/company_contact.php?stk_code={{stkId}}";
-		for(String stkId : stkIdSet){
-			Map<String,String> map = new HashMap<String,String>();
-			try {
-				//basic
-				parseFirst(baseURL,stkId,map);
-				parseSecond(baseURL2,stkId,map);
-			} catch (IOException e) {
-				prints(e);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				prints(e);
+		baseURL = "http://www.tba-cycling.org/edit_c.aspx?cId=A{{num}}";
+		try {
+			//basic
+			for(int i = 21;i<=66 ;i++){
+				String num = String.valueOf(i);
+				if(i<10)
+					num = "0"+num;
+				parseFirst(baseURL.replace("{{num}}", num));
+				sleep(3000);
 			}
 			
-			if(map.size()!=0)
-				dataList.add(map);
-			
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			/*for(String s:cUrl){
+				parseSecond(s);
+				sleep(3000);
+			}*/
+		} catch (IOException e) {
+			prints(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			prints(e);
 		}
-
+		
 		/*Statement st = null;
 		String sql = null;
 		try {
@@ -143,7 +137,7 @@ public class WebReader {
 			for(Map<String,String> m: dataList){
 				
 				sql = "INSERT INTO MARKETING_DB_COMPANY("
-						+ "NAME,PHONE,EMAIL,ADDRESS,CHARGE,FAX,CREATETIME,WEB,COMPANY_ID,SOURCE,CONTACT,INDUSTRY) "
+						+ "NAME,PHONE,EMAIL,ADDRESS,CHARGE,FAX,CREATETIME,WEB,COMPANY_ID,SOURCE,CONTACT,REMARK,ENG_NAME) "
 						+ "VALUES("
 						+ "'"+trance(dataProcess(m.get("name")))+"',"
 						+ "'"+dataProcess(m.get("phone"))+"',"
@@ -154,9 +148,10 @@ public class WebReader {
 						+ "',sysdate,"
 						+ "'"+trance(dataProcess(m.get("web")))+"',"
 						+ "MARKETING_DB_COMPANY_ID.NEXTVAL,"
-						+ "'http://ic.tpex.org.tw/',"
+						+ "'http://www.lighting.org.tw/Ch_New/about_06.aspx',"
 						+ "'"+trance(dataProcess(m.get("contact")))+"',"
-						+ "'"+trance(dataProcess(m.get("industry")))+"')";
+						+ "'"+trance(dataProcess(m.get("remark")))+"',"
+						+ "'"+trance(dataProcess(m.get("ename")))+"')";
 				try {
 					prints(sql);
 					st.execute(sql);
@@ -186,10 +181,11 @@ public class WebReader {
 	//doc.select("img[src$=.png]");			//具有src 且以.png結尾的img
 	//doc.select("div.masthead")			//class=masthead的div
 	//doc.select("h3.r > a");				//具有class=r的h3，之後的a
-	
-	public void parseFirst(String strURL,String number,Map<String,String> map) throws Exception{
+
+	public void parseFirst(String strURL) throws Exception{
+			
+	//	String viewK="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";
 		
-		strURL=strURL.replace("{{stkId}}", number);
 		
 		prints("parse web "+strURL);
 		
@@ -197,112 +193,61 @@ public class WebReader {
 		URL url = new URL(strURL); 
 		
 		Document source =  Jsoup.parse(url, waitPeriod); 
-		Element e = source.getElementsByTag("H3").first();
-		String name = e.text().replace("基本資料", "");
-		prints("公司名稱:"+name);
-		map.put("name", name);
-		String html = source.html();
-
-		String reg = "http://www.tpex.org.tw/storage/company_basic/company_basic.php\\?s=\\d{4}&m=\\d{2}";
-		Matcher m = Pattern.compile(reg).matcher(html);
-		m.find();
-		
-		String jsonAddr = m.group();
-		
-		if(jsonAddr == null){
-			throw new Exception("For stkId:"+number+" found no data!");
+		Element table = source.getElementById("ctl00_main_grid");
+		Elements trs = table.getElementsByTag("tr");
+		for(int i = 1;i<trs.size();i++){
+			Element tr = trs.get(i);
+			Elements tds = tr.getElementsByTag("td");
+			logger.info(tds.get(1).text()+":"+tds.get(2).text()+":"+tds.get(3).text()+":"+tds.get(4).text()+":");
 		}
 		
-		prints("jsonAddr:"+jsonAddr);
 		
+		/*Document source = Jsoup.connect("http://www.tba-cycling.org/edit_c.aspx?cid=A02&memberNo=&company=&address=&page=5")
+				.data("__EVENTTARGET", "ctl00$main$grid$ctl02$ctl00")
+				.data("__EVENTARGUMENT","")
+				.data("__VIEWSTATE", viewK)
+				.post();*/
+		
+		//System.out.println(source.html());
+		
+		/*Element table = source.getElementById("table2");
+		Elements a = table.getElementsByTag("a");
 
-		//Use JsonPaser to get return json data
-		String jsonS = readUrl(jsonAddr);
-		
-		prints(jsonS);
-		
-		jsonS = jsonS.substring(0,jsonS.length()-1).replace("getCompanyBasic(", "");
-		
-		JSONObject json = new JSONObject(jsonS);
-
-		String MAIN_BUSINESS = "";
-		for(Object s:json.keySet()){
-			String tag = s.toString();
-			String value = (String) json.get(s.toString());
-			if("CHAIRMAN_NAME".equalsIgnoreCase(tag)){
-				prints("董事長:"+value);
-				map.put("charge", value);
-			}else if("PRESIDENT_NAME".equalsIgnoreCase(tag)){
-				//prints("總經理:"+json.get(s.toString()));
-			}else if("SPOKENMAN".equalsIgnoreCase(tag)){
-				//prints("發言人:"+json.get(s.toString()));
-			}else if("COMPANY_TEL".equalsIgnoreCase(tag)){
-				prints("電話:"+value);
-				map.put("phone", value);
-			}else if("COMPANY_ADDRESS".equalsIgnoreCase(tag)){
-				prints("地址:"+value);
-				map.put("address", value);
-			}else if("INTERNET_ADDRESS".equalsIgnoreCase(tag)){
-				prints("網址:"+value);
-				map.put("web", value);
-			}else if("NAME".equalsIgnoreCase(tag)){
-				prints("產業類別:"+value);
-				map.put("industry", value);
-			}else if("MAIN_BUSINESS1".equalsIgnoreCase(tag)||"MAIN_BUSINESS2".equalsIgnoreCase(tag)||"MAIN_BUSINESS3".equalsIgnoreCase(tag)){
-				if(!"".equals(value))
-					MAIN_BUSINESS+=value+"<BR>\n";
+		for(Element e : a){
+			
+			if(e.text().indexOf("www.lighting.org.tw/Ch_New")!=-1){
+				cUrl.add(e.text());
 			}
 		}
-		if(!"".equals(MAIN_BUSINESS)){
-			prints("主要經營業務:"+MAIN_BUSINESS);	
-			map.put("remark", MAIN_BUSINESS);
-		}
-
+		for(String s : cUrl){
+			//System.out.println(s);
+		}*/
 	}
 	
-	public void parseSecond(String strURL,String number,Map<String,String> map) throws Exception{
-		
-		strURL=strURL.replace("{{stkId}}", number);
-		
+	public void parseSecond(String strURL) throws Exception{
+
 		prints("parse web "+strURL);
 		
 		//Use Jsuop get html
 		URL url = new URL(strURL); 
 		
 		Document source =  Jsoup.parse(url, waitPeriod); 
-		Elements h3 = source.getElementsByTag("H3");
+		Map<String,String> map = new HashMap<String,String>();
 		
-		for(Element e : h3){
-			String text = e.html();
-			Elements es = e.getElementsByTag("small");
-			if(es.size()==0)
-				continue;
-			
-			Element small =  es.get(0);
-			
-			if(text.indexOf("聯絡人")!=-1){
-				prints("聯絡人:"+small.text());
-				map.put("contact", small.text());
-			}else if(text.indexOf("公務電話")!=-1){
-				//prints("公務電話:"+small.text());
-				
-			}else if(text.indexOf("電子郵件")!=-1){
-				prints("電子郵件:"+small.text());
-				map.put("mail", small.text());
-			}else if(text.indexOf("公司網址")!=-1){
-				prints("公司網址:"+small.text());
-				map.put("web", small.text());
-			}else if(text.indexOf("公司電話")!=-1){
-				prints("公司電話:"+small.text());
-				map.put("phone", small.text());
-			}else if(text.indexOf("公司傳真")!=-1){
-				prints("公司傳真:"+small.text());
-				map.put("fax", small.text());
-			}else if(text.indexOf("公司地址")!=-1){
-				prints("公司地址:"+small.text());
-				map.put("address", small.text());
-			}
+		map.put("name",(source.getElementById("ChName1")!=null?source.getElementById("ChName1").text():""));
+		map.put("ename",(source.getElementById("EnName1")!=null?source.getElementById("EnName1").text():""));
+		map.put("address",(source.getElementById("PostNo")!=null?source.getElementById("PostNo").text():"")+(source.getElementById("ChAdd")!=null?source.getElementById("ChAdd").text():""));
+		map.put("charge",(source.getElementById("ChCeo")!=null?source.getElementById("ChCeo").text():""));
+		map.put("contact",(source.getElementById("ChPres")!=null?source.getElementById("ChPres").text():""));
+		map.put("phone",(source.getElementById("Tel")!=null?source.getElementById("Tel").text():""));
+		map.put("fax",(source.getElementById("Fax")!=null?source.getElementById("Fax").text():""));
+		map.put("mail",(source.getElementById("Email")!=null?source.getElementById("Email").text():""));
+		map.put("web",(source.getElementById("Url")!=null?source.getElementById("Url").text():""));
+		map.put("remark",(source.getElementById("Member_Mode")!=null?source.getElementById("Member_Mode").text():""));
+		for(String s: map.keySet()){
+			System.out.println(s+":"+map.get(s));
 		}
+		dataList.add(map);
 	}
 	
 	

@@ -1,0 +1,784 @@
+2015-12-28 17:15:57,931 [ INFO] (WebReader.java:302) - Logger Load Success!
+2015-12-28 17:15:57,931 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A01
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 巨易機械工業有限公司:蔡清池:04-26876692:j6876692@ms37.hinet.net:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 輝達國際股份有限公司:許彩銀:049-2254010:info@scbike.com.tw:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 億豐金屬工業股份有限公司:李蘇善:04-7863866:yf-andrew@umail.hinet.net、jams ...:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 太平洋自行車股份有限公司:林正義:03-4861231:team@pacific-cycles.com:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 三永電熱機械股份有限公司:楊永吉:04-8896106:TSY@sanyung.com:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 旭東機械工業股份有限公司:莊添財:04-26831886:stmc@shuztung.com.tw:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 九川實業股份有限公司:張德成:04-25676851:aforge@ms29.hinet.net:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 乾盈企業有限公司:楊漢東:02-27883806:headoffice@bikeoptimist.com:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 栢馥股份有限公司:李世民:049-2264378:david@teamsun.com.tw:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 甲乙木股份有限公司:陳鐵和:04-8723118:cycle@joymove.com.tw:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 長羚企業有限公司:盧原昌:04-23294072:lag668@gmail.com:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 臺灣福龍有限公司:張智能:04-25271030:fuulhing@ms16.hinet.net:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 倢鋒機械有限公司:謝仁杰:04-25123000:info@neo-mac.com.tw:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 源昕國際有限公司:許申源:04-23301660:sophy@solubikes.com:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 詮譯企業有限公司:張春茂:04-8384342:paco@paco-bike.com:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 樂活工業股份有限公司:魏政傑:02-26420623:sales@hubsmaster.com:
+2015-12-28 17:15:59,116 [ INFO] (WebReader.java:201) - 瑞馳機械工業股份有限公司:楊瑞斌:04-26886580:juichihmachinery@gmail.com:
+2015-12-28 17:16:02,125 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A02
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 川飛工業有限公司:張維軒:04-25356269:angel@falconcycle.com、falcon@f ...:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 盛傑實業股份有限公司:陳威達:02-28825255:mail@ideation.com.tw:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 竣驜企業股份有限公司:林春山:04-26831571:service@outback-bag.com:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 凱殿實業有限公司:陳英峰:02-28751000:tbg@ms3.hinet.net:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 全仕通實業股份有限公司:吳盈進:06-2019103:kmcsales@kmcchain.com:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 格祥企業股份有限公司:黃文發:02-27021798:suncycle@ms25.hinet.net／servic ...:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 嘉登國際有限公司:趙恩澤:04-23274665:info@jncint.com.tw:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 超騰貿易股份有限公司:陳鳳美:02-25006691:jc@carol.com.tw、Daisy@carol.co ...:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 敏翔國際股份有限公司:萬榮魁:02-27661908:mainshine@madygroup.com:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 彬貿有限公司:彭梅燕:02-27171706:pkworld@ms43.hinet.net:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 敏德企業股份有限公司:萬翠玲:02-27661908:mady@madygroup.com:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 耀輪實業股份有限公司:陳素盡:02-25057888:shinwhel@shinee.com.tw:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 鑫林企業有限公司:鄭錦武:04-23585965:aboemas@garuda.com.tw:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 常昌企業有限公司:林義雄:02-27715566:TJG@tjgroup.com.tw:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 同亞車業股份有限公司:朱路貞:02-27971122:amethy@amethy.com.tw、nancyc@am ...:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 誼欣國際有限公司:楊宜娉:02-87925096:web@sanyakos.com.tw:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 海伯司達企業有限公司:周則宏:04-23596199:ted@sunstar-tw.com:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 伍祥貿易股份有限公司:張廖萬祥:02-27069019:info@accord.com.tw:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 碩輪企業股份有限公司:徐慧貞:03-3015398:solar.wheel@msa.hinet.net:
+2015-12-28 17:16:02,276 [ INFO] (WebReader.java:201) - 輝駿車業股份有限公司:洪天齡:04-24721967:goldhill@goldhill.com.tw:
+2015-12-28 17:16:05,285 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A03
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 宇輪工業股份有限公司:陳東城:037-860061:taroka@ms22.hinet.net:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 輝達國際股份有限公司:許彩銀:049-2254010:info@scbike.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 美輪工業股份有限公司:楊碧華:04-25561168:pretty.wheel@msa.hinet.net:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 泰億機械工業股份有限公司:徐文灝:049-2251147:peggy@taioku.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 統岳股份有限公司:陳銘永:04-7688016:branc@mail.branc.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 達生機械廠股份有限公司:尹衍棟:03-2506757:dsbike@ms12.hinet.net:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 菲力工業股份有限公司:簡正雄:02-22687166:info@fairlybike.com:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 鋐光實業股份有限公司:林文華:04-26835001:vptw@vpcomponents.com:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 巨大機械工業股份有限公司:劉金標:04-26814771:irenechen@giant.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 永祺車業股份有限公司:張泰山:04-22713395:mingbike@ms9.hinet.net:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 威輪工業股份有限公司:陳靖中:04-26814991:sales@acoca.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 聯程工業股份有限公司:劉秀美:03-3868020:info@khsbicycles.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 永輪工業股份有限公司:楊文仁:04-23591201:Info@wheeler.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 美利達工業股份有限公司:曾崧柱:04-8526171:bicycle@merida.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 立旺精密股份有限公司:黃士維:04-8310787:topgun8@topgun.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 世同金屬股份有限公司:黃玉華:04-23593591:shiouwen@kenstone.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 府城車業股份有限公司:黃榮一:06-2333175~7:fccycle@ms23.hinet.net:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 愛地雅工業股份有限公司:張元賓:04-26393242:ideal@idealbike.com.tw:
+2015-12-28 17:16:05,426 [ INFO] (WebReader.java:201) - 一心工業有限公司:邱義益:04-26815668:maxway@mail.maxway.com.tw:
+2015-12-28 17:16:08,433 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A04
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 野寶科技股份有限公司:林春山:04-26821688:service@aprotek.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 宇輪工業股份有限公司:陳東城:037-860061:taroka@ms22.hinet.net:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 輝達國際股份有限公司:許彩銀:049-2254010:info@scbike.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 美輪工業股份有限公司:楊碧華:04-25561168:pretty.wheel@msa.hinet.net:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 泰億機械工業股份有限公司:徐文灝:049-2251147:peggy@taioku.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 統岳股份有限公司:陳銘永:04-7688016:branc@mail.branc.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 達生機械廠股份有限公司:尹衍棟:03-2506757:dsbike@ms12.hinet.net:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 菲力工業股份有限公司:簡正雄:02-22687166:info@fairlybike.com:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 鋐光實業股份有限公司:林文華:04-26835001:vptw@vpcomponents.com:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 巨大機械工業股份有限公司:劉金標:04-26814771:irenechen@giant.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 永祺車業股份有限公司:張泰山:04-22713395:mingbike@ms9.hinet.net:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 騰輝科技股份有限公司:王吉川:04-23860147:vanguard21@gmail.com:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 威輪工業股份有限公司:陳靖中:04-26814991:sales@acoca.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 聯程工業股份有限公司:劉秀美:03-3868020:info@khsbicycles.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 永輪工業股份有限公司:楊文仁:04-23591201:Info@wheeler.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 美利達工業股份有限公司:曾崧柱:04-8526171:bicycle@merida.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 世同金屬股份有限公司:黃玉華:04-23593591:shiouwen@kenstone.com.tw:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 府城車業股份有限公司:黃榮一:06-2333175~7:fccycle@ms23.hinet.net:
+2015-12-28 17:16:08,874 [ INFO] (WebReader.java:201) - 愛地雅工業股份有限公司:張元賓:04-26393242:ideal@idealbike.com.tw:
+2015-12-28 17:16:11,878 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A05
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 輝達國際股份有限公司:許彩銀:049-2254010:info@scbike.com.tw:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 美輪工業股份有限公司:楊碧華:04-25561168:pretty.wheel@msa.hinet.net:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 泰億機械工業股份有限公司:徐文灝:049-2251147:peggy@taioku.com.tw:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 菲力工業股份有限公司:簡正雄:02-22687166:info@fairlybike.com:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 巨大機械工業股份有限公司:劉金標:04-26814771:irenechen@giant.com.tw:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 永祺車業股份有限公司:張泰山:04-22713395:mingbike@ms9.hinet.net:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 美利達工業股份有限公司:曾崧柱:04-8526171:bicycle@merida.com.tw:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 見誠工業股份有限公司:巫堯明:04-8858121:acebike@ms34.hinet.net:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 太平洋自行車股份有限公司:林正義:03-4861231:team@pacific-cycles.com:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 大忠工業股份有限公司:王大山:06-2534116:sales.dept@oyama.com:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 乾盈企業有限公司:楊漢東:02-27883806:headoffice@bikeoptimist.com:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 尚殷股份有限公司:黃俊雄:04-26872771:gomier@ms4.hinet.net:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 穩正企業股份有限公司:廖聰鏞:06-2536766:unique.rd@msa.hinet.net:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 栢馥股份有限公司:李世民:049-2264378:david@teamsun.com.tw:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 甲乙木股份有限公司:陳鐵和:04-8723118:cycle@joymove.com.tw:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 眾鴻貿易股份有限公司:洪誌健:04-22379268:info@arixworld.com.tw、arix@ms1 ...:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 香港商比馳亞洲有限公司台灣分公司:吳乃棣:04-23582050:info@bhbikesasia.com:
+2015-12-28 17:16:12,016 [ INFO] (WebReader.java:201) - 東庚企業股份有限公司:羅秋香:04-25321000:ezpro@dkcity.com:
+2015-12-28 17:16:15,019 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A06
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 野寶科技股份有限公司:林春山:04-26821688:service@aprotek.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 輝達國際股份有限公司:許彩銀:049-2254010:info@scbike.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 美輪工業股份有限公司:楊碧華:04-25561168:pretty.wheel@msa.hinet.net:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 巨大機械工業股份有限公司:劉金標:04-26814771:irenechen@giant.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 永祺車業股份有限公司:張泰山:04-22713395:mingbike@ms9.hinet.net:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 美利達工業股份有限公司:曾崧柱:04-8526171:bicycle@merida.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 立旺精密股份有限公司:黃士維:04-8310787:topgun8@topgun.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 太平洋自行車股份有限公司:林正義:03-4861231:team@pacific-cycles.com:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 怡合國際企業有限公司:陳建璋:02-25868606:allied1951@allied.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 大忠工業股份有限公司:王大山:06-2534116:sales.dept@oyama.com:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 泰癸車業有限公司:許永基:049-2510056:tkbicycle@url.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 紳益輪車業有限公司:洪美津:04-7631324:glitter.bike@msa.hinet.net:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 韓氏實業有限公司:沈育萊:02-29995623:info@dahon.com.:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 尚殷股份有限公司:黃俊雄:04-26872771:gomier@ms4.hinet.net:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 栢馥股份有限公司:李世民:049-2264378:david@teamsun.com.tw:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 長羚企業有限公司:盧原昌:04-23294072:lag668@gmail.com:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 智相科技股份有限公司:文茂平:08-7512363:torasa@awfcarbon.com:
+2015-12-28 17:16:15,155 [ INFO] (WebReader.java:201) - 香港商比馳亞洲有限公司台灣分公司:吳乃棣:04-23582050:info@bhbikesasia.com:
+2015-12-28 17:16:18,161 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A07
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 輝達國際股份有限公司:許彩銀:049-2254010:info@scbike.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 美輪工業股份有限公司:楊碧華:04-25561168:pretty.wheel@msa.hinet.net:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 永祺車業股份有限公司:張泰山:04-22713395:mingbike@ms9.hinet.net:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 聯程工業股份有限公司:劉秀美:03-3868020:info@khsbicycles.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 愛地雅工業股份有限公司:張元賓:04-26393242:ideal@idealbike.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 一心工業有限公司:邱義益:04-26815668:maxway@mail.maxway.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 太平洋自行車股份有限公司:林正義:03-4861231:team@pacific-cycles.com:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 聖坤股份有限公司:李臺生:04-3332128:sgcjudy@sanground.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 振詠實業股份有限公司:張建連:06-2495778:jenyon@ms54.hinet.net:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 怡合國際企業有限公司:陳建璋:02-25868606:allied1951@allied.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 泰癸車業有限公司:許永基:049-2510056:tkbicycle@url.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 紳益輪車業有限公司:洪美津:04-7631324:glitter.bike@msa.hinet.net:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 尚殷股份有限公司:黃俊雄:04-26872771:gomier@ms4.hinet.net:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 穩正企業股份有限公司:廖聰鏞:06-2536766:unique.rd@msa.hinet.net:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 栢馥股份有限公司:李世民:049-2264378:david@teamsun.com.tw:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 眾鴻貿易股份有限公司:洪誌健:04-22379268:info@arixworld.com.tw、arix@ms1 ...:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 香港商比馳亞洲有限公司台灣分公司:吳乃棣:04-23582050:info@bhbikesasia.com:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 鉅讚國際有限公司:賴森標:04-23398592:service@agogobike.com:
+2015-12-28 17:16:18,412 [ INFO] (WebReader.java:201) - 巨琛工業有限公司:陳琛淵:04-26804168:ivy@iuvo.com.tw:
+2015-12-28 17:16:21,412 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A08
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 瑞振工業股份有限公司:許國忠:04-7616188:sun50407@ms18.hinet.net:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 錦麟實業股份有限公司:陳學君:07-7882211:kl.rim@msa.hinet.net:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 弘家金屬工業股份有限公司:施義搖:04-7716666:service@alhonga.com.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 維樂工業股份有限公司:余彩雲:04-26864546:info@velosaddles.com:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 野寶科技股份有限公司:林春山:04-26821688:service@aprotek.com.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 六毅科技股份有限公司:溫坤炎:04-7357739:info@alligatorcables.com:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 豐田電機股份有限公司:蘇文禎:06-2637366:alfton@ms17.hinet.net:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 維格工業股份有限公司:余秋香:04-26816991:wellgo@ms7.hinet.net:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 佳鋁工業股份有限公司:吳龍水:04-8811960:rubis@ms17.hinet.net:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 久陞企業股份有限公司:賴春田:04-25316188:jusson88@tcts.seed.net.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 立富自行車有限公司:蕭智元:02-22687367:AlexHsiao@lifu.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 利達機械工業股份有限公司:羅清諒:03-3755536:lida@dicta.com.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 南欽實業股份有限公司:黃德隆:06-2535684:landing@public.szonline.net:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 川飛工業有限公司:張維軒:04-25356269:angel@falconcycle.com、falcon@f ...:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 旺輪工業股份有限公司:謝德耀:04-25681568:bitex@bitexhubs.com:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 建大工業股份有限公司:楊銀明:04-8345171:kenda@kenda.com.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 台萬工業股份有限公司:白政忠:04-26881234:info@marwi.com.tw:
+2015-12-28 17:16:21,693 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:16:24,702 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A09
+2015-12-28 17:16:24,840 [ INFO] (WebReader.java:201) - 野寶科技股份有限公司:林春山:04-26821688:service@aprotek.com.tw:
+2015-12-28 17:16:24,840 [ INFO] (WebReader.java:201) - 豐田電機股份有限公司:蘇文禎:06-2637366:alfton@ms17.hinet.net:
+2015-12-28 17:16:24,840 [ INFO] (WebReader.java:201) - 永富車料股份有限公司:巫永元:04-8926337:yf1210@ms16.hinet.net:
+2015-12-28 17:16:24,840 [ INFO] (WebReader.java:201) - 巨大機械工業股份有限公司:劉金標:04-26814771:irenechen@giant.com.tw:
+2015-12-28 17:16:24,840 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:16:24,840 [ INFO] (WebReader.java:201) - 旭生自行車工業股份有限公司:李世安:04-26812368:sales_sunrise@sunrise.org.tw:
+2015-12-28 17:16:24,840 [ INFO] (WebReader.java:201) - 隴億科技股份有限公司:郭碧伶:04-26814881:lungiool@ms5.hinet.net:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 卜威工業股份有限公司:曾發仁:04-26813325:info@kinesis.com.tw:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 晟昌機械股份有限公司:劉木女:04-8327362:fermax@ms24.hinet.net:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 永久機械工業股份有限公司:李金春:04-26879121:forever6@ms9.hinet.net:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 太平洋自行車股份有限公司:林正義:03-4861231:team@pacific-cycles.com:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 友誌金屬股份有限公司:廖新吉:04-7564451:info@yozu.com.tw:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 明安國際企業股份有限公司:鄭錫坤:07-8716151:adccmb@mail.adgroup.com.tw:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 明係事業股份有限公司:江永平:049-2529000:axman@axman.com.tw:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 拓凱實業股份有限公司:沈文振:04-23591229:marketing@topkey.com.tw:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 久鈦國際股份有限公司:蔡水德:04-7112997:jdframe@jdbc.com.tw:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 瑩信工業股份有限公司:李世鵬:04-26815316:sales@carbotec.com.tw:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:24,850 [ INFO] (WebReader.java:201) - 坤泉企業有限公司:陳鐿僡:04-26822216:servica-a@caribou-bike.com:
+2015-12-28 17:16:27,850 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A10
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 野寶科技股份有限公司:林春山:04-26821688:service@aprotek.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 達建工業股份有限公司:蔡金松:02-85212351:rstdk@ms16.hinet.net:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 巨大機械工業股份有限公司:劉金標:04-26814771:irenechen@giant.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 隴億科技股份有限公司:郭碧伶:04-26814881:lungiool@ms5.hinet.net:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 卜威工業股份有限公司:曾發仁:04-26813325:info@kinesis.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 信隆車料工業股份有限公司:廖學金:03-5983721:service@hlcorp.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 立旺精密股份有限公司:黃士維:04-8310787:topgun8@topgun.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 伍樂機械工業股份有限公司:伍榮樂:04-26860963~5:wuler@ms27.hinet.net:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 榮輪科技股份有限公司:小林大裕:04-7695691:srsuntour@srsuntoru.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 明安國際企業股份有限公司:鄭錫坤:07-8716151:adccmb@mail.adgroup.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 明係事業股份有限公司:江永平:049-2529000:axman@axman.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 拓凱實業股份有限公司:沈文振:04-23591229:marketing@topkey.com.tw:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 杰銳股份有限公司:林育德:04-25583378:geniobke@ms39.hinet.net:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 凱薩克科技股份有限公司:許榮裕:06-2568575:yenyue@ms49.hinet.net:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 偉兒達工業股份有限公司:黃偉立:04-26821225:greatgo@ms24.hinet.net:
+2015-12-28 17:16:27,992 [ INFO] (WebReader.java:201) - 太宇工業股份有限公司:張廖萬祥:04-7389979:astroeng@ms7.hinet.net:
+2015-12-28 17:16:30,994 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A11
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 晟昌機械股份有限公司:劉木女:04-8327362:fermax@ms24.hinet.net:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 智相科技股份有限公司:文茂平:08-7512363:torasa@awfcarbon.com:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 眾鴻貿易股份有限公司:洪誌健:04-22379268:info@arixworld.com.tw、arix@ms1 ...:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 允誠股份有限公司:許郭玉萍:04-25652598:ezswin.mw@msa.hinet.net:
+2015-12-28 17:16:31,437 [ INFO] (WebReader.java:201) - 展暉工業有限公司:郭永真:04-26711667:gemini@gbilee.tw:
+2015-12-28 17:16:34,443 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A12
+2015-12-28 17:16:34,534 [ INFO] (WebReader.java:201) - 錦麟實業股份有限公司:陳學君:07-7882211:kl.rim@msa.hinet.net:
+2015-12-28 17:16:34,534 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:34,534 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:34,534 [ INFO] (WebReader.java:201) - 智相科技股份有限公司:文茂平:08-7512363:torasa@awfcarbon.com:
+2015-12-28 17:16:37,534 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A13
+2015-12-28 17:16:37,732 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:16:37,732 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:16:37,732 [ INFO] (WebReader.java:201) - 晟昌機械股份有限公司:劉木女:04-8327362:fermax@ms24.hinet.net:
+2015-12-28 17:16:37,732 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:37,733 [ INFO] (WebReader.java:201) - 智相科技股份有限公司:文茂平:08-7512363:torasa@awfcarbon.com:
+2015-12-28 17:16:40,759 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A14
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 智相科技股份有限公司:文茂平:08-7512363:torasa@awfcarbon.com:
+2015-12-28 17:16:40,870 [ INFO] (WebReader.java:201) - 弘錸國際開發有限公司:林玫瑱:04-7722938:sales@irondevo.com:
+2015-12-28 17:16:43,872 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A15
+2015-12-28 17:16:43,983 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:16:43,983 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:16:43,983 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:43,983 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:43,983 [ INFO] (WebReader.java:201) - 傳誠技研有限公司:陳柏誠:04-24919555:drivetraintw@hotmail.com:
+2015-12-28 17:16:46,985 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A16
+2015-12-28 17:16:47,076 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:16:47,076 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:16:47,076 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:47,076 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:50,076 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A17
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 輪鋒工業股份有限公司:李清彰:04-26815039:sales@firstcomponents.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 鋐光實業股份有限公司:林文華:04-26835001:vptw@vpcomponents.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 太雅康培股份有限公司:吉貝孝三:04-23591117:diatech@ms15.hinet.net:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 清豪工業股份有限公司:林金成:07-7011621:chinhaur@ms7.hinet.net:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 誌慶工業股份有限公司:王進源:04-23323966:neco@necoparts.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 松野股份有限公司:張昇常:04-23124018:sales@amclassicintl.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 榮存工業股份有限公司:王琇治:04-24068641:info@tienhsin.com.tw:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 金盛元興業有限公司:鄭敏:04-25669968:info@strummer-bikes.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 元珹工業有限公司:黃秀菊:04-25591888:prestine@ms77.hinet.net:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 協取科技有限公司:陳佳伶:04-25350968:chelsea@glide-mail.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 日亞丹下通商股份有限公司:丹下諭:04-23580100:tangetw@ms16.hinet.net:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 雅瑟斯工業股份有限公司:蕭博文:04-25623506:sales@assess-hubs.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 一馬國際有限公司:馬煌坤:04-24636319:service@emabearing.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 基力自行車工業股份有限公司:鄭敏:04-25632175:info@strummer-bikes.com:
+2015-12-28 17:16:51,305 [ INFO] (WebReader.java:201) - 俥安達新科技開發有限公司:張瑞龍:07-2220595:ginda2220595@gmail.com:
+2015-12-28 17:16:54,309 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A18
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 輪鋒工業股份有限公司:李清彰:04-26815039:sales@firstcomponents.com:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 鋐光實業股份有限公司:林文華:04-26835001:vptw@vpcomponents.com:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 誌慶工業股份有限公司:王進源:04-23323966:neco@necoparts.com:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 喬紳股份有限公司:陳青樹:04-7588889:chosen.twn@msa.hinet.net:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 元珹工業有限公司:黃秀菊:04-25591888:prestine@ms77.hinet.net:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 健源工業股份有限公司:朱德政:04-8910628:jlenyuan@ms75.hinet.net:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 日亞丹下通商股份有限公司:丹下諭:04-23580100:tangetw@ms16.hinet.net:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 雅瑟斯工業股份有限公司:蕭博文:04-25623506:sales@assess-hubs.com:
+2015-12-28 17:16:54,430 [ INFO] (WebReader.java:201) - 南宜國際材料有限公司:李文男:03-6582869:sales@cemabearing.com:
+2015-12-28 17:16:57,439 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A19
+2015-12-28 17:16:57,570 [ INFO] (WebReader.java:201) - 久陞企業股份有限公司:賴春田:04-25316188:jusson88@tcts.seed.net.tw:
+2015-12-28 17:16:57,570 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:16:57,570 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 利慶工業股份有限公司:李金隆:04-7691125:leadtec-sales@umail.hinet.net:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 久鼎金屬實業股份有限公司:林碧玉:04-7681756:lily@jdco.com.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 金享車業股份有限公司:陳潮湖:04-25250555:info@kalloyuno.com:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 信隆車料工業股份有限公司:廖學金:03-5983721:service@hlcorp.com.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 晟昌機械股份有限公司:劉木女:04-8327362:fermax@ms24.hinet.net:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 鈺捷工業股份有限公司:陳崑田:04-26814791:premetec@seed.net.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 松野股份有限公司:張昇常:04-23124018:sales@amclassicintl.com:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 凱薩克科技股份有限公司:許榮裕:06-2568575:yenyue@ms49.hinet.net:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 偉兒達工業股份有限公司:黃偉立:04-26821225:greatgo@ms24.hinet.net:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 安大科技股份有限公司:趙麗珠:03-4755171:johnson_chan@postmoderne.com:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 龍捷科技股份有限公司:林勝源:037-582680:mrt@martec.com.tw:
+2015-12-28 17:16:57,580 [ INFO] (WebReader.java:201) - 森湖實業股份有限公司:廖繼華:04-25261110:twstrong@ms37.hinet.net:
+2015-12-28 17:17:00,580 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A20
+2015-12-28 17:17:00,679 [ INFO] (WebReader.java:282) - java.lang.NullPointerException
+	at webReader.WebReader.parseFirst(WebReader.java:197)
+	at webReader.WebReader.<init>(WebReader.java:117)
+	at webReader.WebReader.main(WebReader.java:72)
+
+2015-12-28 17:19:19,783 [ INFO] (WebReader.java:302) - Logger Load Success!
+2015-12-28 17:19:19,783 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A21
+2015-12-28 17:19:20,076 [ INFO] (WebReader.java:201) - 呈茂工業有限公司:林進國:04-25380036:acebike@ms34.hinet.net:
+2015-12-28 17:19:20,076 [ INFO] (WebReader.java:201) - 永興軸承有限公司:林義堂:02-89927722:sales@ttn-bearing.com.tw:
+2015-12-28 17:19:23,076 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A22
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 久鼎金屬實業股份有限公司:林碧玉:04-7681756:lily@jdco.com.tw:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 金享車業股份有限公司:陳潮湖:04-25250555:info@kalloyuno.com:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 中南金記工業股份有限公司:朱清雄:02-29937711:sales@cnspoke.com:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 晉嘉工業股份有限公司:林慶米:03-3223535:chinjia@ms17.hinet.net:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 鑫昇鼎實業有限公司:吳寶宮:04-7682245:cliff889@tmars.com.tw:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 金太企業商行:林家成:0932876031::
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 富錡企業股份有限公司:林明蘭:04-25605818:fcjerry@ms45.hinet.net:
+2015-12-28 17:19:23,217 [ INFO] (WebReader.java:201) - 金聯富興業有限公司:鍾秀美:04-25379168:clf@hubsmith.com:
+2015-12-28 17:19:26,221 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A23
+2015-12-28 17:19:26,332 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:19:26,332 [ INFO] (WebReader.java:201) - 精確實業股份有限公司:徐永誠:03-4777561:uatc-alloy@umail.hinet.net:
+2015-12-28 17:19:26,332 [ INFO] (WebReader.java:201) - 建興安泰工業股份有限公司: :04-8855265:lisa@aintec.com.tw:
+2015-12-28 17:19:26,332 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:19:26,332 [ INFO] (WebReader.java:201) - 萬鐘金屬有限公司:林混昌:04-23362167:wcm@w-chang.com:
+2015-12-28 17:19:26,332 [ INFO] (WebReader.java:201) - 泰極美企業有限公司:黃景彬:04-24914896:tjm@tjm.com.tw:
+2015-12-28 17:19:26,332 [ INFO] (WebReader.java:201) - 俥安達新科技開發有限公司:張瑞龍:07-2220595:ginda2220595@gmail.com:
+2015-12-28 17:19:29,337 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A24
+2015-12-28 17:19:29,448 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:19:29,448 [ INFO] (WebReader.java:201) - 利慶工業股份有限公司:李金隆:04-7691125:leadtec-sales@umail.hinet.net:
+2015-12-28 17:19:29,448 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:19:29,448 [ INFO] (WebReader.java:201) - 弘錸國際開發有限公司:林玫瑱:04-7722938:sales@irondevo.com:
+2015-12-28 17:19:29,448 [ INFO] (WebReader.java:201) - 展暉工業有限公司:郭永真:04-26711667:gemini@gbilee.tw:
+2015-12-28 17:19:32,450 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A25
+2015-12-28 17:19:32,571 [ INFO] (WebReader.java:201) - 野寶科技股份有限公司:林春山:04-26821688:service@aprotek.com.tw:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 達建工業股份有限公司:蔡金松:02-85212351:rstdk@ms16.hinet.net:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 立旺精密股份有限公司:黃士維:04-8310787:topgun8@topgun.com.tw:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 榮輪科技股份有限公司:小林大裕:04-7695691:srsuntour@srsuntoru.com.tw:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 金達偉工業股份有限公司:蔡明達:02-26882351:carol@rst.com.tw:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 凱薩克科技股份有限公司:許榮裕:06-2568575:yenyue@ms49.hinet.net:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 建興安泰工業股份有限公司: :04-8855265:lisa@aintec.com.tw:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 安大科技股份有限公司:趙麗珠:03-4755171:johnson_chan@postmoderne.com:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 科權科技股份有限公司:黃潭城:04-22786789:ke.chiuan@addkc.com:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 香港商賀氏精密機械系統股份有限公司:華仲安:02-25181108:kendrew.sua@hbpsi.com:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 銘家機械股份有限公司:羅世典:03-5692916:hwang500216@yahoo.com.tw:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 瑪古拉亞洲有限公司:賀秉恩:04-23598555:info@magura.com.tw:
+2015-12-28 17:19:32,581 [ INFO] (WebReader.java:201) - 巨將金屬工業有限公司:林格民:04-7710565:candy335c@yahoo.com.tw:
+2015-12-28 17:19:35,563 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A26
+2015-12-28 17:19:35,692 [ INFO] (WebReader.java:201) - 建大工業股份有限公司:楊銀明:04-8345171:kenda@kenda.com.tw:
+2015-12-28 17:19:35,692 [ INFO] (WebReader.java:201) - 華豐橡膠工業股份有限公司:蘇明芬:04-8520121:durofina@duro.com.tw:
+2015-12-28 17:19:35,692 [ INFO] (WebReader.java:201) - 正新橡膠工業股份有限公司:羅結:04-8525151:cyliao@mail.cst.com.tw:
+2015-12-28 17:19:35,692 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:19:35,692 [ INFO] (WebReader.java:201) - 德安百世實業股份有限公司:田鎮平:04-24375533:amos@foss.com.tw:
+2015-12-28 17:19:35,692 [ INFO] (WebReader.java:201) - 固滿德工業股份有限公司:林元裦:049-2762306:gmd100@ms41.hinet.net:
+2015-12-28 17:19:35,692 [ INFO] (WebReader.java:201) - 歐特捷實業股份有限公司:陳法勝:04-23599119:jimchen@otrajet.com:
+2015-12-28 17:19:38,692 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A27
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 錦麟實業股份有限公司:陳學君:07-7882211:kl.rim@msa.hinet.net:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 野寶科技股份有限公司:林春山:04-26821688:service@aprotek.com.tw:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 亞獵士科技股份有限公司:陳威瑾:06-5782151:alexrims@alexrims.com.tw:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 鑫元鴻實業股份有限公司:游國棟:04-25202755:marketing@formulahubs.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 松野股份有限公司:張昇常:04-23124018:sales@amclassicintl.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 鑫權工業有限公司:楊鈺凌:04-7526232:jetsetrims@jetset.hinet.net:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 田霖企業股份有限公司:莊中城:06-2539738:t8634081@ms38.hinet.net:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 享勵工業股份有限公司:林進旺:06-2042077:slcycle@shining-cycle.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 展輪工業股份有限公司:陳來建:04-7870767:jalco_jl@yahoo.com.tw:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 昱泓工業有限公司:黃萬盾:04-8811738:info@wheelmate.com.tw:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 香港商賀氏精密機械系統股份有限公司:華仲安:02-25181108:kendrew.sua@hbpsi.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 智相科技股份有限公司:文茂平:08-7512363:torasa@awfcarbon.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 萬鐘金屬有限公司:林混昌:04-23362167:wcm@w-chang.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 墨達思精密工業股份有限公司:林妤慧:04-26836001:dc@modusnakano.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 紹凱有限公司:許靜宜:07-3102177:service@velocite-bikes.com:
+2015-12-28 17:19:38,833 [ INFO] (WebReader.java:201) - 瑪古拉亞洲有限公司:賀秉恩:04-23598555:info@magura.com.tw:
+2015-12-28 17:19:41,837 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A28
+2015-12-28 17:19:41,948 [ INFO] (WebReader.java:201) - 台萬工業股份有限公司:白政忠:04-26881234:info@marwi.com.tw:
+2015-12-28 17:19:41,948 [ INFO] (WebReader.java:201) - 中南金記工業股份有限公司:朱清雄:02-29937711:sales@cnspoke.com:
+2015-12-28 17:19:41,948 [ INFO] (WebReader.java:201) - 協達車料股份有限公司:陳文瑄:02-26868277:sales@pillarspoke.com:
+2015-12-28 17:19:41,948 [ INFO] (WebReader.java:201) - 享勵工業股份有限公司:林進旺:06-2042077:slcycle@shining-cycle.com:
+2015-12-28 17:19:41,948 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:19:44,956 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A29
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 鋐光實業股份有限公司:林文華:04-26835001:vptw@vpcomponents.com:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 久裕興業科技股份有限公司:陳俊雄:04-25668888:pd@joy-tech.com.tw:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 崑藤工業股份有限公司:陳崑藤:04-25661311:kthub@ms13.hinet.net:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 清豪工業股份有限公司:林金成:07-7011621:chinhaur@ms7.hinet.net:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 日馳企業股份有限公司:徐義雄:03-3542691:chairman@sunrace.com:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 鑫元鴻實業股份有限公司:游國棟:04-25202755:marketing@formulahubs.com:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 松野股份有限公司:張昇常:04-23124018:sales@amclassicintl.com:
+2015-12-28 17:19:45,078 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 喬紳股份有限公司:陳青樹:04-7588889:chosen.twn@msa.hinet.net:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 昱泓工業有限公司:黃萬盾:04-8811738:info@wheelmate.com.tw:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 協取科技有限公司:陳佳伶:04-25350968:chelsea@glide-mail.com:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 東昕企業有限公司:蔡杜淑姿:04-27066052:hinhin@ms45.hinet.net:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 墨達思精密工業股份有限公司:林妤慧:04-26836001:dc@modusnakano.com:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 弘錸國際開發有限公司:林玫瑱:04-7722938:sales@irondevo.com:
+2015-12-28 17:19:45,079 [ INFO] (WebReader.java:201) - 雅瑟斯工業股份有限公司:蕭博文:04-25623506:sales@assess-hubs.com:
+2015-12-28 17:19:45,080 [ INFO] (WebReader.java:201) - 金聯富興業有限公司:鍾秀美:04-25379168:clf@hubsmith.com:
+2015-12-28 17:19:45,080 [ INFO] (WebReader.java:201) - 寶泰輪業股份有限公司:陳王金月:04-25153068:sales@bartimecycling.com:
+2015-12-28 17:19:48,080 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A30
+2015-12-28 17:19:48,200 [ INFO] (WebReader.java:201) - 川飛工業有限公司:張維軒:04-25356269:angel@falconcycle.com、falcon@f ...:
+2015-12-28 17:19:48,200 [ INFO] (WebReader.java:201) - 騰輝科技股份有限公司:王吉川:04-23860147:vanguard21@gmail.com:
+2015-12-28 17:19:48,200 [ INFO] (WebReader.java:201) - 崑藤工業股份有限公司:陳崑藤:04-25661311:kthub@ms13.hinet.net:
+2015-12-28 17:19:48,200 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:19:48,200 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:19:51,182 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A31
+2015-12-28 17:19:51,282 [ INFO] (WebReader.java:201) - 營標企業有限公司:林靖朗:02-28124515:yingpaio@ms17.hinet.net、yp@yin ...:
+2015-12-28 17:19:51,282 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:19:54,302 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A32
+2015-12-28 17:19:54,395 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:19:54,395 [ INFO] (WebReader.java:201) - 士禾企業股份有限公司:施能忠:04-23598316:m2246@18.hinet.net:
+2015-12-28 17:19:54,395 [ INFO] (WebReader.java:201) - 傳誠技研有限公司:陳柏誠:04-24919555:drivetraintw@hotmail.com:
+2015-12-28 17:19:57,398 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A33
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 統岳股份有限公司:陳銘永:04-7688016:branc@mail.branc.com.tw:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 輪鋒工業股份有限公司:李清彰:04-26815039:sales@firstcomponents.com:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 全維工業股份有限公司:鄭維裕:04-8314959:chuanwen@ms12.hinet.net、info@c ...:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 榮輪科技股份有限公司:小林大裕:04-7695691:srsuntour@srsuntoru.com.tw:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 浩盟企業股份有限公司:高丁男:06-2825791:prowheel@ms13.hinet.net:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 日馳企業股份有限公司:徐義雄:03-3542691:chairman@sunrace.com:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 偉兒達工業股份有限公司:黃偉立:04-26821225:greatgo@ms24.hinet.net:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 榮存工業股份有限公司:王琇治:04-24068641:info@tienhsin.com.tw:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 金盛元興業有限公司:鄭敏:04-25669968:info@strummer-bikes.com:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 五團興企業股份有限公司:吳昌榮:04-24930238:crankfbbike@yahoo.com.tw:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 健源工業股份有限公司:朱德政:04-8910628:jlenyuan@ms75.hinet.net:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 弘錸國際開發有限公司:林玫瑱:04-7722938:sales@irondevo.com:
+2015-12-28 17:19:57,539 [ INFO] (WebReader.java:201) - 馭捷股份有限公司:張宗仁:04-22716160:kenny@funnmtb.com:
+2015-12-28 17:20:00,545 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A34
+2015-12-28 17:20:00,646 [ INFO] (WebReader.java:201) - 大亞鏈條股份有限公司:吳華田:06-2703166:info@tayachain.com:
+2015-12-28 17:20:00,646 [ INFO] (WebReader.java:201) - 雅邦企業股份有限公司:王文濱:06-5934546:ybn@yaban.com.tw:
+2015-12-28 17:20:00,646 [ INFO] (WebReader.java:201) - 桂盟企業股份有限公司:吳能家:06-2019103:kmcsales@kmcchain.com:
+2015-12-28 17:20:00,646 [ INFO] (WebReader.java:201) - 全仕通實業股份有限公司:吳盈進:06-2019103:kmcsales@kmcchain.com:
+2015-12-28 17:20:00,646 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:00,646 [ INFO] (WebReader.java:201) - 力興鏈條有限公司:陳寶裕:06-2320859:pyctw@kspyc.com:
+2015-12-28 17:20:03,653 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A35
+2015-12-28 17:20:03,754 [ INFO] (WebReader.java:201) - 利達機械工業股份有限公司:羅清諒:03-3755536:lida@dicta.com.tw:
+2015-12-28 17:20:03,754 [ INFO] (WebReader.java:201) - 川飛工業有限公司:張維軒:04-25356269:angel@falconcycle.com、falcon@f ...:
+2015-12-28 17:20:03,754 [ INFO] (WebReader.java:201) - 龍億工業股份有限公司:陳富雄:02-29958777:dnp@ms11.hinet.net:
+2015-12-28 17:20:03,754 [ INFO] (WebReader.java:201) - 日馳企業股份有限公司:徐義雄:03-3542691:chairman@sunrace.com:
+2015-12-28 17:20:03,754 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:03,754 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:20:03,764 [ INFO] (WebReader.java:201) - 昱泓工業有限公司:黃萬盾:04-8811738:info@wheelmate.com.tw:
+2015-12-28 17:20:03,764 [ INFO] (WebReader.java:201) - 亞仕大科技股份有限公司:卓耿冬:04-24613659:aster@livemail.tw:
+2015-12-28 17:20:03,764 [ INFO] (WebReader.java:201) - 傳誠技研有限公司:陳柏誠:04-24919555:drivetraintw@hotmail.com:
+2015-12-28 17:20:06,765 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A36
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 六毅科技股份有限公司:溫坤炎:04-7357739:info@alligatorcables.com:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 川飛工業有限公司:張維軒:04-25356269:angel@falconcycle.com、falcon@f ...:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 龍億工業股份有限公司:陳富雄:02-29958777:dnp@ms11.hinet.net:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 榮輪科技股份有限公司:小林大裕:04-7695691:srsuntour@srsuntoru.com.tw:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 日馳企業股份有限公司:徐義雄:03-3542691:chairman@sunrace.com:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 台灣微轉股份有限公司:陳介元:04-25629669:micro.shift@msa.hinet.net:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 勤力彈簧工業股份有限公司:洪寶川:02-29843983:sh.sh2223@msa.hinet.net:
+2015-12-28 17:20:06,876 [ INFO] (WebReader.java:201) - 歐展精機股份有限公司:蔡喬茵:04-23809733:pbcngo2@gmail.com:
+2015-12-28 17:20:09,858 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A37
+2015-12-28 17:20:09,969 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:12,995 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A38
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 維樂工業股份有限公司:余彩雲:04-26864546:info@velosaddles.com:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 久陞企業股份有限公司:賴春田:04-25316188:jusson88@tcts.seed.net.tw:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 台萬工業股份有限公司:白政忠:04-26881234:info@marwi.com.tw:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 祥力金屬工業股份有限公司:李清松:049-2254526:sales@cionlli.com.tw:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 美而光實業股份有限公司:廖陳榮輝:02-26215630:selle@ms9.hinet.net:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 雙餘實業有限公司:王羅平:04-22315920:beto@ms8.hinet.net:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 立鉅工業有限公司:李榮輝:04-8654639:gslee@ms18.hinet.net:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 鋒明興業股份有限公司:蔡文瑞:04-7775931:fm@activesaddles.com.tw:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 巨兆開發有限公司:李駿偉:04-22950598:karbona@karbona.com:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 眾鴻貿易股份有限公司:洪誌健:04-22379268:info@arixworld.com.tw、arix@ms1 ...:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 萬鐘金屬有限公司:林混昌:04-23362167:wcm@w-chang.com:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 友祥科技股份有限公司:謝主佑:02-22541562:terence925@yahoo.com.tw:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 匯可股份有限公司:黃顯忠:04-24969186:angela@fricoefrico.com:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 庚鋐有限公司:楊家昇:04-7511586:gh.bike@msa.hinet.net:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 汶萊商典盈國際貿易有限公司台灣分公司:宋盈嬌:02-28742886:ddk@ddkbike.com active@ddkb ...:
+2015-12-28 17:20:13,166 [ INFO] (WebReader.java:201) - 允誠股份有限公司:許郭玉萍:04-25652598:ezswin.mw@msa.hinet.net:
+2015-12-28 17:20:16,175 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A39
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 維格工業股份有限公司:余秋香:04-26816991:wellgo@ms7.hinet.net:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 台萬工業股份有限公司:白政忠:04-26881234:info@marwi.com.tw:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 鋐光實業股份有限公司:林文華:04-26835001:vptw@vpcomponents.com:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 格豪工業股份有限公司:許煥昌:04-7778638:kehao@ms19.hinet.net:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 自東股份有限公司:陳雅如:04-22779993:langer.chen@msa.hinet.net:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 誌慶工業股份有限公司:王進源:04-23323966:neco@necoparts.com:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 浩捍實業股份有限公司:趙世崧:04-26937999:exustar@ms76.hinet.net:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 健勤工業有限公司:梁東敏:04-8813644、04-885159 ...:ckic@ms64.hinet.net:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 達遠實業社:鄭岳守:05-2763392:dayuan2500@hotmail.com:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 弘錸國際開發有限公司:林玫瑱:04-7722938:sales@irondevo.com:
+2015-12-28 17:20:16,296 [ INFO] (WebReader.java:201) - 新可大國際股份有限公司:黃宗澤:04-23350576:scadatw@ms78.hinet.net:
+2015-12-28 17:20:19,278 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A40
+2015-12-28 17:20:19,421 [ INFO] (WebReader.java:201) - 維樂工業股份有限公司:余彩雲:04-26864546:info@velosaddles.com:
+2015-12-28 17:20:19,421 [ INFO] (WebReader.java:201) - 佳鋁工業股份有限公司:吳龍水:04-8811960:rubis@ms17.hinet.net:
+2015-12-28 17:20:19,421 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:20:19,421 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:20:19,421 [ INFO] (WebReader.java:201) - 利慶工業股份有限公司:李金隆:04-7691125:leadtec-sales@umail.hinet.net:
+2015-12-28 17:20:19,421 [ INFO] (WebReader.java:201) - 天心工業股份有限公司:王琇治:04-23319134:th@tienhsin.com.tw:
+2015-12-28 17:20:19,421 [ INFO] (WebReader.java:201) - 久鼎金屬實業股份有限公司:林碧玉:04-7681756:lily@jdco.com.tw:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 金享車業股份有限公司:陳潮湖:04-25250555:info@kalloyuno.com:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 騰輝科技股份有限公司:王吉川:04-23860147:vanguard21@gmail.com:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 信隆車料工業股份有限公司:廖學金:03-5983721:service@hlcorp.com.tw:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 祥力金屬工業股份有限公司:李清松:049-2254526:sales@cionlli.com.tw:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 日馳企業股份有限公司:徐義雄:03-3542691:chairman@sunrace.com:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 鐘贏實業股份有限公司:蔡水鐘:04-7522688:sales@loganbc.com:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 鈺捷工業股份有限公司:陳崑田:04-26814791:premetec@seed.net.tw:
+2015-12-28 17:20:19,422 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:19,432 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:20:19,432 [ INFO] (WebReader.java:201) - 偉兒達工業股份有限公司:黃偉立:04-26821225:greatgo@ms24.hinet.net:
+2015-12-28 17:20:19,432 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:20:19,432 [ INFO] (WebReader.java:201) - 榮存工業股份有限公司:王琇治:04-24068641:info@tienhsin.com.tw:
+2015-12-28 17:20:22,448 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A41
+2015-12-28 17:20:22,552 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:20:22,552 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 久鼎金屬實業股份有限公司:林碧玉:04-7681756:lily@jdco.com.tw:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 金享車業股份有限公司:陳潮湖:04-25250555:info@kalloyuno.com:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 信隆車料工業股份有限公司:廖學金:03-5983721:service@hlcorp.com.tw:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 財榮實業股份有限公司:鐘長慶:04-7994998:massload@ms34.hinet.net:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 龍捷科技股份有限公司:林勝源:037-582680:mrt@martec.com.tw:
+2015-12-28 17:20:22,553 [ INFO] (WebReader.java:201) - 鑫昇鼎實業有限公司:吳寶宮:04-7682245:cliff889@tmars.com.tw:
+2015-12-28 17:20:25,572 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A42
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 維樂工業股份有限公司:余彩雲:04-26864546:info@velosaddles.com:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 永芳塑膠有限公司:陳見國:049-2522259:yungfang@yungfang.com.tw:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 世陽企業股份有限公司:廖速璋:04-27065885:info@ilumenox.com:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 明興皮革股份有限公司:張忠文:04-26991131:service@mhlpromor.com:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 咔年國際股份有限公司:張美華:04-23592618:T-ONE@T-ONEDESING.COM:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 喬國皮革廠股份有限公司:趙令模:04-26357818:grip@ms4.hinet.net:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 三興車料有限公司:胡國雄:04-23261668:sun.shinytw@msa.hinet.net:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 宸項企業股份有限公司:李正邱:06-6992373:chern.shianq@msa.hinet.net:
+2015-12-28 17:20:25,693 [ INFO] (WebReader.java:201) - 宏泰興企業有限公司:林柏儒:04-24950302:info@shorex.com.tw:
+2015-12-28 17:20:28,702 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A43
+2015-12-28 17:20:29,740 [ INFO] (WebReader.java:201) - 六哥股份有限公司:陳正忠:04-7872546、04-786354 ...:info@liowko.com.tw:
+2015-12-28 17:20:29,740 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:20:29,740 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:20:29,740 [ INFO] (WebReader.java:201) - 信隆車料工業股份有限公司:廖學金:03-5983721:service@hlcorp.com.tw:
+2015-12-28 17:20:29,740 [ INFO] (WebReader.java:201) - 鐘贏實業股份有限公司:蔡水鐘:04-7522688:sales@loganbc.com:
+2015-12-28 17:20:29,740 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:29,741 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:20:29,741 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:20:29,741 [ INFO] (WebReader.java:201) - 元珹工業有限公司:黃秀菊:04-25591888:prestine@ms77.hinet.net:
+2015-12-28 17:20:29,741 [ INFO] (WebReader.java:201) - 智相科技股份有限公司:文茂平:08-7512363:torasa@awfcarbon.com:
+2015-12-28 17:20:29,741 [ INFO] (WebReader.java:201) - 鑫昇鼎實業有限公司:吳寶宮:04-7682245:cliff889@tmars.com.tw:
+2015-12-28 17:20:29,741 [ INFO] (WebReader.java:201) - 承厚有限公司:賴寶鳳:04-7383798:info@crodercycling.com:
+2015-12-28 17:20:29,741 [ INFO] (WebReader.java:201) - 展暉工業有限公司:郭永真:04-26711667:gemini@gbilee.tw:
+2015-12-28 17:20:32,741 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A44
+2015-12-28 17:20:32,901 [ INFO] (WebReader.java:201) - 弘家金屬工業股份有限公司:施義搖:04-7716666:service@alhonga.com.tw:
+2015-12-28 17:20:32,901 [ INFO] (WebReader.java:201) - 六毅科技股份有限公司:溫坤炎:04-7357739:info@alligatorcables.com:
+2015-12-28 17:20:32,901 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:20:32,901 [ INFO] (WebReader.java:201) - 大森產物有限公司:葉俊麟:02-28164337:gigapowe@ms17.hinet.net:
+2015-12-28 17:20:32,901 [ INFO] (WebReader.java:201) - 太雅康培股份有限公司:吉貝孝三:04-23591117:diatech@ms15.hinet.net:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 佳承精工股份有限公司:郭永斌:04-7323090:service@jagwire.com.tw:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 彥豪金屬工業股份有限公司:陳澤民:04-7683999:info@tektro.com.tw:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 永傑橡膠工業股份有限公司:曾玉秀:04-7112650:baradine@ms25.hinet.net:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 彰盈金屬工業有限公司:林碧霜:04-7381826::
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 科權科技股份有限公司:黃潭城:04-22786789:ke.chiuan@addkc.com:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 源苼彰興業有限公司:薛彩蓮:04-8874713:sunczang@ms19.hinet.net scs ...:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 友祥科技股份有限公司:謝主佑:02-22541562:terence925@yahoo.com.tw:
+2015-12-28 17:20:32,902 [ INFO] (WebReader.java:201) - 永克達工業股份有限公司:曾慧芳:04-7260496 04-72604 ...:ashima.twn@msa.hinet.net:
+2015-12-28 17:20:32,903 [ INFO] (WebReader.java:201) - 俥安達新科技開發有限公司:張瑞龍:07-2220595:ginda2220595@gmail.com:
+2015-12-28 17:20:35,929 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A45
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 弘家金屬工業股份有限公司:施義搖:04-7716666:service@alhonga.com.tw:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 六毅科技股份有限公司:溫坤炎:04-7357739:info@alligatorcables.com:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 久陞企業股份有限公司:賴春田:04-25316188:jusson88@tcts.seed.net.tw:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 晟昌機械股份有限公司:劉木女:04-8327362:fermax@ms24.hinet.net:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 三峰導線工業股份有限公司:溫明亮:04-7355211:c7122@ms22.hinet.net:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 佳承精工股份有限公司:郭永斌:04-7323090:service@jagwire.com.tw:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 永芳塑膠有限公司:陳見國:049-2522259:yungfang@yungfang.com.tw:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 彥豪金屬工業股份有限公司:陳澤民:04-7683999:info@tektro.com.tw:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 永傑橡膠工業股份有限公司:曾玉秀:04-7112650:baradine@ms25.hinet.net:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:36,068 [ INFO] (WebReader.java:201) - 永克達工業股份有限公司:曾慧芳:04-7260496 04-72604 ...:ashima.twn@msa.hinet.net:
+2015-12-28 17:20:36,078 [ INFO] (WebReader.java:201) - 阡發導管工業有限公司:廖國良:04-22785526:purchase@marsone-cable.com:
+2015-12-28 17:20:36,078 [ INFO] (WebReader.java:201) - 俥安達新科技開發有限公司:張瑞龍:07-2220595:ginda2220595@gmail.com:
+2015-12-28 17:20:39,081 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A46
+2015-12-28 17:20:39,205 [ INFO] (WebReader.java:201) - 弘家金屬工業股份有限公司:施義搖:04-7716666:service@alhonga.com.tw:
+2015-12-28 17:20:39,206 [ INFO] (WebReader.java:201) - 六毅科技股份有限公司:溫坤炎:04-7357739:info@alligatorcables.com:
+2015-12-28 17:20:39,206 [ INFO] (WebReader.java:201) - 利奇機械工業股份有限公司:林阿平:04-7382121:gmob@leechi.com.tw:
+2015-12-28 17:20:39,206 [ INFO] (WebReader.java:201) - 達建工業股份有限公司:蔡金松:02-85212351:rstdk@ms16.hinet.net:
+2015-12-28 17:20:39,206 [ INFO] (WebReader.java:201) - 太雅康培股份有限公司:吉貝孝三:04-23591117:diatech@ms15.hinet.net:
+2015-12-28 17:20:39,206 [ INFO] (WebReader.java:201) - 彥豪金屬工業股份有限公司:陳澤民:04-7683999:info@tektro.com.tw:
+2015-12-28 17:20:39,207 [ INFO] (WebReader.java:201) - 鐘贏實業股份有限公司:蔡水鐘:04-7522688:sales@loganbc.com:
+2015-12-28 17:20:39,207 [ INFO] (WebReader.java:201) - 永傑橡膠工業股份有限公司:曾玉秀:04-7112650:baradine@ms25.hinet.net:
+2015-12-28 17:20:39,207 [ INFO] (WebReader.java:201) - 愛爾蘭商速聯(股)公司台灣分公司:戴士禮:04-25213688:hxk072@sram.com:
+2015-12-28 17:20:39,207 [ INFO] (WebReader.java:201) - 金達偉工業股份有限公司:蔡明達:02-26882351:carol@rst.com.tw:
+2015-12-28 17:20:39,208 [ INFO] (WebReader.java:201) - 喬紳股份有限公司:陳青樹:04-7588889:chosen.twn@msa.hinet.net:
+2015-12-28 17:20:39,208 [ INFO] (WebReader.java:201) - 盈集企業股份有限公司:陳青樹:04-7588889:winzip.corp@msa.hinet.net:
+2015-12-28 17:20:39,208 [ INFO] (WebReader.java:201) - 億鎮企業有限公司:陳瑞斌:04-7203979:sales@uniquebrake.com.tw:
+2015-12-28 17:20:39,208 [ INFO] (WebReader.java:201) - 香港商賀氏精密機械系統股份有限公司:華仲安:02-25181108:kendrew.sua@hbpsi.com:
+2015-12-28 17:20:39,208 [ INFO] (WebReader.java:201) - 布雷克興業股份有限公司:黃信彰:04-22610820:bike@hygia.com.tw:
+2015-12-28 17:20:39,208 [ INFO] (WebReader.java:201) - 亞聯機械實業社:游耀輝:02-22563060 02-2999 ...:yao_hui_yu@hotmail.com:
+2015-12-28 17:20:39,209 [ INFO] (WebReader.java:201) - 瑪古拉亞洲有限公司:賀秉恩:04-23598555:info@magura.com.tw:
+2015-12-28 17:20:39,209 [ INFO] (WebReader.java:201) - 弘錸國際開發有限公司:林玫瑱:04-7722938:sales@irondevo.com:
+2015-12-28 17:20:39,209 [ INFO] (WebReader.java:201) - 豐彰金屬實業有限公司:曾建融:04-7624509:tri.bull@msa.hinet.net:
+2015-12-28 17:20:39,209 [ INFO] (WebReader.java:201) - 巨將金屬工業有限公司:林格民:04-7710565:candy335c@yahoo.com.tw:
+2015-12-28 17:20:42,209 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A47
+2015-12-28 17:20:42,347 [ INFO] (WebReader.java:201) - 台萬工業股份有限公司:白政忠:04-26881234:info@marwi.com.tw:
+2015-12-28 17:20:42,347 [ INFO] (WebReader.java:201) - 輪鋒工業股份有限公司:李清彰:04-26815039:sales@firstcomponents.com:
+2015-12-28 17:20:42,347 [ INFO] (WebReader.java:201) - 強塑工業股份有限公司:黃何素蘭:02-26807901~3:spjh1@ms17.hinet.net:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 時茂企業股份有限公司:陳勝宗:03-3526711:service@smart-bike.com.tw:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 東林股份有限公司:林秋梧:04-22311376:tunglin.cycle@msa.hinet.net:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 世陽企業股份有限公司:廖速璋:04-27065885:info@ilumenox.com:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 鎂仕特股份有限公司:陳保良:04-24392430:qlite@q-lite.com.tw:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 勤力彈簧工業股份有限公司:洪寶川:02-29843983:sh.sh2223@msa.hinet.net:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 成貫企業有限公司:林慶義:04-7697216:info@infini.com.tw:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 毫厘精密工業股份有限公司:張明輝:04-23591837:haoli@akslen.com:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 祐泰科技股份有限公司:劉宗杰:02-86711688:sales@roxim.net:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 邑昇實業股份有限公司:簡榮坤:03-3596066:alex.li@eiso.com.tw:
+2015-12-28 17:20:42,348 [ INFO] (WebReader.java:201) - 升暘科技有限公司:廖光陽:04-25682078:xbat@sr-associate.net:
+2015-12-28 17:20:45,349 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A48
+2015-12-28 17:20:46,006 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:20:46,006 [ INFO] (WebReader.java:201) - 永芳塑膠有限公司:陳見國:049-2522259:yungfang@yungfang.com.tw:
+2015-12-28 17:20:46,006 [ INFO] (WebReader.java:201) - 毫厘精密工業股份有限公司:張明輝:04-23591837:haoli@akslen.com:
+2015-12-28 17:20:46,006 [ INFO] (WebReader.java:201) - 台灣微粒有限公司:林昌三:02-25035696、03-47887 ...:tw.microlite@gmail.com:
+2015-12-28 17:20:46,007 [ INFO] (WebReader.java:201) - 升暘科技有限公司:廖光陽:04-25682078:xbat@sr-associate.net:
+2015-12-28 17:20:49,028 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A49
+2015-12-28 17:20:49,136 [ INFO] (WebReader.java:201) - 彰虹企業有限公司:林深坑:04-7697835:janghong@ms17.hinet.net:
+2015-12-28 17:20:49,136 [ INFO] (WebReader.java:201) - 源文興工業股份有限公司:胡清煌:04-8855111:yws59089@ms10.hinet.net:
+2015-12-28 17:20:49,136 [ INFO] (WebReader.java:201) - 永芳塑膠有限公司:陳見國:049-2522259:yungfang@yungfang.com.tw:
+2015-12-28 17:20:49,136 [ INFO] (WebReader.java:201) - 乃興企業股份有限公司:施和仁:04-7696285:nuvo@nuvo.ws:
+2015-12-28 17:20:52,137 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A50
+2015-12-28 17:20:52,254 [ INFO] (WebReader.java:201) - 瑞振工業股份有限公司:許國忠:04-7616188:sun50407@ms18.hinet.net:
+2015-12-28 17:20:52,254 [ INFO] (WebReader.java:201) - 政伸企業股份有限公司:洪招儀:04-23593687:service@transart.com.tw:
+2015-12-28 17:20:52,255 [ INFO] (WebReader.java:201) - 晟昌機械股份有限公司:劉木女:04-8327362:fermax@ms24.hinet.net:
+2015-12-28 17:20:52,255 [ INFO] (WebReader.java:201) - 強塑工業股份有限公司:黃何素蘭:02-26807901~3:spjh1@ms17.hinet.net:
+2015-12-28 17:20:52,255 [ INFO] (WebReader.java:201) - 永芳塑膠有限公司:陳見國:049-2522259:yungfang@yungfang.com.tw:
+2015-12-28 17:20:52,255 [ INFO] (WebReader.java:201) - 曜輗企業有限公司:吳靜華:06-2455123:wirring9@ms71.hinet.net:
+2015-12-28 17:20:52,255 [ INFO] (WebReader.java:201) - 五團興企業股份有限公司:吳昌榮:04-24930238:crankfbbike@yahoo.com.tw:
+2015-12-28 17:20:52,255 [ INFO] (WebReader.java:201) - 弘錸國際開發有限公司:林玫瑱:04-7722938:sales@irondevo.com:
+2015-12-28 17:20:55,275 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A51
+2015-12-28 17:20:55,376 [ INFO] (WebReader.java:201) - 浩盟企業股份有限公司:高丁男:06-2825791:prowheel@ms13.hinet.net:
+2015-12-28 17:20:55,376 [ INFO] (WebReader.java:201) - 五團興企業股份有限公司:吳昌榮:04-24930238:crankfbbike@yahoo.com.tw:
+2015-12-28 17:20:58,376 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A52
+2015-12-28 17:20:58,467 [ INFO] (WebReader.java:201) - 政伸企業股份有限公司:洪招儀:04-23593687:service@transart.com.tw:
+2015-12-28 17:21:01,467 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A53
+2015-12-28 17:21:01,576 [ INFO] (WebReader.java:201) - 瑞振工業股份有限公司:許國忠:04-7616188:sun50407@ms18.hinet.net:
+2015-12-28 17:21:01,576 [ INFO] (WebReader.java:201) - 政伸企業股份有限公司:洪招儀:04-23593687:service@transart.com.tw:
+2015-12-28 17:21:01,576 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:21:01,576 [ INFO] (WebReader.java:201) - 強塑工業股份有限公司:黃何素蘭:02-26807901~3:spjh1@ms17.hinet.net:
+2015-12-28 17:21:01,576 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:21:01,576 [ INFO] (WebReader.java:201) - 庚鋐有限公司:楊家昇:04-7511586:gh.bike@msa.hinet.net:
+2015-12-28 17:21:01,576 [ INFO] (WebReader.java:201) - 煌益精密工業股份有限公司:邱謝月嬌:02-29037077:peter@hwanyi.com.tw:
+2015-12-28 17:21:04,576 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A54
+2015-12-28 17:21:04,694 [ INFO] (WebReader.java:201) - 統岳股份有限公司:陳銘永:04-7688016:branc@mail.branc.com.tw:
+2015-12-28 17:21:04,694 [ INFO] (WebReader.java:201) - 久鼎金屬實業股份有限公司:林碧玉:04-7681756:lily@jdco.com.tw:
+2015-12-28 17:21:04,694 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:21:04,694 [ INFO] (WebReader.java:201) - 元毅工業股份有限公司:許桂松:04-7697615:service@yueni.com.tw:
+2015-12-28 17:21:04,694 [ INFO] (WebReader.java:201) - 財榮實業股份有限公司:鐘長慶:04-7994998:massload@ms34.hinet.net:
+2015-12-28 17:21:04,694 [ INFO] (WebReader.java:201) - 乃興企業股份有限公司:施和仁:04-7696285:nuvo@nuvo.ws:
+2015-12-28 17:21:04,694 [ INFO] (WebReader.java:201) - 達遠實業社:鄭岳守:05-2763392:dayuan2500@hotmail.com:
+2015-12-28 17:21:07,721 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A55
+2015-12-28 17:21:07,822 [ INFO] (WebReader.java:201) - 政伸企業股份有限公司:洪招儀:04-23593687:service@transart.com.tw:
+2015-12-28 17:21:07,822 [ INFO] (WebReader.java:201) - 彩群企業有限公司:林美絹:02-89511025:grace2423@yahoo.com.tw:
+2015-12-28 17:21:10,830 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A56
+2015-12-28 17:21:10,991 [ INFO] (WebReader.java:201) - 佳鋁工業股份有限公司:吳龍水:04-8811960:rubis@ms17.hinet.net:
+2015-12-28 17:21:10,991 [ INFO] (WebReader.java:201) - 統岳股份有限公司:陳銘永:04-7688016:branc@mail.branc.com.tw:
+2015-12-28 17:21:10,991 [ INFO] (WebReader.java:201) - 久鼎金屬實業股份有限公司:林碧玉:04-7681756:lily@jdco.com.tw:
+2015-12-28 17:21:10,991 [ INFO] (WebReader.java:201) - 郁珺實業股份有限公司:方木通:06-2636577~9:asama@yuhjiun.com:
+2015-12-28 17:21:10,991 [ INFO] (WebReader.java:201) - 元毅工業股份有限公司:許桂松:04-7697615:service@yueni.com.tw:
+2015-12-28 17:21:10,991 [ INFO] (WebReader.java:201) - 雙餘實業有限公司:王羅平:04-22315920:beto@ms8.hinet.net:
+2015-12-28 17:21:11,001 [ INFO] (WebReader.java:201) - 財榮實業股份有限公司:鐘長慶:04-7994998:massload@ms34.hinet.net:
+2015-12-28 17:21:11,001 [ INFO] (WebReader.java:201) - 乃興企業股份有限公司:施和仁:04-7696285:nuvo@nuvo.ws:
+2015-12-28 17:21:11,001 [ INFO] (WebReader.java:201) - 鐘昱實業股份有限公司:鐘長慶:04-7990096:sales@ibera.info:
+2015-12-28 17:21:11,001 [ INFO] (WebReader.java:201) - 昆富工業股份有限公司:沈張秀瑞:04-26832568:jason.kingroof@gmail.com:
+2015-12-28 17:21:11,001 [ INFO] (WebReader.java:201) - 高鐵工業股份有限公司:周阿娥:04-26817989:kingrack@ms75.hinet.net、sales@ ...:
+2015-12-28 17:21:11,001 [ INFO] (WebReader.java:201) - 咔年國際股份有限公司:張美華:04-23592618:T-ONE@T-ONEDESING.COM:
+2015-12-28 17:21:14,001 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A57
+2015-12-28 17:21:14,125 [ INFO] (WebReader.java:201) - 瑞振工業股份有限公司:許國忠:04-7616188:sun50407@ms18.hinet.net:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 維豪車料股份有限公司:王明人:04-8231923:pazzaz@pazzaz.com:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 南欽實業股份有限公司:黃德隆:06-2535684:landing@public.szonline.net:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 台萬工業股份有限公司:白政忠:04-26881234:info@marwi.com.tw:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 久鼎金屬實業股份有限公司:林碧玉:04-7681756:lily@jdco.com.tw:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 元毅工業股份有限公司:許桂松:04-7697615:service@yueni.com.tw:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 雙餘實業有限公司:王羅平:04-22315920:beto@ms8.hinet.net:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 財榮實業股份有限公司:鐘長慶:04-7994998:massload@ms34.hinet.net:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 乃興企業股份有限公司:施和仁:04-7696285:nuvo@nuvo.ws:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 鐘昱實業股份有限公司:鐘長慶:04-7990096:sales@ibera.info:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 曜輗企業有限公司:吳靜華:06-2455123:wirring9@ms71.hinet.net:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 拓肯興業股份有限公司:張倉意:04-25681212:token@tokenproducts.com:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 台灣今品股份有限公 司:連建平:02-26807007:sandy@tw-vertex.com.tw:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 巨兆開發有限公司:李駿偉:04-22950598:karbona@karbona.com:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 咔年國際股份有限公司:張美華:04-23592618:T-ONE@T-ONEDESING.COM:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 萬鐘金屬有限公司:林混昌:04-23362167:wcm@w-chang.com:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 長譽工業股份有限公司:王柯澤民:04-26839989:bike698@ms75.hinet.net:
+2015-12-28 17:21:14,135 [ INFO] (WebReader.java:201) - 詮譯企業有限公司:張春茂:04-8384342:paco@paco-bike.com:
+2015-12-28 17:21:17,142 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A58
+2015-12-28 17:21:17,244 [ INFO] (WebReader.java:201) - 利慶工業股份有限公司:李金隆:04-7691125:leadtec-sales@umail.hinet.net:
+2015-12-28 17:21:17,244 [ INFO] (WebReader.java:201) - 永芳塑膠有限公司:陳見國:049-2522259:yungfang@yungfang.com.tw:
+2015-12-28 17:21:17,244 [ INFO] (WebReader.java:201) - 財榮實業股份有限公司:鐘長慶:04-7994998:massload@ms34.hinet.net:
+2015-12-28 17:21:17,244 [ INFO] (WebReader.java:201) - 盈昌事業有限公司:李昆益:04-7690756:ken.lee8999@msa.hinet.net:
+2015-12-28 17:21:17,244 [ INFO] (WebReader.java:201) - 山和實業股份有限公司:游玲秀:04-24612299:kelvin@lotus-bag.com.tw:
+2015-12-28 17:21:20,247 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A59
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 瑞振工業股份有限公司:許國忠:04-7616188:sun50407@ms18.hinet.net:
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 立富自行車有限公司:蕭智元:02-22687367:AlexHsiao@lifu.tw:
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 南欽實業股份有限公司:黃德隆:06-2535684:landing@public.szonline.net:
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 彰虹企業有限公司:林深坑:04-7697835:janghong@ms17.hinet.net:
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 見誠工業股份有限公司:巫堯明:04-8858121:acebike@ms34.hinet.net:
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 捷速康實業有限公司:林益成:04-25281848:service@jsktw.com:
+2015-12-28 17:21:20,378 [ INFO] (WebReader.java:201) - 健勤工業有限公司:梁東敏:04-8813644、04-885159 ...:ckic@ms64.hinet.net:
+2015-12-28 17:21:23,384 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A60
+2015-12-28 17:21:23,785 [ INFO] (WebReader.java:201) - 育華工業股份有限公司:林春山:04-26884088:aprebic@evo.com.tw:
+2015-12-28 17:21:26,792 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A61
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 南欽實業股份有限公司:黃德隆:06-2535684:landing@public.szonline.net:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 雙餘實業有限公司:王羅平:04-22315920:beto@ms8.hinet.net:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 永芳塑膠有限公司:陳見國:049-2522259:yungfang@yungfang.com.tw:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 華廣匯工業股份有限公司:王名憲:06-5723131:export@coido.com:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 集優企業股份有限公司:陳江北:04-24934676:giyo@giyo.com.tw:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 營標企業有限公司:林靖朗:02-28124515:yingpaio@ms17.hinet.net、yp@yin ...:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 兆田精密工業股份有限公司:黃鴻業:04-7686511:airbone@airbone.com.tw:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 亞瑞得企業股份有限公司:劉天賜:04-24934676:airace@airace.com.tw:
+2015-12-28 17:21:26,893 [ INFO] (WebReader.java:201) - 詮譯企業有限公司:張春茂:04-8384342:paco@paco-bike.com:
+2015-12-28 17:21:29,899 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A62
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 南欽實業股份有限公司:黃德隆:06-2535684:landing@public.szonline.net:
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 泉新工業股份有限公司:涂鐵雄:04-7355111:tcable@taiwancable.com:
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 源文興工業股份有限公司:胡清煌:04-8855111:yws59089@ms10.hinet.net:
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 雙餘實業有限公司:王羅平:04-22315920:beto@ms8.hinet.net:
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 競泰股份有限公司:蔡貴敏:02-82276730:info@sinoxlock.com market5@s ...:
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 瑞爾工業股份有限公司:林郁賓:06-2708261:topdog@ms12.hinet.net:
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 愷拓有限公司:董惠民:04-24725658:abc12688@ms8.hinet.net:
+2015-12-28 17:21:30,010 [ INFO] (WebReader.java:201) - 昇詠鎖業有限公司:陳梨玉:04-8812652:su_lock2005@hotmail.com:
+2015-12-28 17:21:33,014 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A63
+2015-12-28 17:21:33,119 [ INFO] (WebReader.java:201) - 名世電子企業股份有限公司:李敏雄:02-89769726:echowell@mail.echowell.com.tw:
+2015-12-28 17:21:33,120 [ INFO] (WebReader.java:201) - 從勝股份有限公司:毛茂泰:02-29067202:assize@ms34.hinet.net:
+2015-12-28 17:21:33,120 [ INFO] (WebReader.java:201) - 兆田精密工業股份有限公司:黃鴻業:04-7686511:airbone@airbone.com.tw:
+2015-12-28 17:21:33,120 [ INFO] (WebReader.java:201) - 先進電訊科技股份有限公司:林添進:02-27475131:ada@kptel.com.tw:
+2015-12-28 17:21:33,120 [ INFO] (WebReader.java:201) - 達瑞創新股份有限公司:蘇開建:03-2138800:milla.she@darfon.com.tw:
+2015-12-28 17:21:36,138 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A64
+2015-12-28 17:21:36,239 [ INFO] (WebReader.java:201) - 拓凱實業股份有限公司:沈文振:04-23591229:marketing@topkey.com.tw:
+2015-12-28 17:21:36,239 [ INFO] (WebReader.java:201) - 普威安全帽實業有限公司:呂東峰:049-2643266:prowell.helmets@msa.hinet.net:
+2015-12-28 17:21:36,239 [ INFO] (WebReader.java:201) - 詮譯企業有限公司:張春茂:04-8384342:paco@paco-bike.com:
+2015-12-28 17:21:39,239 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A65
+2015-12-28 17:21:39,670 [ INFO] (WebReader.java:201) - 維格工業股份有限公司:余秋香:04-26816991:wellgo@ms7.hinet.net:
+2015-12-28 17:21:39,670 [ INFO] (WebReader.java:201) - 佳鋁工業股份有限公司:吳龍水:04-8811960:rubis@ms17.hinet.net:
+2015-12-28 17:21:39,670 [ INFO] (WebReader.java:201) - 久陞企業股份有限公司:賴春田:04-25316188:jusson88@tcts.seed.net.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 立富自行車有限公司:蕭智元:02-22687367:AlexHsiao@lifu.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 台萬工業股份有限公司:白政忠:04-26881234:info@marwi.com.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 統岳股份有限公司:陳銘永:04-7688016:branc@mail.branc.com.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 達建工業股份有限公司:蔡金松:02-85212351:rstdk@ms16.hinet.net:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 龍億工業股份有限公司:陳富雄:02-29958777:dnp@ms11.hinet.net:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 盛傑實業股份有限公司:陳威達:02-28825255:mail@ideation.com.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 久裕興業科技股份有限公司:陳俊雄:04-25668888:pd@joy-tech.com.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 晉嘉工業股份有限公司:林慶米:03-3223535:chinjia@ms17.hinet.net:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 祥力金屬工業股份有限公司:李清松:049-2254526:sales@cionlli.com.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 晟昌機械股份有限公司:劉木女:04-8327362:fermax@ms24.hinet.net:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 元毅工業股份有限公司:許桂松:04-7697615:service@yueni.com.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 佳承精工股份有限公司:郭永斌:04-7323090:service@jagwire.com.tw:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 士禾企業股份有限公司:施能忠:04-23598316:m2246@18.hinet.net:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 強塑工業股份有限公司:黃何素蘭:02-26807901~3:spjh1@ms17.hinet.net:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 竣驜企業股份有限公司:林春山:04-26831571:service@outback-bag.com:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 浩盟企業股份有限公司:高丁男:06-2825791:prowheel@ms13.hinet.net:
+2015-12-28 17:21:39,680 [ INFO] (WebReader.java:201) - 協達車料股份有限公司:陳文瑄:02-26868277:sales@pillarspoke.com:
+2015-12-28 17:21:42,683 [ INFO] (WebReader.java:282) - parse web http://www.tba-cycling.org/edit_c.aspx?cId=A66
+2015-12-28 17:21:42,984 [ INFO] (WebReader.java:201) - 輪彥國際有 限公司:阮素琴:04-7360794~5:rep@mail.wheelgaiant.com.tw:
+2015-12-28 17:21:42,984 [ INFO] (WebReader.java:201) - 常盤有限公司:坂本隆也:02-28359731:info@cyclepress.com.tw:
