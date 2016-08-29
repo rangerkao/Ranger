@@ -1,8 +1,14 @@
 package program;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,13 +22,22 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.rmi.RemoteException;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -34,7 +49,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Random;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -42,24 +59,57 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.imageio.ImageIO;
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
 
 //190
 /*import com.infotech.smpp.SMPPServicesStub;
@@ -73,147 +123,145 @@ import com.iglomo.SMPPServicesStub.SendSMPPResponse;*/
 
 public class Jatool implements IJatool{
 
-	
-	private void logControl(Logger logger,String type,String message){
+	/**針對Jtool做log紀錄
+	 * 
+	 * @param logger 
+	 * @param type
+	 * @param message
+	 * 
+	 * 參數為 logger、log層級、訊息
+	 */
+	private void logControl(Logger logger,String level,String message){
 		if(logger==null){
 			System.out.println(message);
 		}else{
-			if("info".equalsIgnoreCase(type)){
+			if("info".equalsIgnoreCase(level)){
 				logger.info(message);
-			}else if("debug".equalsIgnoreCase(type)){
+			}else if("debug".equalsIgnoreCase(level)){
 				logger.debug(message);
-			}else if("error".equalsIgnoreCase(type)){
+			}else if("error".equalsIgnoreCase(level)){
 				logger.error(message);
 			}
 		}
 	}
 	
-	@Override
-	public void sendMail(Properties props,String subject,String content) throws Exception {
-		sendMail(props,null,null,subject,content);
+	public void mailSample() throws Exception{
+		sendMailwithAuthenticator("202.133.250.242",25,"smtp",
+				"ranger.kao@sim2travel.com","kkk770204",
+				"mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com",
+				"sendMailwithAuthenticator","sendMailwithAuthenticator sample");
+		sendMailwithoutAuthenticator("202.133.250.242",25,"smtp",
+				"ranger.kao@sim2travel.com","kkk770204",
+				"mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com",
+				"sendMailwithAuthenticator","sendMailwithAuthenticator sample");
+		
+		//Linux
+		sendMailforUnixLike("mail","mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com","sendMailforUnixLike","sendMailforUnixLike smaple");
+		//Solaris
+		sendMailforUnixLike("mailx","mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com","sendMailforUnixLike","sendMailforUnixLike smaple");
+		
 	}
 	
-
+	/** 
+	 * 有驗證器的mail功能
+	 */
 	@Override
-	public void sendMail(Properties props,String sender, String receiver, String subject,String content) throws Exception {
+	public void sendMailwithAuthenticator(String host,int port,String protocol,final String username,final String password,
+			String sender,String receiver,String subject,String content) throws AddressException, MessagingException{
 
-		if(props==null){
-			props=getProperties1();
-		}
+		  Properties props = new Properties();
+		  props.put("mail.smtp.host", host);
+		  props.put("mail.smtp.auth", "true");
+		  props.put("mail.smtp.starttls.enable", "true");
+		  props.put("mail.smtp.port", port);
+		  Session session = Session.getInstance(props, new Authenticator() {
+		   protected PasswordAuthentication getPasswordAuthentication() {
+		    return new PasswordAuthentication(username, password);
+		   }
+		  });
 
-		final String host=props.getProperty("mail.smtp.host");
-				
-		final String username = props.getProperty("mail.username");
-		final String passwd = props.getProperty("mail.password");		
-		
-		if(sender==null)
-			sender = props.getProperty("mail.Sender");	
-		if(receiver ==null)
-			receiver = props.getProperty("mail.Receiver");	
+		 
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(sender));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiver));
+			message.setSubject(subject);
+			message.setText(content);
+			
+			Transport transport = session.getTransport(protocol);
+			transport.connect(host, port, username, password);
+			
+			Transport.send(message);
+			
+			System.out.println("Send mail finished.");
+
+		  
+	}
+	/** 
+	 * 無驗證器的mail功能 
+	 */
+	@Override
+	public void sendMailwithoutAuthenticator(String host,int port,String protocol,final String username,final String password,
+			String sender, String receiver, String subject,String content) throws AddressException, MessagingException {
+
+		Properties props = new Properties();
+		  props.put("mail.smtp.host", host);
+		  props.put("mail.smtp.auth", "true");
+		  props.put("mail.smtp.starttls.enable", "true");
+		  props.put("mail.smtp.port", port);
 		
 		Session session = javax.mail.Session.getInstance(props);
 
-		try {
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(sender));
-			message.setRecipients(Message.RecipientType.TO,	InternetAddress.parse(receiver));
-			message.setSubject(subject);
-			message.setText(content);
+		
+		Message message = new MimeMessage(session);
+		message.setHeader("Disposition-Notification-To", "ranger.kao@sim2travel.com");//回條參數
+		message.setFrom(new InternetAddress(sender));
+		message.setRecipients(Message.RecipientType.TO,	InternetAddress.parse(receiver));
+		message.setSubject(subject);
+		message.setText(content);
 
-			Transport transport = session.getTransport("smtp");
-		    transport.connect(host,username,passwd);
-		    transport.sendMessage(message, message.getAllRecipients());
-			System.out.println("Done");
-		} catch (MessagingException e) {
-			throw new RuntimeException(e);
-		}
-	}
+		Transport transport = session.getTransport(protocol);
+		transport.connect(host, port, username, password);
+	    transport.sendMessage(message, message.getAllRecipients());
+	    System.out.println("Send mail finished.");
+		
+	}	
+	/** 
+	 * 利用unix內建的mail功能
+	 */
 	@Override
-	public void sendMailforLinux(String msg) throws Exception{
-		sendMailforLinux(msg,null);
-	}
-	@Override
-	public void sendMailforLinux(String msg,String receiver) throws Exception{
+	public void sendMailforUnixLike(String mailfunction,String sender,String receiver,String subject,String msg) throws Exception{
 		String ip ="";
 		try {
 			ip = InetAddress.getLocalHost().getHostAddress();
-		} catch (UnknownHostException e1) {
-			e1.printStackTrace();
+		} catch (UnknownHostException e) {
 		}
 		
 		if(receiver==null ||"".equals(receiver)){
 			throw new Exception("No receiver and No UserName Set!");
 		}
-			
-		String Receiver =receiver;
 		
-		msg=msg+" from location "+ip;			
+		msg=msg+"\n from location "+ip;			
 		
 		String [] cmd=new String[3];
 		cmd[0]="/bin/bash";
 		cmd[1]="-c";
-		cmd[2]= "/bin/echo \""+msg+"\" | /bin/mailx -s \"SMPP System alert\" "+Receiver ;
+		cmd[2]= "/bin/echo \""+msg+"\" | /bin/"+mailfunction+" -s \""+subject+"\" -r "+sender+" "+receiver+"." ; ;
 
 		try{
 			Process p = Runtime.getRuntime().exec (cmd);
 			p.waitFor();
 			System.out.println("send mail cmd:"+cmd[0]+" "+cmd[1]+" "+cmd[2]);
 		}catch (Exception e){
-			System.out.println("send mail fail:"+msg);
+			System.out.println("send mail fail:"+cmd[2]);
 		}
 	}
 	
+	/**
+	 * 設定Properties
+	 * @return
+	 */
 	@Override
-	public void sendMailforsolaris(String msg) throws Exception{
-		sendMailforLinux(msg,null);
-	}
-	@Override
-	public void sendMailforsolaris(String msg,String receiver) throws Exception{
-		String ip ="";
-		try {
-			ip = InetAddress.getLocalHost().getHostAddress();
-		} catch (UnknownHostException e) {
-
-		}
-		
-		String mailReceiver = "Douglas.Chuang@sim2travel.com,ranger.kao@sim2travel.com";
-		
-		msg=msg+" from location "+ip;			
-		
-		String [] cmd=new String[3];
-		cmd[0]="/bin/bash";
-		cmd[1]="-c";
-		cmd[2]= "/bin/echo \""+msg+"\" | /bin/mailx -s \"AddonService alert\" -r  ADDON_SERVICE_ALERT_MAIL "+receiver+"." ; ;
-
-		try{
-			Process p = Runtime.getRuntime().exec (cmd);
-			p.waitFor();
-			System.out.println("send mail cmd:"+cmd[0]+" "+cmd[1]+" "+cmd[2]);
-		}catch (Exception e){
-			System.out.println("send mail fail:"+msg);
-		}
-	}
-	
-	//mail
-	@Override
-	public Properties getProperties1(){
-		Properties result=new Properties();
-
-		//mail setting
-		result.put("mail.smtp.auth", "true");
-		result.put("mail.smtp.host", "202.133.250.242");
-		result.put("mail.smtp.port", "25");
-		result.put("mail.transport.protocol", "smtp");
-		result.put("mail.username", "ranger.kao@sim2travel.com");
-		result.put("mail.password", "kkk770204");
-		result.put("mail.Sender", "Send Program");
-		result.put("mail.Receiver", "ranger.kao@sim2travel.com,k1988242001@gmail.com");
-
-		return result;
-	}
-	//Log
-	@Override
-	public Properties getProperties2(){
+	public Properties getProperties(){
 		Properties result=new Properties();
 		
 		result.put("log4j.rootCategory", "DEBUG, stdout, FileOutput");
@@ -240,19 +288,38 @@ public class Jatool implements IJatool{
 		return result;
 	}
 	
-	
+	public Properties getmailProperties(){
+		Properties result=new Properties();
 
-	
-	@Override
-	public Connection connDB(String DriverClass, String URL,
-			String UserName, String PassWord) throws ClassNotFoundException, SQLException {
-		Connection conn = null;
+		//mail setting
+		result.put("mail.smtp.auth", "true");
+		result.put("mail.smtp.host", "202.133.250.242");
+		result.put("mail.smtp.port", "25");
+		result.put("mail.transport.protocol", "smtp");
+		result.put("mail.username", "ranger.kao@sim2travel.com");
+		result.put("mail.password", "kkk770204");
+		result.put("mail.Sender", "Send Program");
+		result.put("mail.Receiver", "ranger.kao@sim2travel.com,k1988242001@gmail.com");
 
-			Class.forName(DriverClass);
-			conn = DriverManager.getConnection(URL, UserName, PassWord);
-		return conn;
+		return result;
 	}
+
 	
+	
+	/**
+	 * 資料庫連線
+	 * @param DriverClass
+	 * @param DBType
+	 * @param ip
+	 * @param port
+	 * @param DBNameorSID
+	 * @param charset
+	 * @param UserName
+	 * @param PassWord
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	@Override
 	public Connection connDB(String DriverClass,
 			String DBType,String ip,String port,String DBNameorSID,String charset,
@@ -269,6 +336,21 @@ public class Jatool implements IJatool{
 		return connDB(DriverClass, url, UserName, PassWord);
 	}
 
+	public Connection connDB(String DriverClass, String URL,
+			String UserName, String PassWord) throws ClassNotFoundException, SQLException {
+		Connection conn = null;
+
+			Class.forName(DriverClass);
+			conn = DriverManager.getConnection(URL, UserName, PassWord);
+		return conn;
+	}
+
+	/**
+	 * Web Server Discriber Language smaple
+	 * @param param
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public String callWSDLServer(String param) throws RemoteException {
 
@@ -285,10 +367,15 @@ public class Jatool implements IJatool{
 
 	}
 
+	/**
+	 * 取得當月第一天
+	 * @param date
+	 * @return
+	 */
 	@Override
 	public Date getMonthFirstDate(Date date) {
 		
-		Calendar calendar = Calendar.getInstance();//�q�{����e�ɶ�
+		Calendar calendar = Calendar.getInstance();
 		Date monthFirstDate=null;
 
 		calendar.setTime(date);
@@ -298,10 +385,14 @@ public class Jatool implements IJatool{
 
 		return monthFirstDate;
 	}
-
+	/**
+	 * 取得當月最後一天
+	 * @param date
+	 * @return
+	 */
 	@Override
 	public Date getMonthLastDate(Date date) {
-		Calendar calendar = Calendar.getInstance();//�q�{����e�ɶ�
+		Calendar calendar = Calendar.getInstance();
 		Date monthLastDate=null;
 		
 		calendar.setTime(date);
@@ -311,56 +402,38 @@ public class Jatool implements IJatool{
 		return monthLastDate;
 	}
 	
-	@Override
-	public Date getDayFirstDate(Date date) {
-		
-		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));//�q�{����e�ɶ�
-		Date monthFirstDate=null;
-
-		calendar.setTime(date);
-		calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY));
-		calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE));
-		calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND));
-		monthFirstDate=calendar.getTime();
-		calendar.clear();
-
-		return monthFirstDate;
-	}
-
-	@Override
-	public Date getDayLastDate(Date date) {
-		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));//�q�{����e�ɶ�
-		Date monthLastDate=null;
-		
-		calendar.setTime(date);
-		calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMaximum(Calendar.HOUR_OF_DAY));
-		calendar.set(Calendar.MINUTE, calendar.getActualMaximum(Calendar.MINUTE));
-		calendar.set(Calendar.SECOND, calendar.getActualMaximum(Calendar.SECOND));
-		monthLastDate= calendar.getTime();
-		calendar.clear();
-		return monthLastDate;
-	}
-
+	/**
+	 * 將Java Date 轉換成 SQL Date
+	 * @param date
+	 * @return
+	 */
 	@Override
 	public java.sql.Date convertJaveUtilDate_To_JavaSqlDate(java.util.Date date) {
-		
 		return new java.sql.Date(date.getTime());
 	}
 
+	/**
+	 * 將SQL Date 轉換成 Java Date
+	 * @param date
+	 * @return
+	 */
 	@Override
 	public java.util.Date convertJaveSqlDate_To_JavaUtilDate(java.sql.Date date) {
 		return new java.util.Date(date.getTime());
 	}
 
-	String iniform="yyyy/MM/dd HH:mm:ss";
-	@Override
-	public String DateFormat(){
-		DateFormat dateFormat = new SimpleDateFormat(iniform);
-		return dateFormat.format(new Date());
-	}
 	
+
+	/**
+	 * 將Date 轉換成 String 預設 格式 yyyy/MM/dd HH:mm:ss
+	 * @param date
+	 * @param form
+	 * @return
+	 */
 	@Override
 	public String DateFormat(Date date, String form) {
+		
+		String iniform="yyyy/MM/dd HH:mm:ss";
 		
 		if(date==null) date=new Date();
 		if(form==null ||"".equals(form)) form=iniform;
@@ -368,34 +441,49 @@ public class Jatool implements IJatool{
 		DateFormat dateFormat = new SimpleDateFormat(form);
 		return dateFormat.format(date);
 	}
-
+	/**
+	 * 將String 轉換成 Date 預設 格式 yyyy/MM/dd HH:mm:ss
+	 * @param date
+	 * @param form
+	 * @return
+	 */
 	@Override
-	public Date DateFormat(String dateString, String form) throws ParseException {
+	public Date DateFormat(String dateString, String form) throws Exception {
+		String iniform="yyyy/MM/dd HH:mm:ss";
 		Date result=new Date();
 		
-		if(dateString==null) return result;
-		
+		if(dateString==null) throw new Exception("DateString is Null.");
 		if(form==null ||"".equals(form)) form=iniform;
+		
 		DateFormat dateFormat = new SimpleDateFormat(form);
 		result=dateFormat.parse(dateString);
 		
 		return result;
 	}
-	
+	/**
+	 * 對Http做 Post
+	 * @param url
+	 * @param method [POST or GET]
+	 * @param param
+	 * @param charset 是否編碼
+	 * @return [結果代碼，對方回傳內容]
+	 */
 	@Override
-	public String HttpPost(String url,String param,String charset) throws IOException{
+	public String[] HttpPost(String url,String method,String param,String charset) throws IOException{
 		URL obj = new URL(url);
 		
-		if(charset!=null && !"".equals(charset))
-			param=URLEncoder.encode(param, charset);
+		String urlParam = param;
 		
+		if(charset!=null && !"".equals(charset))
+			urlParam=URLEncoder.encode(urlParam, charset);
+
 		
 		HttpURLConnection con =  (HttpURLConnection) obj.openConnection();
  
 		//add reuqest header
-		/*con.setRequestMethod("POST");
-		con.setRequestProperty("User-Agent", USER_AGENT);
-		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");*/
+		con.setRequestMethod(method);
+		//con.setRequestProperty("User-Agent", USER_AGENT);
+		//con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");*/
  
 		// Send post request
 		con.setDoOutput(true);
@@ -406,11 +494,10 @@ public class Jatool implements IJatool{
  
 		int responseCode = con.getResponseCode();
 		System.out.println("\nSending 'POST' request to URL : " + url);
-		System.out.println("Post parameters : " + new String(param.getBytes("ISO8859-1")));
+		System.out.println("Post parameters : " + param);
 		System.out.println("Response Code : " + responseCode);
  
-		BufferedReader in = new BufferedReader(
-		        new InputStreamReader(con.getInputStream()));
+		BufferedReader in = new BufferedReader( new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
  
@@ -420,9 +507,17 @@ public class Jatool implements IJatool{
 		in.close();
  
 		//print result
-		return(response.toString());
+		String [] result = {String.valueOf(responseCode),response.toString()};
+		
+		return result;
 	}
 	
+	/**
+	 * 對浮點數做標準化
+	 * @param value
+	 * @param form 預設為 小數後兩位
+	 * @return
+	 */
 	@Override
 	public Double FormatDouble(Double value,String form){
 		
@@ -435,12 +530,13 @@ public class Jatool implements IJatool{
 		
 		return Double.valueOf(new DecimalFormat(form).format(value));
 	}
-	
-	@Override
-	public String FormatNumString(Double value){
-		return FormatNumString(value,null);
-	}
-	
+
+	/**
+	 * 對浮點數做標準化
+	 * @param value
+	 * @param form 預設為 小數後兩位，3位撇節法
+	 * @return
+	 */
 	@Override
 	public String FormatNumString(Double value,String form){
 		if(form==null || "".equals(form)){
@@ -453,6 +549,10 @@ public class Jatool implements IJatool{
 		return str;
 	}
 
+	/**
+	 * 讀取文字檔
+	 * @param filePath
+	 */
 	@Override
 	public void readtxt(String filePath) {
 		//String filePath =BillReport.class.getClassLoader().getResource("").toString().replace("file:", "")+ "source/";
@@ -461,12 +561,10 @@ public class Jatool implements IJatool{
 
 		try {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8")); 
-			// ��wŪ���󪺽s�X�榡�A�H�K�X�{����ýX
 			
 			String str = null;
 			
 			while ((str = reader.readLine()) != null) {
-				
 				System.out.println(str);
 			}
 
@@ -483,19 +581,25 @@ public class Jatool implements IJatool{
 		}
 	}
 
+	/**
+	 * 寫入文字檔
+	 * @param filename
+	 * @param content
+	 * @param append (延伸true或是覆寫false)
+	 * @param charSet
+	 */
 	@Override
-	public void writetxt(String content) {
+	public void writetxt(String filename,String content,boolean append ,String charSet) {
 		BufferedWriter fw = null;
-		
+		if(charSet==null)
+			charSet = "UTF-8";
 		try {
-			File file = new File("c://text.txt");
-			if(!file.exists())
-				file.createNewFile();
-			fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF-8")); // ���I�s�X�榡�A�H�KŪ��ɤ���r�Ų��`
-			fw.append("�ڼg�J�����e");
-			fw.newLine();
-			fw.append("�ڤS�g�J�����e");
-			fw.flush(); // �����g�J�w�s�������e
+			//建立新檔，已存在的話會刪除重建
+			File file = new File(filename);
+			fw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, append), charSet)); 
+			fw.append(content);
+			//flush 後才會在文件顯示內容，可忽略讓程式自動flush
+			//fw.flush(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -508,7 +612,9 @@ public class Jatool implements IJatool{
 			}
 		}		
 	}
-	
+	/**
+	 * 建立文件夾
+	 */
 	@Override
 	public void newFolder(String folderPath) {
 		try {
@@ -524,19 +630,24 @@ public class Jatool implements IJatool{
 		}
 	}
 
+	/**
+	 * 比對字串
+	 * @param content
+	 * @param regex
+	 * @return
+	 */
 	@Override
 	public boolean regularMatch(String content, String regex) {
 		
 		return content.matches(regex);
 	}
 
-	@Override
-	public Pattern regularMatch(String regex) {
-
-		Pattern p =Pattern.compile(regex);
-		return p;
-	}
-
+	/**
+	 * 回傳字串中符合的部分
+	 * @param content
+	 * @param regex
+	 * @return
+	 */
 	@Override
 	public List<String> regularFind(String content, String regex) {
 		
@@ -553,56 +664,40 @@ public class Jatool implements IJatool{
 	}
 
 
-	@Override
-	public String parseDBURL(String DBType, String ip, String port, String DB,
-			String charSet) {
-		String URL="jdbc:"+DBType+":@"+ip+":"+port+":"+DB+"";
-		
-		if(charSet!=null &&!"".equals(charSet))
-			URL+="?characterEncoding="+charSet;
-		
-		return URL;
-	}
-	
+	/**
+	 * 小數點4捨5入
+	 * @param value
+	 * @param method
+	 * 
+	 * @param digit
+	 * @return
+	 */
 	@Override
 	public Double roundUpOrDdown(Double value,String method,int digit){
 		
 		Double result = 0D;
-		
+		//取捨位>=0.5->ROUND_UP，反之->ROUND_DOWN
 		if("ROUND_HALF_UP".equals(method))		result =new BigDecimal(value).setScale(digit, BigDecimal.ROUND_HALF_UP).doubleValue();
+		//取捨位>0.5->ROUND_UP，反之->ROUND_DOWN
 		if("ROUND_HALF_DOWN".equals(method))	result =new BigDecimal(value).setScale(digit, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+		
 		if("ROUND_HALF_EVEN".equals(method))	result =new BigDecimal(value).setScale(digit, BigDecimal.ROUND_HALF_EVEN).doubleValue();
+		//value 為正->ROUND_UP，如果為負->ROUND_DOWN
 		if("ROUND_CEILING".equals(method))		result =new BigDecimal(value).setScale(digit, BigDecimal.ROUND_CEILING).doubleValue();
+		//value 為負->ROUND_UP，如果為正->ROUND_DOWN
 		if("ROUND_FLOOR".equals(method))		result =new BigDecimal(value).setScale(digit, BigDecimal.ROUND_FLOOR).doubleValue();
+		//遠離zero
 		if("ROUND_UP".equals(method))			result =new BigDecimal(value).setScale(digit, BigDecimal.ROUND_UP).doubleValue();
+		//朝向zero
 		if("ROUND_DOWN".equals(method))			result =new BigDecimal(value).setScale(digit, BigDecimal.ROUND_DOWN).doubleValue();
 		
 		return result;
 	}
 
 
-	@Override
-	public Calendar getCalendar(){
-		return Calendar.getInstance();
-	}
-	
-	
-	@Override
-	public Calendar getCalendar(Date date) {
-		Calendar calendar=Calendar.getInstance();
-		calendar.setTime(date);
-		return calendar;
-	}
-
-
-	@Override
-	public Calendar getCalendar(String date, String formate) throws ParseException {
-		Calendar calendar=Calendar.getInstance();
-		calendar.setTime(new SimpleDateFormat(formate).parse(date));
-		return calendar;
-	}
-
-
+	/**
+	 * 取的指定時間的calendar
+	 */
 	@Override
 	public Calendar getCalendarByCalculate(Integer year, Integer month,
 			Integer day, Integer hour, Integer min, Integer sec) {
@@ -626,6 +721,14 @@ public class Jatool implements IJatool{
 	}
 
 
+	/**
+	 * 
+	 * @param content
+	 * @param sourceCharset
+	 * @param torgetCharset
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	@Override
 	public String convertCharset(String content, String sourceCharset,
 			String torgetCharset) throws UnsupportedEncodingException {
@@ -637,30 +740,36 @@ public class Jatool implements IJatool{
 	}
 
 
+	/**
+	 * 
+	 * @return
+	 * @throws UnknownHostException
+	 */
 	@Override
 	public String getLocalIP() throws UnknownHostException {
 		return InetAddress.getLocalHost().getHostAddress()+"";
 	}
 
-
+	/**
+	 * 取得程式絕對路徑
+	 * @param className
+	 * @return
+	 */
 	@Override
 	public String getProgramDir(Class<?> className) {
-		return className.getClassLoader().getResource("").toString();
+		return className.getClassLoader().getResource("").toString().replace("file:", "").replace("%20", " ");
 	}
 
 
-	@Override
-	public String [] splitIP(String ip) {
-		return ip.split("\\.");
-	}
-
-
-	@Override
-	public void regularExcute(long periodTime, TimerTask run) {
-		Timer timer =new Timer();
-		timer.schedule(run,0, periodTime);
-	}
-
+	/**
+	 * 間隔時間
+	 * @param periodTime
+	 * 多久後執行第一次
+	 * @param delay
+	 * 實做TimerTask 的任務class
+	 * @param run
+	 */
+	 
 
 	@Override
 	public void regularExcute(long periodTime, long delay, TimerTask run) {
@@ -669,9 +778,15 @@ public class Jatool implements IJatool{
 	}
 
 
+	/**
+	 * 
+	 * @param periodTime
+	 * 第一次的執行時間
+	 * @param FirstExecuteTime
+	 * @param run
+	 */
 	@Override
-	public void regularExcute(long periodTime, Date FirstExecuteTime,
-			TimerTask run) {
+	public void regularExcute(long periodTime, Date FirstExecuteTime,TimerTask run) {
 		Timer timer =new Timer();
 		timer.schedule(run,FirstExecuteTime, periodTime);
 	}
@@ -781,10 +896,10 @@ public class Jatool implements IJatool{
             }
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}finally{
 			try {
@@ -795,28 +910,8 @@ public class Jatool implements IJatool{
 					bos.close();
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
-	}
-
-	@Override
-	public String transCharSet(String s, String charSet) {
-		String result = s;
-		
-		//result = result.replace("'", "''").replace("&", "'||'&'||'");
-		
-		if(result==null)
-			result="";
-		else
-			try {
-				result=new String(result.getBytes("BIG5"),"ISO8859-1");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		
-		return result;
 	}
 
 	@Override
@@ -826,34 +921,480 @@ public class Jatool implements IJatool{
 		else
 			return s;
 	}
+	
+	
+	/**
+	 * 產生.xls 的文件檔
+	 * 
+	 * @param head
+	 * 表頭，為List<Map<String,String>> ，Map內容：name，顯示的名稱，col ，存在在data的key
+	 * @param data
+	 * List<Map<String,String>> 
+	 * @return
+	 */
+	public static HSSFWorkbook createExcel(List<Map<String,String>> head,List<Map<String,Object>> data){
+		InputStream inputStream = null;
+		int rowN = 0;
+		int sheetN = 0;
+		HSSFWorkbook wb = null;
+		try {  
+			//第一步，創建webbook文件
+            wb = new HSSFWorkbook();  
 
+            //第二步，建立sheet
+            HSSFSheet sheet = wb.createSheet("sheet"+sheetN++);  
+              
+            //第四步，設定樣式
+            HSSFCellStyle style = wb.createCellStyle();  
+            style.setAlignment(HSSFCellStyle.ALIGN_CENTER);  
+            //第五部，建立單元格
+            HSSFCell cell;  
+
+            //第三步添加表頭
+            //在sheet建立row第0行
+            HSSFRow row = sheet.createRow(rowN++);
+            for(int k = 0 ; k < head.size() ; k++){
+    			String name=head.get(k).get("name");
+    			//在row建立cell
+				cell = row.createCell(k);
+                cell.setCellValue(name);  
+                cell.setCellStyle(style); 
+    		}		
+
+  
+          //第六部，寫入內容
+            for (int i = 0; i < data.size(); i++) {  
+                row = sheet.createRow(rowN++);  
+                
+                for(int j = 0 ; j < head.size() ; j++){
+                	String col=head.get(j).get("col");
+                	Map<String,Object> m = data.get(i);
+                	if(data.get(i).get(col)!=null)
+                		row.createCell(j).setCellValue(m.get(col).toString());
+                	else
+                		row.createCell(j).setCellValue("");
+        		}	
+                
+                //避免超過65535限制row數
+                if(i!=0&&i%65530==0){
+                	sheet = wb.createSheet("sheet"+sheetN++);
+                	rowN = 0;
+                	//添加表頭
+                	row = sheet.createRow(rowN++);
+                	for(int k = 0 ; k < head.size() ; k++){
+             			String name=head.get(k).get("name");
+         				cell = row.createCell(k);  
+                        cell.setCellValue(name);  
+                        cell.setCellStyle(style); 
+             		}		
+                }
+            }  
+		}  
+        catch(Exception e) {  
+            e.printStackTrace();  
+        }  
+  
+        return wb;  
+	}
+	
 	@Override
-	public JSONObject jsoneUrlget(String urls) throws Exception {
-		BufferedReader reader = null;
+	public InputStream getExcelInputStream(List<Map<String,String>> head,List<Map<String,Object>> data) throws IOException{
+		HSSFWorkbook wb = createExcel(head,data);
 		
-		String jsonS = null;
+		ByteArrayOutputStream os = new ByteArrayOutputStream();  
+        wb.write(os);  
+        byte[] fileContent = os.toByteArray();  
+        
+        ByteArrayInputStream is = new ByteArrayInputStream(fileContent);  
+        
+        return is;   
+		
+	}
+	
+	@Override
+	public void createExcelFile(List<Map<String,String>> head,List<Map<String,Object>> data,String path) throws IOException{
+		HSSFWorkbook wb = createExcel(head,data);
+		File newfile = new File(path);
+		FileOutputStream out = new FileOutputStream(newfile);
+		wb.write(out);
+		out.close();
+	}
+	
+	/**
+	 * 指標性Merge sort
+	 * 
+	 * start 起點
+	 * 
+	 * end 終點(包含)，list.size()-1
+	 */
+	public static void mergeSort(List<Double> list,int start,int end){
+		
+		//如果只剩下一個單元，直接丟回
+		if(start>=end)
+			return;
+		
+		int middle = (int) Math.floor((end-start)/2);
+		middle+=start;
+		
+		//merge left
+		mergeSort(list,start,middle);
+		//merge right
+		mergeSort(list,middle+1,end);
+		
+		int i = start;
+		int j = middle+1;
+		
+		//規則：
+		//當第i的數字<=第j的數，i 已經是最前面，i比較數字改成第i+1位
+		//當第i的數字   >第j的數，將第j的數字插入第i數字之前，比較數字改成第i+1位，j改成j+1位
+		//j的前面永遠是i數列的比對終點
+		//當i==j或是j>end時，比對結束，剩下的也已經在之前排序好
+		
+		while(i<j && j<=end){
+			
+			if(list.get(i)<=list.get(j)){
+				i++;
+			}else{
+				double t = list.get(j);
+				list.remove(j);
+				list.add(i, t);
+				i++;j++;
+			}
+			
+		}
+		System.out.println(start+":"+end);
+		for(double d : list){
+			System.out.print(d+" ");
+		}
+		System.out.println();
+	}
+	
+	public void creatValidateImage(){
+		
+		char[] CHARS = {'2','3','4','5','6','7','8','9'
+				,'A','B','C','D','E','F','G','H','J','K','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'
+				,'a','b','c','d','e','f','g','h','i','j','k','m','n','p','q','r','s','t','u','v','w','x','y','z'
+		};
+		
+		Random random = new Random();
+		
+		
+		StringBuffer buffer = new StringBuffer();
+		
+		for(int i = 0 ; i < 6 ; i++)
+			buffer.append(CHARS[random.nextInt(CHARS.length)]);
+		
+		String randomString = buffer.toString();
+		
+		
+		//圖形寬高
+		int width = 100;
+		int height = 30;
+		
+		//隨機顏色
+		Color color = new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255));
+		//找出對比色
+		Color reverse = new Color(255-color.getRed(),255-color.getGreen(),255-color.getBlue());
+		//建立彩色圖片
+		BufferedImage bi = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+		
+		//繪圖元件
+		Graphics2D g = bi.createGraphics();
+		//字型
+		g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
+		//顏色
+		g.setColor(color);
+		//背景(填滿)
+		g.fillRect(0, 0, width, height);
+		//設定前景
+		g.setColor(reverse);
+		g.drawString(randomString, 18, 20);
+		//隨機建立最多100個噪點，隨機位置
+		for(int i = 0 ,n = random.nextInt(100) ; i < n ; i++)
+			g.drawRect(random.nextInt(width), random.nextInt(height), 1, 1);
 		
 		try {
-	        URL url = new URL(urls);
-	        reader = new BufferedReader(new InputStreamReader(url.openStream()));
-	        StringBuffer buffer = new StringBuffer();
-	        int read;
-	        char[] chars = new char[1024];
-	        while ((read = reader.read(chars)) != -1)
-	            buffer.append(chars, 0, read); 
-
-	        jsonS = buffer.toString();
-	    } finally {
-	        if (reader != null)
-	            reader.close();
-	    }
+			File outputfile = new File("C:/Users/ranger.kao/Desktop/valide.png");
+			ImageIO.write(bi, "png", outputfile);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		
-		if(jsonS==null)
-			throw new Exception("Get JSon String Fail!");
-		
-		JSONObject json = new JSONObject(jsonS);
-		
-		return json;
 	}
+	
+	public void parseXmlByDOM(String filePath){
+		
+		File xmlFile = new File(filePath);//讀取檔案
+		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance(); //以實例方式建立Document Builder Factory
+		
+		try {
+			DocumentBuilder builder = builderFactory.newDocumentBuilder();//利用Factory建立 Document Builder
+			Document document = builder.parse(xmlFile);//利用builder建立Document
+			Element root = document.getDocumentElement();
+			NodeList childNodes = root.getChildNodes();
+			
+			for(int i = 0; i<childNodes.getLength() ; i++){
+				
+				String nodeName = childNodes.item(i).getNodeName();
+				NodeList nextChildNodes = childNodes.item(i).getChildNodes(); //下一層
+				//...
+				
+			}
+			
+		} catch (ParserConfigurationException e) {
+			
+			e.printStackTrace();
+		} catch (SAXException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+	public void parseXmlBySAX(String filePath){
+		File xmlFile = new File(filePath);//讀取檔案
+		SAXParserFactory factory = SAXParserFactory.newInstance(); //以實例建立Parse Factory
+		
+		try {
+			SAXParser parser = factory.newSAXParser(); //以Factory建立parser
+			parser.parse(xmlFile, new MySaxHandler());//以parse解析檔案，並使用觸發器
+			
+		} catch (ParserConfigurationException e) {
+			
+			e.printStackTrace();
+		} catch (SAXException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	class MySaxHandler extends DefaultHandler {
+		
+		private String content;
+		
+		@Override
+		public void characters(char[] ch, int start, int length) throws SAXException {
+			content = new String(ch,start,length);//遇到字元集時轉換為文字
+		}
+		
+		@Override
+		public void endElement(String uri, String localName, String qName) throws SAXException {
+			if("title".equals(qName)){
+				System.out.println("標題："+content);
+			}
+			//....
+		}
+		
+		@Override
+		public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
+			
+		}
+	}
+	
+	public void createXmlByJavaBean(String filePath){
+		File xmlFile = new File(filePath);//儲存位置
+		
+		try {
+			JAXBContext context = JAXBContext.newInstance(Article.class); //指定Bean建立上下文
+			Marshaller m = context.createMarshaller();
+			
+			Article article = new Article();
+			article.setTitle("title");
+			article.setEmail("mail");
+			article.setAuthor("author");
+			
+			m.marshal(article, xmlFile); //轉換
+			
+		} catch (JAXBException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	public void createJavaBeanByXml(String filePath){
+		File xmlFile = new File(filePath);//儲存位置
+		
+		try {
+			JAXBContext context = JAXBContext.newInstance(Article.class); //指定Bean建立上下文
+			Unmarshaller u = context.createUnmarshaller();
+			Article article =(Article) u.unmarshal(xmlFile);
+		
+			
+		} catch (JAXBException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	@XmlRootElement//可使用@XmlRootElement(name = "article") 方式命名
+	class Article{
+		
+		//@XmlElementWrapper(name = "DATA") 外面再包一層
+		
+		//@XmlElement(name = "ITEM") 元素命名
+		private String title;
+		private String author;
+		private String email;
+		
+		
+		
+		public String getTitle() {
+			return title;
+		}
+		public void setTitle(String title) {
+			this.title = title;
+		}
+		public String getAuthor() {
+			return author;
+		}
+		public void setAuthor(String author) {
+			this.author = author;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+	}
+	
+	/***加密編碼***/
+	//單向
+	//md5 EncodeTest
+	@Override
+	public String md5Encode(String source) throws NoSuchAlgorithmException{
+		String input=source;
+		 MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] messageDigest = md.digest(input.getBytes());
+        return byteToString1(messageDigest);
+	}
+	
+	//SHA EncodeTest
+	@Override
+	public String SHAEncode(String source) throws NoSuchAlgorithmException{
+		MessageDigest md = MessageDigest.getInstance("SHA");  
+        byte[] srcBytes = source.getBytes();  
+        md.update(srcBytes);  
+        byte[] resultBytes = md.digest();
+        return byteToString1(resultBytes);  
+	}
+	public static String byteToString1(byte[] source){
+		BigInteger number = new BigInteger(1, source);
+        String hashtext = number.toString(16);
+        // Now we need to zero pad it if you actually want the full 32 chars.
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        return hashtext;
+	}
+	
+	//雙向
+	//RSA EncodeTest
+	@Override
+	public String RSAEncode(String source,RSAPublicKey publicKey) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+		 //Cipher负责完成加密或解密工作，基于RSA  
+        Cipher cipher = Cipher.getInstance("RSA");  
+        //根据公钥，对Cipher对象进行初始化  
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey);  
+        byte[] resultBytes = cipher.doFinal(source.getBytes());  
+        
+        return byteToString2(resultBytes);  
+	}
+	//RSA DecodeTest
+	@Override
+	public String RSADecode(String source,RSAPrivateKey  privateKey) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
+		//Cipher负责完成加密或解密工作，基于RSA  
+        Cipher cipher = Cipher.getInstance("RSA");  
+        //根据公钥，对Cipher对象进行初始化  
+        cipher.init(Cipher.DECRYPT_MODE, privateKey);  
+        byte[] resultBytes = cipher.doFinal(Hex.decodeHex(source.toCharArray()));  
+        return new String(resultBytes);  
+	}
+	
+	/**
+	 * 傳入Bean與Map，再利用反射中的Set去給值
+	 * @throws NoSuchMethodException 
+	 * @throws SecurityException 
+	 * @throws InvocationTargetException 
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 */
+	@Override
+	public void reflectSet(Object bean, Map<String, String> valMap) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException{
+		Class<?> cls = bean.getClass();  
+		for (Field field : cls.getDeclaredFields()) {
+			String fieldSetName = parSetName(field.getName());  
+            if (!checkSetMet(cls.getDeclaredMethods(), fieldSetName)) {  
+                continue;  
+            }  
+            Method fieldSetMet = cls.getMethod(fieldSetName, field  
+                    .getType());  
+			String value = valMap.get(field.getName());  
+			
+			if (null != value && !"".equals(value)) {  
+                  String fieldType = field.getType().getSimpleName();  
+                  if ("String".equals(fieldType)) {  
+                      fieldSetMet.invoke(bean, value);  
+                  } else if ("Date".equals(fieldType)) {  
+                     /* Date temp = parseDate(value);  
+                      fieldSetMet.invoke(bean, temp); */ 
+                  } else if ("Integer".equals(fieldType)|| "int".equals(fieldType)) {  
+                      Integer intval = Integer.parseInt(value);  
+                      fieldSetMet.invoke(bean, intval);  
+                  } else if ("Long".equalsIgnoreCase(fieldType)) {  
+                      Long temp = Long.parseLong(value);  
+                      fieldSetMet.invoke(bean, temp);  
+                  } else if ("Double".equalsIgnoreCase(fieldType)) {  
+                      Double temp = Double.parseDouble(value);  
+                      fieldSetMet.invoke(bean, temp);  
+                  } else if ("Boolean".equalsIgnoreCase(fieldType)) {  
+                      Boolean temp = Boolean.parseBoolean(value);  
+                      fieldSetMet.invoke(bean, temp);  
+                  } else {  
+                      System.out.println("not supper type" + fieldType);  
+                  }  
+              }  
+		}
+		
+		
+	}
+	 public static boolean checkSetMet(Method[] methods, String fieldSetMet) {		 
+        for (Method met : methods) {  
+            if (fieldSetMet.equals(met.getName())) {  
+                return true;  
+            }  
+        }  
+        return false;  
+    }  
+	 public static String parSetName(String fieldName) {  
+	        if (null == fieldName || "".equals(fieldName)) {  
+	            return null;  
+	        }  
+	        return "set" + fieldName.substring(0, 1).toUpperCase()  
+	                + fieldName.substring(1);  
+	    } 
+	 
+	 
+	public static String byteToString2(byte[] source){
+        return new String(Hex.encodeHex(source));
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args){
+		Jatool j = new Jatool();
+		//j.creatValidateImage();
+	}
+
 	
 }

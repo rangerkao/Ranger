@@ -1,7 +1,11 @@
 package program;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigInteger;
@@ -19,13 +23,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 import java.util.TimeZone;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
@@ -37,9 +46,14 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.naming.java.javaURLContextFactory;
 import org.jsmpp.bean.DeliverSm;
 import org.jsmpp.bean.DeliveryReceipt;
 import org.jsmpp.bean.MessageType;
@@ -48,9 +62,66 @@ import org.jsmpp.util.DeliveryReceiptState;
 public class hello {
 	private static String msg;
 	static IJatool tool =new Jatool();
+	static Logger logger;
 	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
 		
-		DBTest();
+		Properties prop = getProperties();
+		PropertyConfigurator.configure(prop);
+		logger =Logger.getLogger(hello.class);
+		logger.info("Logger Load Success!");
+		
+		
+		
+		try {
+			tool.sendMailwithoutAuthenticator("202.133.250.242",25,"smtp",
+					"ranger.kao@sim2travel.com","kkk770204",
+					"mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com",
+					"mail test","mail for test.");
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*List<Double> list = new ArrayList<Double>();
+		
+		for(int i = 0 ;i<10;i++){
+			list.add(Math.random()*1000);
+		}
+
+		
+		mergeSort(list,0,list.size()-1);		*/
+		
+		
+		/*Calendar endTime = Calendar.getInstance();
+		
+		endTime.setTime(new Date());
+		endTime.set(Calendar.DAY_OF_YEAR, endTime.get(Calendar.DAY_OF_YEAR)+1);
+		endTime.set(Calendar.HOUR_OF_DAY, 0);
+		endTime.set(Calendar.MINUTE, 0);
+		endTime.set(Calendar.SECOND, 0);
+		System.out.println(endTime.getTime());*/
+		
+		/*
+		String ipaddr = "221.177.201.14";		
+		
+		if(ipaddr.matches("^\\d+\\.\\d+\\.\\d+\\.\\d+$")){
+			String [] ips = ipaddr.split("\\.");
+			long ipNumber =0L;
+			for(int j=0;j<ips.length;j++){
+				ipNumber+=Integer.parseInt(ips[j])*Math.pow(256, 3-j);
+			}
+			System.out.println("ipNumber="+ipNumber);
+		}*/
+		
+		/*long st = System.currentTimeMillis();
+		System.out.println(st);
+		readTxt();
+		System.out.println("ended pass time="+(System.currentTimeMillis()-st));*/
+	
+		
+		//DBTest();
 		
 		/*Calendar c = Calendar.getInstance();
 		c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR)-59);
@@ -72,11 +143,42 @@ public class hello {
 		System.out.println(MessageType.DEFAULT.value());*/
 		
 		
+		/*try {
+			System.out.println(java.net.URLEncoder.encode("UNUSED=on&UDH=&Data=B30200F1&PID=7F&DCS=F6&Submit=Submit&Binary=1","Big5"));
+			System.out.println(java.net.URLEncoder.encode("家庭","big5"));
+			System.out.println(java.net.URLEncoder.encode("家庭","UTF-16BE"));
+			System.out.println(java.net.URLEncoder.encode("UNUSED=on&UDH=&Data=b00c2b3835323536303935383332&PID=7F&DCS=F6&Submit=Submit&Binary=1","UTF-16BE"));
+			System.out.println(java.net.URLEncoder.encode("D=","UTF-16BE"));
+			System.out.println(java.net.URLDecoder.decode("%90%19%66%2F%54%2B%51%69%52%47%7C%21%8A%0A%4E%4B%95%77%7C%21%8A%0A%7B%C4%4F%8B%FF%1A%60%A8%53%EF%7D%93%75%31%00%20%00%55%00%44%00%48%00%49%00%20%53%CA%00%20%00%44","UTF-16BE"));
+			System.out.println(java.net.URLDecoder.decode("%90%19%00%49%00%4D","UTF-16BE"));
+
+			System.out.println(java.net.URLEncoder.encode("簡訊測試","UTF-16BE"));
+			
+			String s = "UNUSED=on&UDH=&Data=B30200F1&PID=7F&DCS=F6&Submit=Submit&Binary=1";
+			for(byte b : s.getBytes("UTF-16BE")){
+				System.out.print(b+"\t");
+			}
+			System.out.println();
+			byte e = -118;
+			for(byte b : s.getBytes("UTF-16BE")){
+				String c = Integer.toHexString(b);
+				
+				System.out.print((c.length()==1?"0"+c:(c.length()>2?c.substring(c.length()-2):c))+"");
+			}
+			System.out.println();
+
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	*/
+		
+		System.out.println("MD5 encodeing result : "+md5Encode("noc"));	
 		//one way encode
+		/*System.out.println("MD5 encodeing result : "+md5Encode("panda"));	
 		System.out.println("MD5 encodeing result : "+md5Encode("yvonne"));	
 		System.out.println("MD5 encodeing result : "+md5Encode("zora"));	
 		System.out.println("MD5 encodeing result : "+md5Encode("helen"));	
-		System.out.println("MD5 encodeing result : "+md5Encode("wendy"));	
+		System.out.println("MD5 encodeing result : "+md5Encode("wendy"));	*/
 		//System.out.println("SHA encodeing result : "+SHAEncode("Sim217Life"));	
 		
 		//非對稱加密(解密必須保留當初建立的key)
@@ -97,6 +199,92 @@ public class hello {
         System.out.println("RSA encodeing result : "+RSAEncode("source",publicKey));
         System.out.println("RSA Decodeing result : "+RSADecode(s,privateKey));*/
 		
+	}
+	/**
+	 * 指標性Merge sort
+	 * 
+	 * start 起點
+	 * 
+	 * end 終點(包含)，list.size()-1
+	 */
+	public static void mergeSort(List<Double> list,int start,int end){
+		
+		//如果只剩下一個單元，直接丟回
+		if(start>=end)
+			return;
+		
+		int middle = (int) Math.floor((end-start)/2);
+		middle+=start;
+		
+		//merge left
+		mergeSort(list,start,middle);
+		//merge right
+		mergeSort(list,middle+1,end);
+		
+		int i = start;
+		int j = middle+1;
+		
+		//規則：
+		//當第i的數字<=第j的數，i 已經是最前面，i比較數字改成第i+1位
+		//當第i的數字   >第j的數，將第j的數字插入第i數字之前，比較數字改成第i+1位，j改成j+1位
+		//j的前面永遠是i數列的比對終點
+		//當i==j或是j>end時，比對結束，剩下的也已經在之前排序好
+		
+		while(i<j && j<=end){
+			
+			if(list.get(i)<=list.get(j)){
+				i++;
+			}else{
+				double t = list.get(j);
+				list.remove(j);
+				list.add(i, t);
+				i++;j++;
+			}
+			
+		}
+		System.out.println(start+":"+end);
+		for(double d : list){
+			System.out.print(d+" ");
+		}
+		System.out.println();
+	}
+	
+	
+	
+	static Map<String,String> excludeTWNLDNUMBER = new HashMap<String,String>();
+	public static void readTxt(){
+		BufferedReader reader = null;
+		String str = null;
+		try {
+			String path = hello.class.getClassLoader().getResource("").getPath();
+			System.out.println("path:"+path);
+			String filePath = path+"excludeNumbers.txt";
+			
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
+			excludeTWNLDNUMBER.clear();
+			while ((str = reader.readLine()) != null) {
+				String s=str.trim();
+				String[] numbers = s.split("\t");
+				
+				if(numbers.length>=2){
+					System.out.println(numbers[0]+","+numbers[1]);
+					excludeTWNLDNUMBER.put(numbers[0], numbers[1]);	
+				}
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			if(reader!=null){
+				try {
+					reader.close();
+				} catch (IOException e) {
+				}
+			}
+		}
 	}
 	
 	public static void CalendarTest(){
@@ -239,8 +427,8 @@ public class hello {
 		try
 	    {
 			//Class.forName("org.postgresql.Driver");
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//Class.forName("com.mysql.jdbc.Driver");
 	    }
 	    catch (Exception localException)
 	    {
@@ -256,9 +444,9 @@ public class hello {
 	      DriverManager.setLoginTimeout(10);
 	      //System.Environment.SetEnvironmentVariable("NLS_LANG", "AMERICAN_AMERICA.WE8ISO8859P1");
 	      //localConnection = DriverManager.getConnection("jdbc:postgresql://192.168.10.197:5432/smppdb", "smpper", "SmIpp3r");
-	      //localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.101:1521:S2TBSDEV", "foyadev", "foyadev");
+	      localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.101:1521:S2TBSDEV", "foyadev", "foyadev");
 	      //localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.80:1521:s2tbs", "s2tbsadm", "s2tbsadm");
-	      localConnection = DriverManager.getConnection("jdbc:mysql://192.168.10.199:3306/CRM_DB?characterEncoding=utf8", "crmuser", "crm");
+	      //localConnection = DriverManager.getConnection("jdbc:mysql://192.168.10.199:3306/CRM_DB?characterEncoding=utf8", "crmuser", "crm");
 	    }
 	    catch (Exception localException)
 	    {
@@ -312,15 +500,16 @@ public class hello {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	static void query() throws UnsupportedEncodingException{
 		Connection conn=getConnection();
 
 		
 		//String sql = "SELECT SUBS_NAME FROM CRM_SUBSCRIBERS A WHERE A.SUBS_NAME like to_nchar('%"+name+"%') ";
 		String sql=
-				"SELECT * "
-				+ "FROM CRM_SUBSCRIBERS "
-				+ "WHERE `SUBS_NAME` = '劉衍芳'";
+				"select A.COMPANY_ID,A.NAME,B.CH_NAME,C.HSCODE "
+				+ "from MARKETING_DB_COMPANY A,MARKETING_DB_COUNTRY B,MARKETING_DB_DATA C,MARKETING_DB_HSCODE D "
+				+ "where A.COMPANY_ID = C.COMPANY_ID and B.CODE = C.COUNTRY and C.HSCODE = D.CODE and rownum=1 ";
 
 		
 		if(conn==null){
@@ -335,16 +524,52 @@ public class hello {
 
 				
 				st=conn.createStatement();
-				rs = st.executeQuery(sql);
 				System.out.println("SQL:"+sql);
-				
-				String ip = "117.142.24.200";
-				
-				List<Map<String,Object>> IPtoMccmncList = new ArrayList<Map<String,Object>>();
+				rs = st.executeQuery(sql);
+
+				Map<String,Map<String,Object>> map = new HashMap<String,Map<String,Object>>();
 				
 				while(rs.next()){
-					System.out.println(rs.getString("SEQ"));
-			
+					String COMPANY_ID = rs.getString("COMPANY_ID");
+					Map<String,Object> map2 = null;
+					Set<String> setC = null;
+					Set<String> setH = null;
+					if(map.containsKey(COMPANY_ID)){
+						map2 = map.get(COMPANY_ID);
+						setC = (Set<String>) map2.get("setC");
+						setH = (Set<String>) map2.get("setH");
+					}else{
+						map2 = new HashMap<String,Object>();
+						setC=new HashSet<String>();
+						setH=new HashSet<String>();
+					}
+
+					setC.add(rs.getString("CH_NAME"));
+					setH.add(rs.getString("HSCODE"));
+					map2.put("setC", setC);
+					map2.put("setH", setH);
+					map2.put("NAME", rs.getString("NAME"));
+					map.put(COMPANY_ID, map2);
+				}
+				
+				
+				for(String s : map.keySet()){
+					String ss = "";
+					Set<String> setC = (Set<String>) map.get(s).get("setC");
+					Set<String> setH = (Set<String>) map.get(s).get("setH");
+					String Name = (String) map.get(s).get("NAME");
+					
+					ss += s+"\t";
+					ss += Name+"\t";
+					for(String s2:setC){
+						ss += s2+",";
+					}
+					ss += "\t";
+					for(String s2:setH){
+						ss += s2+",";
+					}
+
+					logger.info(ss);
 				}
 				
 			/*	
@@ -425,6 +650,25 @@ public class hello {
 			
 			
 			
-			return tool.HttpPost("http://192.168.10.125:8800/Send%20Text%20Message.htm", param,"");
+			return null;
+			/*return tool.HttpPost("http://192.168.10.125:8800/Send%20Text%20Message.htm", param,"");*/
+		}
+	 
+	 public static Properties getProperties(){
+			Properties result=new Properties();
+			
+			result.put("log4j.rootCategory", "DEBUG, stdout, FileOutput");
+			
+			result.put("log4j.appender.stdout", "org.apache.log4j.ConsoleAppender");
+			result.put("log4j.appender.stdout.layout", "org.apache.log4j.PatternLayout");
+			result.put("log4j.appender.stdout.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
+			
+			result.put("log4j.appender.FileOutput", "org.apache.log4j.DailyRollingFileAppender");
+			result.put("log4j.appender.FileOutput.layout", "org.apache.log4j.PatternLayout");
+			result.put("log4j.appender.FileOutput.layout.ConversionPattern", "%d [%5p] (%F:%L) - %m%n");
+			result.put("log4j.appender.FileOutput.DatePattern", "'.'yyyyMMdd");
+			result.put("log4j.appender.FileOutput.File", "Ranger.log");
+			
+			return result;
 		}
 }
