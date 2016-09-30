@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="BIG5">
+<title>Insert title here</title>
+</head>
+<body>
+滑鼠座標(X:<label class = "mousePosX"></label>,Y:<label class = "mousePosY"></label>)<br>
+<input type="text" class="number">
+
+<html><head></head><body><table><tr><td>中華門號</td><td>起始時間</td><td>結束時間</td><td>Email</td><td>已警示</td><td>建立時間</td><td>取消時間</td><td>客戶姓名</td><td>進線者姓名</td><td>手機型號</td><td>已用流量(MB)</td></tr><tr><td>886932304870</td><td>20160914</td><td>20160924</td><td> </td><td>0</td><td>2016/09/12 12:37:37</td><td> </td><td>黃維正</td><td> </td><td>HTC 820</td><td>0.0</td></tr><tr><td>886921910427</td><td>20160913</td><td>20160923</td><td> </td><td>0</td><td>2016/09/08 12:01:30</td><td> </td><td>陳政義</td><td> </td><td> </td><td>0.8468</td></tr><tr><td>886975208546</td><td>20160912</td><td>20160922</td><td> </td><td>0</td><td>2016/09/12 13:10:16</td><td> </td><td>林星晨</td><td>林星晨</td><td>Iphone </td><td>8.5274</td></tr><tr><td>886916154283</td><td>20160911</td><td>20160921</td><td> </td><td>0</td><td>2016/09/06 15:53:41</td><td> </td><td>技嘉科技</td><td>王先生</td><td> </td><td>48.2009</td></tr><tr><td>886910440416</td><td>20160910</td><td>20160920</td><td> </td><td>0</td><td>2016/09/08 11:38:07</td><td> </td><td>主新德科技股份有限公司</td><td>陳世榮</td><td> </td><td>56.6848</td></tr><tr><td>886932031088</td><td>20160910</td><td>20160920</td><td> </td><td>0</td><td>2016/09/09 16:06:32</td><td> </td><td>胡嘉慶</td><td> </td><td>iphone 6s</td><td>70.534</td></tr><tr><td>886911834304</td><td>20160907</td><td>20160917</td><td>whiteangel037@gmail.com</td><td>0</td><td>2016/09/07 23:50:21</td><td> </td><td>陳勇志</td><td>林珊琪</td><td>iphone 6s</td><td>155.543</td></tr><tr><td>886925777967</td><td>20160907</td><td>20160917</td><td> </td><td>0</td><td>2016/08/31 13:52:58</td><td>2016/09/06 10:35:06</td><td>陳雅婷</td><td>陳雅婷</td><td>三星Note</td><td>0.0</td></tr><tr><td>886933882428</td><td>20160902</td><td>20160912</td><td> </td><td>0</td><td>2016/08/30 17:30:52</td><td> </td><td>李經輝</td><td>李經輝</td><td> </td><td align="right">0.0</td></tr></table></body></html>
+</body>
+<!-- 最新的JQuery -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+<!-- BootStrap -->
+<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+<!-- Tools -->
+<script>
+
+//滑鼠軌跡追蹤
+var mousePos;
+function handleMouseMove(event) {
+	//alert("mouse");
+    event = event || window.event; // IE-ism
+    mousePos = {
+    		x: event.clientX,
+            y: event.clientY
+    };
+   	$(".mousePosX").html(mousePos.x); 
+   	$(".mousePosY").html(mousePos.y); 
+}
+window.onmousemove = handleMouseMove;
+
+
+//資料驗證，設定驗證失敗將字改為紅色警示
+function volidate(){
+	//純數字
+	$(".number").keyup(function(){
+		var   reg=/^\d+$/g;
+		$(this).css("color",reg.test($(this).val())?"black":"red");
+	});
+	//email
+	$(".email").keyup(function(){
+		var   reg=/^[a-zA-Z0-9_.]+@\w+\.\w+$/g;
+		$(this).css("color",reg.test($(this).val())?"black":"red");
+	});
+	//身份證字號
+	$(".id").keyup(function(){
+		var   reg=/^[A-Z]\d{9}$/g;
+		$(this).css("color",reg.test($(this).val())?"black":"red");
+	});
+}
+
+//JQuery形式的ready
+$(document).ready(function(){
+	volidate()
+	
+	
+});
+
+
+</script>
+
+</html>
+

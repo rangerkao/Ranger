@@ -41,6 +41,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -48,6 +49,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -109,7 +111,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 
 //190
 /*import com.infotech.smpp.SMPPServicesStub;
@@ -1387,7 +1388,164 @@ public class Jatool implements IJatool{
         return new String(Hex.encodeHex(source));
 	}
 	
-	
+	/***
+	  * 當連線超過一定時間無人使用後進行關閉
+	  * @author ranger.kao
+	  *
+	  */
+	 public class connectionControl{
+		 
+		 Connection conn;
+		 long lastUsingTime = 0;
+		 long maintainTime = 1000*60*5;
+		 long checkStartTime = new Date().getTime();
+		 
+		 String DriverClass,URL,UserName,PassWord;
+		 
+		 public connectionControl(String DriverClass,String URL,String UserName,String PassWord){
+			 System.out.println("Initialize.");
+			 this.DriverClass = DriverClass;
+			 this.URL = URL;
+			 this.UserName = UserName;
+			 this.PassWord = PassWord;
+
+			 new Timer().schedule(new taskClass(),checkStartTime,1000*60*5);
+		 }
+		 
+		 public Connection getConnection() throws SQLException, ClassNotFoundException{
+			 System.out.println("get connction.");
+			 lastUsingTime = System.currentTimeMillis();
+			 if(conn == null)
+				 createConnect();
+			 return conn;
+		 }
+		 
+		 private void createConnect() throws SQLException, ClassNotFoundException{
+			System.out.println("create connction.");
+			Class.forName(DriverClass);
+			conn = DriverManager.getConnection(URL, UserName, PassWord); 
+		 }
+		 private void closeConnect(){
+			 try {
+				 System.out.println("close connction.");
+				conn.close();
+			} catch (SQLException e) {}
+		 }
+		 
+		 public class taskClass extends TimerTask{
+			@Override
+			public void run() {
+				if(System.currentTimeMillis() - lastUsingTime > maintainTime){
+					closeConnect();
+					System.out.println("cling connction.");
+					conn = null;
+				}
+			}
+		 }
+	 }
+	 /***
+	  * 連接池設計，可設定最大連線數，等待極限值，
+	  * 當等待過久允許開新連線
+	  * 定時檢查連線是否正常
+	  * @author ranger.kao
+	  *
+	  */
+	 public static class connectionPooling{
+		 
+			static int min = 0;
+			static int max = 3;
+			static int existed = 0;
+			static int waitingLimit = 100; 
+			long checkStartTime = new Date().getTime();
+			static List<Connection> connections = new ArrayList<Connection>();
+			 
+			static String DriverClass;
+			static String URL;
+			static String UserName;
+			static String PassWord;
+			 
+			public connectionPooling(String DriverClass,String URL,String UserName,String PassWord){
+				 System.out.println("Initialize.");
+				 connectionPooling.DriverClass = DriverClass;
+				 connectionPooling.URL = URL;
+				 connectionPooling.UserName = UserName;
+				 connectionPooling.PassWord = PassWord;
+
+				 //確認Connection連線狀態
+				 new Timer().schedule(new taskClass(),checkStartTime,1000*60*5);
+			 }
+			
+			static public Connection getConnection() throws ClassNotFoundException, SQLException{
+				return getConnection(0);
+			}
+			 static public Connection getConnection(int i) throws ClassNotFoundException, SQLException{
+				 
+				if(connections.size()==min){
+					if(existed >= max && i<waitingLimit){
+						System.out.println("wait connction.");
+						try {
+							Thread.sleep(1000*10);
+						} catch (InterruptedException e) {}
+						getConnection(i+10);
+					}
+					return cerateConnection();
+				}else{
+					System.out.println("get connction.");
+					int index = connections.size()-1;
+					return connections.remove(index);
+				}
+			 }
+			 
+			static public void releaseConnection(Connection conn){
+				 System.out.println("release connction.");
+				 if(existed > max){
+					try {
+						conn.close();
+					} catch (SQLException e) {}
+				 }else{
+					 connections.add(conn);
+				 }
+				 System.out.println("remain "+connections.size()+" connction.");
+			 }
+			 
+			 private static Connection cerateConnection() throws ClassNotFoundException, SQLException{
+				 System.out.println("create connction.");
+				 existed++;
+				 Class.forName(DriverClass);
+				 return DriverManager.getConnection(URL, UserName, PassWord); 
+			 }
+			 
+			 public class taskClass extends TimerTask{
+				@Override
+				public void run() {
+					System.out.println("check connction.");
+					synchronized(connections){
+						Iterator<Connection> it = connections.iterator();
+						Statement st = null;
+						while(it.hasNext()){
+							Connection c = it.next();
+							try {
+								st = c.createStatement();
+								st.execute("select 'OK' from dual.");
+							} catch (SQLException e) {
+								System.out.println("close and remove connction.");
+								try {
+									c.close();
+								} catch (SQLException e1) {}
+								it.remove();
+								existed--;
+							}finally{
+								try {
+									st.close();
+								} catch (SQLException e) {}
+							}
+						}
+
+						System.out.println("check result . remain "+connections.size()+" connction.");
+					}
+				}
+			}
+		 }
 	
 	
 	

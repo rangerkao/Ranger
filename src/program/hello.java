@@ -30,12 +30,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
 
@@ -59,20 +61,26 @@ import org.jsmpp.bean.DeliveryReceipt;
 import org.jsmpp.bean.MessageType;
 import org.jsmpp.util.DeliveryReceiptState;
 
+import program.Jatool.connectionControl.taskClass;
+
 public class hello {
 	private static String msg;
 	static IJatool tool =new Jatool();
 	static Logger logger;
+	
+
+
+	
 	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
 		
 		Properties prop = getProperties();
 		PropertyConfigurator.configure(prop);
 		logger =Logger.getLogger(hello.class);
 		logger.info("Logger Load Success!");
+
+		//System.out.println("1d23".matches("^\\d+$"));
 		
-		
-		
-		try {
+		/*try {
 			tool.sendMailwithoutAuthenticator("202.133.250.242",25,"smtp",
 					"ranger.kao@sim2travel.com","kkk770204",
 					"mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com",
@@ -83,7 +91,7 @@ public class hello {
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		/*List<Double> list = new ArrayList<Double>();
 		
 		for(int i = 0 ;i<10;i++){
@@ -172,7 +180,6 @@ public class hello {
 			e.printStackTrace();
 		}	*/
 		
-		System.out.println("MD5 encodeing result : "+md5Encode("noc"));	
 		//one way encode
 		/*System.out.println("MD5 encodeing result : "+md5Encode("panda"));	
 		System.out.println("MD5 encodeing result : "+md5Encode("yvonne"));	
@@ -198,7 +205,146 @@ public class hello {
         String s = RSAEncode("source",publicKey);
         System.out.println("RSA encodeing result : "+RSAEncode("source",publicKey));
         System.out.println("RSA Decodeing result : "+RSADecode(s,privateKey));*/
+
+		/*
+		System.out.println("abc"+"\t"+"abc".getBytes().length);
+		System.out.println("中華門號"+"\t"+"中華門號".getBytes().length);
+		System.out.println("主新德科技股份有限公司"+"\t"+"主新德科技股份有限公司".getBytes().length);
+		String report = "";
+		int[] sf = new int[]{25,20,20,20,30,14,45,45,60,25,10};
+		String [] v = new String[]{
+				"中華門號","起始時間","結束時間","身份證字號","Email","已警示","建立時間","取消時間","客戶姓名","進線者姓名","手機型號"						
+				};
+		report += pfString(sf,v);
 		
+		sf = new int[]{13,10,10,12,30,7,20,20,60,30,10};
+		Connection conn=getConnection();
+		Statement st = null;
+		ResultSet rs = null;
+		String sql=
+				"SELECT A.PID,B.FOLLOWMENUMBER CHTMSISDN,A.SERVICEID,A.MCC,A.ALERTED,A.ID,A.CALLER_NAME,A.CUSTOMER_NAME,A.PHONE_TYPE,A.EMAIL,A.CANCEL_REASON, "
+				+ "A.START_DATE,A.END_DATE,"
+				+ "TO_CHAR(A.CREATE_TIME,'yyyy/MM/dd hh24:mi:ss') CREATE_TIME,TO_CHAR(A.CANCEL_TIME,'yyyy/MM/dd hh24:mi:ss') CANCEL_TIME "
+				+ "from HUR_VOLUME_POCKET A,FOLLOWMEDATA B "
+				+ "WHERE A.SERVICEID = B.SERVICEID AND A.TYPE=0 AND B.FOLLOWMENUMBER like '886%' "
+				+ "ORDER BY A.START_DATE DESC ";
+		try {
+			st = conn.createStatement();
+			rs=st.executeQuery(sql);
+			
+			while(rs.next()){
+				report += pfString(sf,new String[]{
+						rs.getString("CHTMSISDN"),
+						rs.getString("START_DATE"),
+						rs.getString("END_DATE"),
+						nvl(rs.getString("ID")," "),
+						nvl(rs.getString("EMAIL")," "),
+						rs.getString("ALERTED"),
+						rs.getString("CREATE_TIME"),
+						nvl(rs.getString("CANCEL_TIME")," "),
+						convertString(rs.getString("CUSTOMER_NAME"),"ISO-8859-1","Big5"),
+						convertString(rs.getString("CALLER_NAME"),"ISO-8859-1","Big5"),
+						convertString(rs.getString("PHONE_TYPE"),"ISO-8859-1","Big5"),
+						});
+			}
+			
+			System.out.println(report);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				if(st != null)
+					st.close();
+				if(rs!=null)
+					rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		*/
+		
+		/*Connection conn=getConnection();
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Statement st = null;
+		try {
+			st = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("time 1");
+		
+		try {
+			st.execute("select 'A' from dual");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				st.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("time 2");*/
+		
+		
+	}
+	public static String pfString(int[] f,String[] value){
+		String r ="";
+		/*int sum = 0;
+		for(int i = 0 ; i<f.length ; i++){
+			
+			int j = 0;
+			String v = "";
+			if(i<value.length){
+				j = value[i].getBytes().length;
+				v = value[i];
+			}
+			r +=v;
+			for(;j<f[i];j++)
+				r+=" ";
+			
+			sum+=f[i];
+		}
+		r+="\n";*/
+		if(value.length>0)
+			r+=value[0];
+		if(value.length>1){
+			for(int i = 1;i<value.length;i++){
+				r+="|"+value[i];
+			}
+		}
+		r+="\n";
+		return r;
+	}
+	
+	public static String convertString(String msg,String sCharset,String dCharset) throws UnsupportedEncodingException{
+		
+		if(msg==null)
+			msg=" ";
+		
+		return sCharset==null? new String(msg.getBytes(),dCharset):new String(msg.getBytes(sCharset),dCharset);
+	}
+	public static String nvl(String msg,String s){
+		if(msg==null)
+			msg = s;
+		return msg;
 	}
 	/**
 	 * 指標性Merge sort
@@ -444,8 +590,8 @@ public class hello {
 	      DriverManager.setLoginTimeout(10);
 	      //System.Environment.SetEnvironmentVariable("NLS_LANG", "AMERICAN_AMERICA.WE8ISO8859P1");
 	      //localConnection = DriverManager.getConnection("jdbc:postgresql://192.168.10.197:5432/smppdb", "smpper", "SmIpp3r");
-	      localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.101:1521:S2TBSDEV", "foyadev", "foyadev");
-	      //localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.80:1521:s2tbs", "s2tbsadm", "s2tbsadm");
+	      //localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.101:1521:S2TBSDEV", "foyadev", "foyadev");
+	      localConnection = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.80:1521:s2tbs", "s2tbsadm", "s2tbsadm");
 	      //localConnection = DriverManager.getConnection("jdbc:mysql://192.168.10.199:3306/CRM_DB?characterEncoding=utf8", "crmuser", "crm");
 	    }
 	    catch (Exception localException)
@@ -670,5 +816,5 @@ public class hello {
 			result.put("log4j.appender.FileOutput.File", "Ranger.log");
 			
 			return result;
-		}
+	}
 }
