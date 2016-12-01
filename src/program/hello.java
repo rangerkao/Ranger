@@ -4,15 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
 import java.math.BigInteger;
-import java.net.UnknownHostException;
 import java.security.InvalidKeyException;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
@@ -23,45 +20,45 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
-import java.util.TimeZone;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.regex.Pattern;
+import static java.lang.System.out;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.apache.naming.java.javaURLContextFactory;
-import org.jsmpp.bean.DeliverSm;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsmpp.bean.DeliveryReceipt;
-import org.jsmpp.bean.MessageType;
 import org.jsmpp.util.DeliveryReceiptState;
-
-import program.Jatool.connectionControl.taskClass;
 
 public class hello {
 	private static String msg;
@@ -70,13 +67,56 @@ public class hello {
 	
 
 
+	hello() throws IOException{
+		out.println(this.getClass().getResource(""));
+		out.println(Thread.currentThread().getContextClassLoader().getResource(""));
+		out.println(this.getClass().getClassLoader().getResource("").getPath());
+	}
 	
-	public static void main(String[] args) throws UnknownHostException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, DecoderException{
+	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, 
+	IllegalBlockSizeException, BadPaddingException, DecoderException, 
+	ClassNotFoundException, IOException, SQLException{
 		
 		Properties prop = getProperties();
 		PropertyConfigurator.configure(prop);
 		logger =Logger.getLogger(hello.class);
 		logger.info("Logger Load Success!");
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("com.mysql.jdbc.Driver");
+		
+		
+		createNamedBindingExcel();
+		//readExcel("data.xlsx");
+		
+		/*DataSource ds = null;
+		Connection cc = null;
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			
+			//ds = new SimpleConnectionPoolDataSource();
+			//cc = ds.getConnection();
+			cc = new hello().getConnection();
+			st = cc.createStatement();
+			rs = st.executeQuery("select 'hello' ab from dual");
+			while(rs.next()){
+				System.out.println(rs.getString("ab"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				if(cc!=null){ cc.close();
+				}
+				if(rs!=null) rs.close();
+				if(st!=null) st.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}*/
 
 		//System.out.println("1d23".matches("^\\d+$"));
 		
@@ -181,6 +221,7 @@ public class hello {
 		}	*/
 		
 		//one way encode
+		//System.out.println("MD5 encodeing result : "+md5Encode("kelly"));	
 		/*System.out.println("MD5 encodeing result : "+md5Encode("panda"));	
 		System.out.println("MD5 encodeing result : "+md5Encode("yvonne"));	
 		System.out.println("MD5 encodeing result : "+md5Encode("zora"));	
@@ -267,9 +308,9 @@ public class hello {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
-		*/
+		
 		
 		/*Connection conn=getConnection();
 		
@@ -305,6 +346,330 @@ public class hello {
 		
 		
 	}
+	
+	static SimpleDateFormat  sdfyyyyMMdd = new SimpleDateFormat("yyyyMMdd");
+	
+	public static void createNamedBindingExcel(){
+		String fileName = "nameBinding_"+sdfyyyyMMdd.format(new Date())+".xlsx";
+		List<Map<String,String>> head = new ArrayList<Map<String,String>>();
+		List<Map<String,Object>> data = new ArrayList<Map<String,Object>>();
+		
+		
+		Map<String,String> m = new HashMap<String,String>();
+		m.put("name", "姓名");m.put("col", "name");
+		head.add(m);
+		m = new HashMap<String,String>();
+		m.put("name", "證件類型");m.put("col", "type");
+		head.add(m);
+		m = new HashMap<String,String>();
+		m.put("name", "證件編號");m.put("col", "id");
+		head.add(m);
+		m = new HashMap<String,String>();
+		m.put("name", "中國號");m.put("col", "chinaMsisdn");
+		head.add(m);
+		
+		
+		Connection conn = null;
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://192.168.10.199:3306/CRM_DB?characterEncoding=utf8", "crmuser", "crm");
+			st = conn.createStatement();
+			
+			String sql = "select serviceid,name,id,type,chinaMsisdn "
+					+ "from CRM_DB.CRM_NAME_VERIFIED "
+					+ "where send_date is null ";
+			
+			out.println("Execute SQL:"+sql);
+			
+			rs =st.executeQuery(sql);
+			
+			
+			while(rs.next()){
+				Map<String,Object> m2 = new HashMap<String,Object>();
+				m2.put("name", rs.getString("name"));
+				m2.put("id", rs.getString("id"));
+				m2.put("type", rs.getString("type"));
+				m2.put("chinaMsisdn", rs.getString("chinaMsisdn"));
+				data.add(m2);
+			}
+			Workbook wb = createExcel(head,data,"xlsx");
+			File f = new File(fileName);
+			FileOutputStream fo = new FileOutputStream(f);
+			wb.write(fo);
+			fo.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				if(st!=null) st.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {	}
+		}
+		
+	}
+	
+	public static Workbook createExcel(List<Map<String,String>> head,List<Map<String,Object>> data,String type) throws IOException{
+		Workbook wb = null;
+		int rowN = 0;
+		int sheetN = 0;
+		//建立xls檔案
+		if(type.matches("^xls$")){
+			wb = new HSSFWorkbook();  
+			HSSFSheet sheet = (HSSFSheet) wb.createSheet("sheet"+sheetN++);  
+			sheet.setColumnWidth(0, 20*256);
+			sheet.setColumnWidth(1, 15*256);
+			sheet.setColumnWidth(2, 20*256);
+			HSSFRow row = sheet.createRow(rowN++);
+			HSSFCell cell ;
+			//欄位樣式
+			HSSFCellStyle style = (HSSFCellStyle) wb.createCellStyle(); 
+
+			//字型大小
+			HSSFFont font = (HSSFFont) wb.createFont();
+			font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD); //粗體
+
+			style.setFont(font);
+			
+			//寫入Header
+			for(int col = 0 ;col < head.size() ;col++){
+				cell = row.createCell(col);
+				cell.setCellStyle(style);
+				cell.setCellValue(head.get(col).get("name"));
+			}
+			
+			for(int r = 0 ; r<data.size() ;r++){
+				row = sheet.createRow(rowN++);
+				for(int col = 0; col < head.size() ;col++){
+					row.createCell(col).setCellValue(nvl(data.get(r).get(head.get(col).get("col")),"").toString());;
+				}
+				//滿頁換Sheet
+				if(rowN==65534){
+					sheet = (HSSFSheet) wb.createSheet("sheet"+sheetN++);
+					rowN = 0;
+				}
+			}
+			
+		
+		}
+		
+		//建立xlsx檔案
+		if(type.matches("^xlsx$")){
+			wb = new XSSFWorkbook();  
+			XSSFSheet sheet = (XSSFSheet) wb.createSheet("sheet"+sheetN++);  
+			sheet.setColumnWidth(0, 20*256);
+			sheet.setColumnWidth(1, 15*256);
+			sheet.setColumnWidth(2, 20*256);
+			XSSFRow row = sheet.createRow(rowN++);
+			XSSFCell cell ;
+			//欄位樣式
+			XSSFCellStyle style = (XSSFCellStyle) wb.createCellStyle(); 
+
+			//字型大小
+			
+			
+			//寫入Header
+			for(int col = 0 ;col < head.size() ;col++){
+				cell = row.createCell(col);
+				cell.setCellStyle(style);
+				cell.setCellValue(head.get(col).get("name"));
+			}
+			
+			for(int r = 0 ; r<data.size() ;r++){
+				row = sheet.createRow(rowN++);
+				for(int col = 0; col < head.size() ;col++){
+					row.createCell(col).setCellValue(nvl(data.get(r).get(head.get(col).get("col")),"").toString());;
+				}
+				//滿頁換Sheet
+				if(rowN==65534){
+					sheet = (XSSFSheet) wb.createSheet("sheet"+sheetN++);
+					rowN = 0;
+				}
+			}
+		}
+		
+		return wb;
+	}
+	
+	public static Object nvl(Object msg,Object s){
+		if(msg==null)
+			msg = s;
+		return msg;
+	}
+	
+	public static boolean readExcel(String fileName) throws IOException, SQLException{
+		
+		Connection conn1 = null,conn2 = null;
+		Statement st1 = null, st2 = null;
+		ResultSet rs = null ;
+		boolean result = false;
+		
+		try {
+			conn1 = DriverManager.getConnection("jdbc:oracle:thin:@10.42.1.80:1521:s2tbs", "s2tbsadm", "s2tbsadm");
+			st1 = conn1.createStatement();
+			conn2 = DriverManager.getConnection("jdbc:mysql://192.168.10.199:3306/CRM_DB?characterEncoding=utf8", "crmuser", "crm");
+			st2 = conn2.createStatement();
+			Workbook wb = new XSSFWorkbook(new FileInputStream(new File(fileName)));
+			Sheet sheet = null;
+			Row row = null;
+			Cell cell = null;
+			//取得Sheet個數，回傳N
+			int SN = wb.getNumberOfSheets();
+			SN = 1;
+			for (int s = 0; s < SN; s++) {
+				sheet = wb.getSheet(wb.getSheetName(s));
+				if (sheet == null)
+					continue;
+
+				Map<String, Integer> m = new HashMap<String, Integer>();
+
+				int RN = sheet.getLastRowNum();
+				System.out.println(RN);
+				
+				if (RN > 1) {
+					//設定第一行，Title行
+					row = sheet.getRow(0);
+					for (int i = 0; i < row.getLastCellNum(); i++) {
+						if (row.getCell(i) == null)
+							continue;
+						String key = row.getCell(i).toString();
+						int value = i;
+
+						out.println(key + ":" + value);
+						m.put(key, value);
+					}
+
+					System.out.println(RN);
+					//設定資料
+					for (int r = 1; r <= RN; r++) {
+						row = sheet.getRow(r);
+						if (row == null) {
+							continue;
+						}
+						//取得cell個數，回傳N-1
+						int CN = row.getLastCellNum();
+						String chinaPhone = getExcelValue(row.getCell(m.get("chinaPhone")));
+						chinaPhone = chinaPhone.trim();
+						String chtPhone = getExcelValue(row.getCell(m.get("chtPhone")) );
+						chtPhone = chtPhone.trim();
+						String name = getExcelValue(row.getCell(m.get("name")) );
+						name = name.trim();
+						String type = getExcelValue(row.getCell(m.get("type")) );
+						type = type.trim();
+						String id = getExcelValue(row.getCell(m.get("id")) );
+						id = id.trim();
+						String remark =  getExcelValue(row.getCell(m.get("remark")));
+						remark = remark.trim();
+
+						String serviceId = null;
+						String VLN = null;
+						//out.println(chinaPhone + "," + chtPhone + "," + name + "," + type + "," + id + "," + remark);
+						
+						String sql = "select A.SERVICEID "
+								+ "from FOLLOWMEDATA A "
+								+ "where A.FOLLOWMENUMBER = '"+chtPhone+"' ";
+						
+						logger.info("Execute SQL :"+sql);
+						rs = st1.executeQuery(sql);
+						if(rs.next()){
+							serviceId = rs.getString("SERVICEID");
+						}
+
+						if(serviceId == null){
+							logger.error("For number "+chtPhone+" can't get serviceid.");
+							continue;
+						}
+						
+						rs.close();
+						
+						sql = "select a.serviceid,b.COU,a.VLN,a.VLNTYPE "
+								+ "from vlnnumber a ,(	select serviceid,count(1) cou "
+								+ "									from vlnnumber "
+								+ "									where VLN like '861%' "
+								+ "									group by serviceid )B "
+								+ "where a.serviceid = b.serviceid and VLN like '861%' and a.serviceid = "+serviceId+" ";
+						
+						logger.info("Execute SQL :"+sql);
+						rs = st1.executeQuery(sql);
+						int vlnCount = 0;
+						Integer vlnTYpe = null;
+						if(rs.next()){
+							vlnCount = rs.getInt("COU");
+							VLN = rs.getString("VLN");
+							vlnTYpe =rs.getInt("VLNTYPE");
+						}
+						
+						if(vlnCount == 0 ){
+							logger.error("For number "+chtPhone+" can't get VLN number.");
+							continue;
+						}
+						
+						if(vlnCount == 1 && !VLN.equals(chinaPhone)){
+							logger.error("For number "+chtPhone+" the VLN("+VLN+") number not equal to "+chinaPhone +" .");
+							continue;
+						}
+						
+						if(vlnCount > 1){
+							logger.error("For number "+chtPhone+" get more than one VLN number.");
+							continue;
+						}
+						logger.info("For number "+chtPhone+" the VLN("+VLN+") number is "+chinaPhone +" ( "+vlnTYpe+" ).");
+						
+						sql = "insert into CRM_DB.CRM_NAME_VERIFIED(serviceid,name,id,type,remark,chinaMsisdn,chtMsisdn) "
+								+ "values('"+serviceId+"','"+name+"','"+id+"','"+type+"','"+remark+"','"+chinaPhone+"','"+chtPhone+"')";						
+						logger.info("Execute SQL :"+sql);
+						try {
+							
+							st2.executeUpdate(sql);
+						} catch (Exception e) {
+							logger.error("insert data error",e);
+							continue;
+						}
+					}
+				}
+			} 
+		} finally {
+			if(st1!=null) st1.close();
+			if(st2!=null) st2.close();
+			if(conn1!=null) conn1.close();
+			if(conn2!=null) conn2.close();
+		}
+		return result;
+	}
+	
+	public static String getExcelValue(Cell cell){
+		if(cell == null)
+			return "";
+		
+		String result = null;
+		if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
+			result = String.valueOf(cell.getNumericCellValue());
+		else if(cell.getCellType() == Cell.CELL_TYPE_STRING)
+			result = cell.getStringCellValue();
+		else if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
+			result = (cell.getBooleanCellValue()?"TRUE":"False");
+		
+		if(result==null)
+			result = "";
+		return result;
+	}
+	
+	public static String FormatNumString(Double value,String form){
+		if(form==null || "".equals(form)){
+			form="#,##0.00";
+		}
+			
+		DecimalFormat df = new DecimalFormat(form);   
+		String str=df.format(value);
+		
+		return str;
+	}
+	
 	public static String pfString(int[] f,String[] value){
 		String r ="";
 		/*int sum = 0;
@@ -473,7 +838,7 @@ public class hello {
 		}
 	}
 	
-	public static void DBTest(){
+	public void DBTest(){
 		
 		String param="測試123.33215測次側側側";
 		try {
@@ -567,10 +932,10 @@ public class hello {
         return byteToString1(resultBytes);  
 	}
 	
-	static Connection getConnection()
+	Connection getConnection()
 	  {
 		
-		try
+		/*try
 	    {
 			//Class.forName("org.postgresql.Driver");
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -581,7 +946,7 @@ public class hello {
 	      System.err.println("ERROR: failed to load Informix JDBC driver.");
 	      msg = ("ERROR: failed to load Informix JDBC driver." + localException.getMessage());
 	      return null;
-	    }
+	    }*/
 		
 	    Connection localConnection = null;
 	    try
@@ -596,13 +961,14 @@ public class hello {
 	    }
 	    catch (Exception localException)
 	    {
+	    	localException.printStackTrace();
 	      System.err.println("ERROR DB: failed to connect!");
 	      msg = ("ERROR DB: failed to connect!" + localException.getMessage());
 	    }
 	    return localConnection;
 	  }
 	
-	static void updateDB(int num,String param) throws UnsupportedEncodingException{
+	void updateDB(int num,String param) throws UnsupportedEncodingException{
 		Connection conn=getConnection();
 		if(conn==null){
 			System.out.println("connection is null");
@@ -647,7 +1013,7 @@ public class hello {
 	}
 	
 	@SuppressWarnings("unchecked")
-	static void query() throws UnsupportedEncodingException{
+	void query() throws UnsupportedEncodingException{
 		Connection conn=getConnection();
 
 		

@@ -2,6 +2,8 @@ package program;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -78,7 +80,6 @@ public class Excel {
 		try {  
 			//第一步，創建webbook文件
             HSSFWorkbook wb = new HSSFWorkbook();  
-
             //第二步，添加sheet
             HSSFSheet sheet = wb.createSheet("表格1");  
             //第三步添加表頭第0行

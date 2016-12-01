@@ -101,9 +101,16 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.formula.functions.T;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -132,7 +139,7 @@ public class Jatool implements IJatool{
 	 * 
 	 * 參數為 logger、log層級、訊息
 	 */
-	private void logControl(Logger logger,String level,String message){
+	public void logControl(Logger logger,String level,String message){
 		if(logger==null){
 			System.out.println(message);
 		}else{
@@ -404,62 +411,31 @@ public class Jatool implements IJatool{
 	}
 	
 	/**
-	 * 將Java Date 轉換成 SQL Date
-	 * @param date
-	 * @return
-	 */
-	@Override
-	public java.sql.Date convertJaveUtilDate_To_JavaSqlDate(java.util.Date date) {
-		return new java.sql.Date(date.getTime());
-	}
-
-	/**
-	 * 將SQL Date 轉換成 Java Date
-	 * @param date
-	 * @return
-	 */
-	@Override
-	public java.util.Date convertJaveSqlDate_To_JavaUtilDate(java.sql.Date date) {
-		return new java.util.Date(date.getTime());
-	}
-
-	
-
-	/**
-	 * 將Date 轉換成 String 預設 格式 yyyy/MM/dd HH:mm:ss
-	 * @param date
+	 * 預設 格式 yyyy/MM/dd HH:mm:ss，將String 與 Date 相互轉換
+	 * @param value(String or Date)
 	 * @param form
 	 * @return
 	 */
 	@Override
-	public String DateFormat(Date date, String form) {
-		
+	public Object DateFormat(Object value, String form) throws Exception {
 		String iniform="yyyy/MM/dd HH:mm:ss";
 		
-		if(date==null) date=new Date();
-		if(form==null ||"".equals(form)) form=iniform;
+		if(value==null) 
+			throw new Exception("Value couldn't be Null.");
 		
 		DateFormat dateFormat = new SimpleDateFormat(form);
-		return dateFormat.format(date);
-	}
-	/**
-	 * 將String 轉換成 Date 預設 格式 yyyy/MM/dd HH:mm:ss
-	 * @param date
-	 * @param form
-	 * @return
-	 */
-	@Override
-	public Date DateFormat(String dateString, String form) throws Exception {
-		String iniform="yyyy/MM/dd HH:mm:ss";
-		Date result=new Date();
 		
-		if(dateString==null) throw new Exception("DateString is Null.");
-		if(form==null ||"".equals(form)) form=iniform;
+		//如果值為Date，可使用Simple Name Date
+		if(value instanceof  java.util.Date){
+			return dateFormat.format(value);
+		}
 		
-		DateFormat dateFormat = new SimpleDateFormat(form);
-		result=dateFormat.parse(dateString);
-		
-		return result;
+		//如果值為String，可使用Simple Name String
+		if(value instanceof  java.lang.String){
+			return dateFormat.parse((String) value);
+		}
+
+		return null;
 	}
 	/**
 	 * 對Http做 Post
@@ -470,7 +446,7 @@ public class Jatool implements IJatool{
 	 * @return [結果代碼，對方回傳內容]
 	 */
 	@Override
-	public String[] HttpPost(String url,String method,String param,String charset) throws IOException{
+	public int HttpPost(String url,String method,String param,String charset) throws IOException{
 		URL obj = new URL(url);
 		
 		String urlParam = param;
@@ -485,19 +461,19 @@ public class Jatool implements IJatool{
 		con.setRequestMethod(method);
 		//con.setRequestProperty("User-Agent", USER_AGENT);
 		//con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");*/
- 
+		con.setDoOutput(true); //如要從連線輸出回應資料，需設定為true
+		
 		// Send post request
-		con.setDoOutput(true);
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 		wr.writeBytes(param);
-		wr.flush();
+		wr.flush();//將暫存資料寫至目的地
 		wr.close();
  
+		//回應碼
 		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'POST' request to URL : " + url);
-		System.out.println("Post parameters : " + param);
-		System.out.println("Response Code : " + responseCode);
+		System.out.println("post data("+param+") to "+ url+". Result : "+responseCode);
  
+		//讀取回傳資料
 		BufferedReader in = new BufferedReader( new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
@@ -506,21 +482,23 @@ public class Jatool implements IJatool{
 			response.append(inputLine);
 		}
 		in.close();
- 
-		//print result
-		String [] result = {String.valueOf(responseCode),response.toString()};
+		System.out.println("get response:"+response.toString());
 		
-		return result;
+		return responseCode;
 	}
 	
 	/**
 	 * 對浮點數做標準化
 	 * @param value
-	 * @param form 預設為 小數後兩位
+	 * @param form 預設為 小數後兩位，3位撇節法格式為"#,##0.00";
 	 * @return
+	 * @throws Exception 
 	 */
 	@Override
-	public Double FormatDouble(Double value,String form){
+	public Double FormatDouble(Double value,String form) throws Exception{
+		
+		if(value == null)
+			throw new Exception("Input could't be null.");
 		
 		if(form==null || "".equals(form)){
 			form="0.00";
@@ -532,47 +510,29 @@ public class Jatool implements IJatool{
 		return Double.valueOf(new DecimalFormat(form).format(value));
 	}
 
-	/**
-	 * 對浮點數做標準化
-	 * @param value
-	 * @param form 預設為 小數後兩位，3位撇節法
-	 * @return
-	 */
-	@Override
-	public String FormatNumString(Double value,String form){
-		if(form==null || "".equals(form)){
-			form="#,##0.00";
-		}
-			
-		DecimalFormat df = new DecimalFormat(form);   
-		String str=df.format(value);
-		
-		return str;
-	}
 
 	/**
 	 * 讀取文字檔
 	 * @param filePath
+	 * @throws IOException 
 	 */
 	@Override
-	public void readtxt(String filePath) {
+	public String readtxt(String filePath,String charset) throws IOException {
 		//String filePath =BillReport.class.getClassLoader().getResource("").toString().replace("file:", "")+ "source/";
 
 		BufferedReader reader = null;
-
+		String str = null;
+		StringBuffer content = new StringBuffer();
+		
+		if(charset == null)
+			charset = "UTF-8";
+		
 		try {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8")); 
-			
-			String str = null;
-			
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), charset)); 
 			while ((str = reader.readLine()) != null) {
 				System.out.println(str);
+				content.append(str);
 			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} finally {
 			try {
 				reader.close();
@@ -580,6 +540,7 @@ public class Jatool implements IJatool{
 				e.printStackTrace();
 			}
 		}
+		return content.toString();
 	}
 
 	/**
@@ -588,9 +549,10 @@ public class Jatool implements IJatool{
 	 * @param content
 	 * @param append (延伸true或是覆寫false)
 	 * @param charSet
+	 * @throws IOException 
 	 */
 	@Override
-	public void writetxt(String filename,String content,boolean append ,String charSet) {
+	public void writetxt(String filename,String content,boolean append ,String charSet) throws IOException {
 		BufferedWriter fw = null;
 		if(charSet==null)
 			charSet = "UTF-8";
@@ -601,8 +563,7 @@ public class Jatool implements IJatool{
 			fw.append(content);
 			//flush 後才會在文件顯示內容，可忽略讓程式自動flush
 			//fw.flush(); 
-		} catch (Exception e) {
-			e.printStackTrace();
+
 		} finally {
 			if (fw != null) {
 				try {
@@ -618,17 +579,13 @@ public class Jatool implements IJatool{
 	 */
 	@Override
 	public void newFolder(String folderPath) {
-		try {
-			String filePath = folderPath;
-			filePath = filePath.toString();
-			java.io.File myFilePath = new java.io.File(filePath);
-			if (!myFilePath.exists()) {
-				myFilePath.mkdir();
-			}
-		}catch(Exception e) {
-			System.out.println("新建目錄操作出錯");
-			e.printStackTrace();
+		String filePath = folderPath;
+		filePath = filePath.toString();
+		java.io.File myFilePath = new java.io.File(filePath);
+		if (!myFilePath.exists()) {
+			myFilePath.mkdir();
 		}
+	
 	}
 
 	/**
@@ -700,23 +657,22 @@ public class Jatool implements IJatool{
 	 * 取的指定時間的calendar
 	 */
 	@Override
-	public Calendar getCalendarByCalculate(Integer year, Integer month,
-			Integer day, Integer hour, Integer min, Integer sec) {
+	public Calendar getCalendar(Integer year, Integer month,	Integer day, Integer hour, Integer min, Integer sec) {
 		
 		Calendar calendar=Calendar.getInstance();
 		
 		if(year!=null)
-			calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR)+year);
+			calendar.set(Calendar.YEAR, year);
 		if(month!=null)
-			calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)+month);
+			calendar.set(Calendar.MONTH, month);
 		if(day!=null)
-			calendar.set(Calendar.DATE, calendar.get(Calendar.DATE)+day);
+			calendar.set(Calendar.DATE, day);
 		if(hour!=null)
-			calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR)+hour);
+			calendar.set(Calendar.HOUR, hour);
 		if(min!=null)
-			calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE)+min);
+			calendar.set(Calendar.MINUTE, min);
 		if(sec!=null)
-			calendar.set(Calendar.SECOND, calendar.get(Calendar.SECOND)+sec);
+			calendar.set(Calendar.SECOND, sec);
 		
 		return calendar;
 	}
@@ -738,17 +694,6 @@ public class Jatool implements IJatool{
 		if(torgetCharset==null)
 			return new String(content.getBytes(sourceCharset));
 		return new String(content.getBytes(sourceCharset),torgetCharset);
-	}
-
-
-	/**
-	 * 
-	 * @return
-	 * @throws UnknownHostException
-	 */
-	@Override
-	public String getLocalIP() throws UnknownHostException {
-		return InetAddress.getLocalHost().getHostAddress()+"";
 	}
 
 	/**
@@ -773,25 +718,27 @@ public class Jatool implements IJatool{
 	 
 
 	@Override
-	public void regularExcute(long periodTime, long delay, TimerTask run) {
+	public void regularExcute(Long periodTime, Object time, TimerTask run) {
 		Timer timer =new Timer();
-		timer.schedule(run,delay, periodTime);
+		
+		
+		if(periodTime ==null){
+			if(time instanceof Long)
+				timer.schedule(run,(Long) time);
+			
+			if(time instanceof Date)
+				timer.schedule(run,(Date) time);
+		}else{
+			if(time instanceof Long)
+				timer.schedule(run,(Long) time, periodTime);
+			
+			if(time instanceof Date)
+				timer.schedule(run,(Date) time, periodTime);
+		}
+		
+		
+
 	}
-
-
-	/**
-	 * 
-	 * @param periodTime
-	 * 第一次的執行時間
-	 * @param FirstExecuteTime
-	 * @param run
-	 */
-	@Override
-	public void regularExcute(long periodTime, Date FirstExecuteTime,TimerTask run) {
-		Timer timer =new Timer();
-		timer.schedule(run,FirstExecuteTime, periodTime);
-	}
-
 
 	@Override
 	public String getExceptionMsg(Exception e) {
@@ -916,109 +863,157 @@ public class Jatool implements IJatool{
 	}
 
 	@Override
-	public String nullProccess(String s) {
-		if(s==null)
-			return "";
-		else
-			return s;
+	public Object nvl(Object msg,Object s){
+		if(msg==null)
+			msg = s;
+		return msg;
 	}
 	
 	
-	/**
-	 * 產生.xls 的文件檔
-	 * 
-	 * @param head
-	 * 表頭，為List<Map<String,String>> ，Map內容：name，顯示的名稱，col ，存在在data的key
-	 * @param data
-	 * List<Map<String,String>> 
-	 * @return
-	 */
-	public static HSSFWorkbook createExcel(List<Map<String,String>> head,List<Map<String,Object>> data){
-		InputStream inputStream = null;
+	@Override
+	public Workbook createExcel(List<Map<String,String>> head,List<Map<String,Object>> data,String type) throws IOException{
+		Workbook wb = null;
 		int rowN = 0;
 		int sheetN = 0;
-		HSSFWorkbook wb = null;
-		try {  
-			//第一步，創建webbook文件
-            wb = new HSSFWorkbook();  
+		//建立xls檔案
+		if(type.matches("^xls$")){
+			wb = new HSSFWorkbook();  
+			HSSFSheet sheet = (HSSFSheet) wb.createSheet("sheet"+sheetN++);  
+			sheet.setColumnWidth(0, 20*256);
+			sheet.setColumnWidth(1, 15*256);
+			sheet.setColumnWidth(2, 20*256);
+			HSSFRow row = sheet.createRow(rowN++);
+			HSSFCell cell ;
+			//欄位樣式
+			HSSFCellStyle style = (HSSFCellStyle) wb.createCellStyle(); 
 
-            //第二步，建立sheet
-            HSSFSheet sheet = wb.createSheet("sheet"+sheetN++);  
-              
-            //第四步，設定樣式
-            HSSFCellStyle style = wb.createCellStyle();  
-            style.setAlignment(HSSFCellStyle.ALIGN_CENTER);  
-            //第五部，建立單元格
-            HSSFCell cell;  
+			//字型大小
+			HSSFFont font = (HSSFFont) wb.createFont();
+			font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD); //粗體
 
-            //第三步添加表頭
-            //在sheet建立row第0行
-            HSSFRow row = sheet.createRow(rowN++);
-            for(int k = 0 ; k < head.size() ; k++){
-    			String name=head.get(k).get("name");
-    			//在row建立cell
-				cell = row.createCell(k);
-                cell.setCellValue(name);  
-                cell.setCellStyle(style); 
-    		}		
-
-  
-          //第六部，寫入內容
-            for (int i = 0; i < data.size(); i++) {  
-                row = sheet.createRow(rowN++);  
-                
-                for(int j = 0 ; j < head.size() ; j++){
-                	String col=head.get(j).get("col");
-                	Map<String,Object> m = data.get(i);
-                	if(data.get(i).get(col)!=null)
-                		row.createCell(j).setCellValue(m.get(col).toString());
-                	else
-                		row.createCell(j).setCellValue("");
-        		}	
-                
-                //避免超過65535限制row數
-                if(i!=0&&i%65530==0){
-                	sheet = wb.createSheet("sheet"+sheetN++);
-                	rowN = 0;
-                	//添加表頭
-                	row = sheet.createRow(rowN++);
-                	for(int k = 0 ; k < head.size() ; k++){
-             			String name=head.get(k).get("name");
-         				cell = row.createCell(k);  
-                        cell.setCellValue(name);  
-                        cell.setCellStyle(style); 
-             		}		
-                }
-            }  
-		}  
-        catch(Exception e) {  
-            e.printStackTrace();  
-        }  
-  
-        return wb;  
+			style.setFont(font);
+			
+			//寫入Header
+			for(int col = 0 ;col < head.size() ;col++){
+				cell = row.createCell(col);
+				cell.setCellStyle(style);
+				cell.setCellValue(head.get(col).get("name"));
+			}
+			
+			for(int r = 0 ; r<data.size() ;r++){
+				row = sheet.createRow(rowN++);
+				for(int col = 0; col < head.size() ;col++){
+					row.createCell(col).setCellValue(nvl(data.get(r).get(head.get(col).get("col")),"").toString());;
+				}
+				//滿頁換Sheet
+				if(rowN==65534){
+					sheet = (HSSFSheet) wb.createSheet("sheet"+sheetN++);
+					rowN = 0;
+				}
+			}
+			
+		
+		}
+		
+		//建立xlsx檔案
+		if(type.matches("^xlsx$")){
+			wb = new XSSFWorkbook();  
+		}
+		
+		return wb;
 	}
 	
 	@Override
-	public InputStream getExcelInputStream(List<Map<String,String>> head,List<Map<String,Object>> data) throws IOException{
-		HSSFWorkbook wb = createExcel(head,data);
+	public void readExcel(String fileName) throws FileNotFoundException, IOException{
 		
-		ByteArrayOutputStream os = new ByteArrayOutputStream();  
+		Workbook wb = null;
+		Sheet sheet = null;
+		Row row = null;
+		Cell cell = null;
+		
+		if(fileName.matches("^xlsx$")){
+			wb = new XSSFWorkbook(new FileInputStream(new File(fileName)));
+		}
+		if(fileName.matches("^xls$")){
+			wb = new HSSFWorkbook(new FileInputStream(new File(fileName)));
+		}
+		
+		int sheetN = wb.getNumberOfSheets();//回傳總數
+		
+		for(int i = 0 ; i < sheetN ; i ++){
+			sheet = wb.getSheet(wb.getSheetName(i));
+			if(sheet == null ) continue;
+			int rowN = sheet.getLastRowNum();//回傳最後一列的數字，回傳N-1
+			for(int j = 0 ; j <= rowN ; j++){
+				row = sheet.getRow(j);
+				if(row == null ) continue;
+				int colN = row.getLastCellNum();//回傳最後一行的數字，回傳N-1
+				for(int k = 0 ; k <= colN ; k++){
+					cell = row.getCell(k);
+					if(cell == null ) continue;
+					System.out.println(cell.toString());//直接印出
+					if(cell.getCellType() == Cell.CELL_TYPE_STRING){//判斷格式，格式錯誤會丟Exception
+						System.out.println(cell.getStringCellValue());//以文字方式印出
+					}else if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
+						System.out.println(cell.getNumericCellValue());//以文字方式印出
+					}
+					
+				}
+			}
+		}
+		
+		
+	}
+	
+	@Override
+	public InputStream createExcelStream(List<Map<String,String>> head,List<Map<String,Object>> data,String type) throws IOException{
+		if(type == null){
+			System.out.println("type is null.");
+			return null;
+		}
+		
+		Workbook wb = null;
+		if(type.matches("^xls$")){
+			wb = createExcel(head, data, "xls");
+		}
+		//建立xlsx檔案
+		if(type.matches("^xlsx$")){
+			wb = createExcel(head, data, "xlsx");
+		}
+        ByteArrayOutputStream os = new ByteArrayOutputStream();  
         wb.write(os);  
         byte[] fileContent = os.toByteArray();  
-        
         ByteArrayInputStream is = new ByteArrayInputStream(fileContent);  
-        
-        return is;   
-		
+        return is;
 	}
 	
 	@Override
-	public void createExcelFile(List<Map<String,String>> head,List<Map<String,Object>> data,String path) throws IOException{
-		HSSFWorkbook wb = createExcel(head,data);
-		File newfile = new File(path);
-		FileOutputStream out = new FileOutputStream(newfile);
-		wb.write(out);
-		out.close();
+	public boolean createExcelFile(List<Map<String,String>> head,List<Map<String,Object>> data,String fileName) throws IOException{
+		boolean result = false;
+		if(fileName == null){
+			System.out.println("File name is null.");
+			return false;
+		}
+		
+		Workbook wb = null;
+		if(fileName.matches(".+\\.xls")){
+			wb = createExcel(head, data, "xls");
+		}
+		//建立xlsx檔案
+		if(fileName.matches(".+\\.xlsx")){
+			wb = createExcel(head, data, "xlsx");
+		}
+		
+		File f = new File(fileName);
+		FileOutputStream os = new FileOutputStream(f);
+		try {
+			wb.write(os);
+			result = true;
+		} finally{
+			os.close();
+		}
+		
+		return result;
 	}
 	
 	/**
@@ -1453,7 +1448,7 @@ public class Jatool implements IJatool{
 	 public static class connectionPooling{
 		 
 			static int min = 0;
-			static int max = 3;
+			static int max = 5;
 			static int existed = 0;
 			static int waitingLimit = 100; 
 			long checkStartTime = new Date().getTime();
@@ -1472,7 +1467,7 @@ public class Jatool implements IJatool{
 				 connectionPooling.PassWord = PassWord;
 
 				 //確認Connection連線狀態
-				 new Timer().schedule(new taskClass(),checkStartTime,1000*60*5);
+				 new Timer().schedule(new taskClass(),checkStartTime,1000*60*60);
 			 }
 			
 			static public Connection getConnection() throws ClassNotFoundException, SQLException{
@@ -1552,6 +1547,30 @@ public class Jatool implements IJatool{
 	public static void main(String[] args){
 		Jatool j = new Jatool();
 		//j.creatValidateImage();
+	}
+
+	@Override
+	public Properties getProperties(String fileName) throws FileNotFoundException, IOException {
+		Properties props = new Properties();  
+		props.load(new FileInputStream(fileName));
+		return props;
+	}
+	@Override
+	public Logger setLogger(Properties props){
+		PropertyConfigurator.configure(props);
+		Logger logger =Logger.getLogger(this.getClass());
+		logger.info("Logger Load Success!");
+		return logger;
+	}
+
+	@Override
+	public boolean onlyInteger(String content) {
+		return regularMatch(content, "^\\d+$");
+	}
+
+	@Override
+	public boolean onlyString(String content) {
+		return regularMatch(content, "^\\D+$");
 	}
 
 	
