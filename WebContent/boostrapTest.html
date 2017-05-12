@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+
+
+/*有時會包含MAX將影響限制在更窄的範圍內*/
+/* xs總是水平佈局*/
+/* 超小螢幕設備（手機，小於 768px） */
+/* 沒有媒體查詢，因為這在 Bootstrap 3 是預設的。 */
+
+/* 超小螢幕上限 */
+@media (max-width: @screen-xs-max) { ... }
+/* 小螢幕設備（平板，768px（含）以上） */
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+/* 中螢幕設備（一般桌面，992px（含）以上）*/
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+/* 大螢幕設備（大型桌面，1200px（含）以上） */
+@media (min-width: @screen-lg-min) { ... }
+
+div>div>div{border:#FF7744 1px solid;background-color: #CCFF99;}
+body{background-color: #E8CCFF;}
+</style>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$('#tab a').click(function (e) {
+			  e.preventDefault()
+			  $(this).tab('show')
+			})
+	});
+</script>
+</head>
+<body>
+頁籤
+<ul class="nav nav-tabs">
+  <li id="tab" role="presentation" class="active"><a href="#1st">Home</a></li>
+  <li id="tab" role="presentation"><a href="#2st">Profile</a></li>
+  <li id="tab" role="presentation"><a href="#3st">Messages</a></li>
+</ul>
+<div class= "alert-info" id = "1st">
+	<!-- 格線系統必須放在container中，使用container-fluid自動延伸至100% -->
+	<div class="container-fluid">
+		<!-- 製作一個 100% 寬度和兩個 50% 寬度，在行動設備上堆疊的 column -->
+		<div class="row">
+			<div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+			<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+		</div>
+
+		<!-- 一開始，在行動設備上 column 會是 50% 寬度，提升至桌面大小後，寬度會平均為 33.3% -->
+		<div class="row">
+			<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+			<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+			<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+		</div>
+
+		<!-- 在行動或桌面設備，column 寬度總是 50% 寬度 -->
+		<div class="row">
+			<div class="col-xs-6">.col-xs-6</div>
+			<div class="col-xs-6">.col-xs-6</div>
+		</div>
+	</div>
+
+</div>
+無修正位移<br>
+<div class= "alert-info" id = "2st">
+	<div class="row">
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3 當區域不同高時，可能造成清除不正確</div>
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+	</div>
+</div>
+修正位移<br>
+<div class= "alert-info" id = "3st">
+	<div class="row">
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3 當區域不同高時，可能造成清除不正確，加入可視clearfix修正</div>
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+		<!-- 僅在所需的可視區域加入額外的 clearfix -->
+		<div class="clearfix visible-xs-block"></div>
+
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+		<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+	</div>
+</div>
+Offset<br>
+<div class="alert-info">
+	<div class="row">
+		<div class="col-md-4">.col-md-4</div>
+		<div class="col-md-4 col-md-offset-4">.col-md-4
+			.col-md-offset-4</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 col-md-offset-3">.col-md-3
+			.col-md-offset-3</div>
+		<div class="col-md-3 col-md-offset-3">.col-md-3
+			.col-md-offset-3</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">.col-md-6
+			.col-md-offset-3</div>
+	</div>
+</div>
+巢狀<br>
+<div class="alert-info">
+	<div class="row">
+		<div class="col-sm-9">
+			Level 1: .col-sm-9
+			<div class="row">
+				<div class="col-xs-8 col-sm-6">Level 2: .col-xs-8 .col-sm-6</div>
+				<div class="col-xs-4 col-sm-6">Level 2: .col-xs-4 .col-sm-6</div>
+			</div>
+		</div>
+	</div>
+</div>
+改變順序<br>
+<div class="alert-info">
+	<div class="row">
+		<div class=" col-md-2 col-md-push-4">column1</div>
+		<div class=" col-md-4 col-md-pull-2">column2</div>
+		<div class=" col-md-6">column3</div>
+	</div>
+</div>
+H搭配small<br>
+<div>
+<h3>Title<small>sub title</small></h3>
+P搭配lead加大加粗<br>
+<p class="lead">Lead大又粗</p>
+mark、del<br>
+使用<mark>Mark醒目</mark>與<del>刪除樣式</del>
+</div>
+清單<br>
+<div class = "row">
+	<div class="alert-success col-md-4">
+		<ul>
+			<li>一般清單</li>
+			<li>first</li>
+			<li>second</li>
+			<li>third</li>
+		</ul>
+	</div>
+	<div class="alert-info col-md-4">
+		<ol>
+			<li>編號清單</li>
+			<li>first</li>
+			<li>second</li>
+			<li>third</li>
+		</ol>
+	</div>
+	<div class="alert-warning col-md-4">
+		<ul class="list-unstyled">
+			<li>去樣式清單</li>
+			<li>first</li>
+			<li>second</li>
+			<li>third</li>
+		</ul>
+	</div>
+	<div class="alert-danger col-md-12">
+		<ul class="list-inline">
+			<li>一列清單</li>
+			<li>first</li>
+			<li>second</li>
+			<li>third</li>
+		</ul>
+	</div>
+</div>
+水平佈局，隨螢幕改變水平或垂直<br>
+<div class="alert-success">
+	<dl class="dl-horizontal">
+      <dt>Description lists</dt>
+      <dd>A description list is perfect for defining terms.</dd>
+      <dt>Euismod</dt>
+      <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+      <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+      <dt>Malesuada porta</dt>
+      <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      <dt>Felis euismod semper eget lacinia</dt>
+      <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+    </dl>
+</div>
+表格<br>
+<div class="alert-success">
+	<table class="table">
+		<!-- 在 row 設置 -->
+		<tr class="active"><td colspan="5">******************</td></tr>
+		<tr class="success"><td colspan="5">******************</td></tr>
+		<tr class="warning"><td colspan="5">******************</td></tr>
+		<tr class="danger"><td colspan="5">******************</td></tr>
+		<tr class="info"><td colspan="5">******************</td></tr>
+		
+		<!-- 在儲存格（`td` 或 `th`）設置 -->
+		<tr>
+		  <td class="active">***</td>
+		  <td class="success">***</td>
+		  <td class="warning">***</td>
+		  <td class="danger">***</td>
+		  <td class="info">***</td>
+		</tr>
+	</table>
+</div>
+自適應表格(在768之下產生捲動)<br>
+<div class="alert-success table-responsive">
+	<table class="table">
+          <tr>
+            <th>#</th>            <th>Table heading</th>            <th>Table heading</th>            <th>Table heading</th>            <th>Table heading</th>            <th>Table heading</th>            <th>Table heading</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>          </tr>
+          <tr>
+            <td>2</td>
+            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>
+          </tr>
+          <tr>
+            <td>3</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>            <td>Table cell</td>
+          </tr>
+      </table>
+</div>
+表單<br>
+<div class="alert-success">
+	<form role = "form">
+		<div class="form-group">
+			<label for="textArea">標準排列</label>
+			<input type="text"  id="textArea" class="form-control">
+		</div>
+		<div class="form-group">
+			
+		</div>
+	</form>
+</div>
+行內表單<br>
+<div>
+	<form class="form-inline" role="form">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail2">電子郵件<!--Email address--></label>
+        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="輸入電子郵件">
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">@</div>
+          <input class="form-control" type="email" placeholder="輸入電子郵件">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword2">密碼<!--Password--></label>
+        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="密碼">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> 記住我<!--Remember me-->
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">登入<!--Sign in--></button>
+    </form>
+</div>
+水平佈局<br>
+<div>
+	<form class="form-horizontal" role="form">
+	  <div class="form-group">
+	    <label for="inputEmail3" class="col-sm-2 control-label">電子郵件</label>
+	    <div class="col-sm-10">
+	      <input type="email" class="form-control" id="inputEmail3" placeholder="輸入電子郵件">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="inputPassword3" class="col-sm-2 control-label">密碼</label>
+	    <div class="col-sm-10">
+	      <input type="password" class="form-control" id="inputPassword3" placeholder="密碼">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+	      <div class="checkbox">
+	        <label>
+	          <input type="checkbox"> 記住我
+	        </label>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+	      <button type="submit" class="btn btn-default">登入</button>
+	    </div>
+	  </div>
+	</form>
+</div>
+可用類別<br>
+<div>
+xs<768
+sm>=768
+lg>=992
+md>=1200
+</div>
+<div class = "visible-xs alert-warning">visible-xs</div>
+<div class = "visible-sm alert-success">visible-sm</div>
+<div class = "visible-lg alert-info">visible-lg</div>
+<div class = "visible-md alert-danger">visible-md</div>
+<br>
+<div class = "hidden-xs alert-warning">hidden-xs</div>
+<div class = "hidden-sm alert-success">hidden-sm</div>
+<div class = "hidden-lg alert-info">hidden-lg</div>
+<div class = "hidden-md alert-danger">hidden-md</div>
+<br>
+<div class = "visible-xs-inline alert-warning">visible-xs-inline</div>
+<div class = "visible-sm-inline alert-success">visible-sm-inline</div>
+<div class = "visible-lg-inline alert-info">visible-lg-inline</div>
+<div class = "visible-md-inline alert-danger">visible-md-inline</div>
+<br>
+<div class = "visible-xs-block alert-warning">visible-xs-block</div>
+<div class = "visible-sm-block alert-success">visible-sm-block</div>
+<div class = "visible-lg-block alert-info">visible-lg-block</div>
+<div class = "visible-md-block alert-danger">visible-md-block</div>
+<br>
+<div class = "visible-xs-inline-block alert-warning">visible-xs-inline-block</div>
+<div class = "visible-sm-inline-block alert-success">visible-sm-inline-block</div>
+<div class = "visible-lg-inline-block alert-info">visible-lg-inline-block</div>
+<div class = "visible-md-inline-block alert-danger">visible-md-inline-block</div>
+<br>
+下拉選單，在dropdownMenu加入dropdown-menu-right靠右<br>
+<div class = "dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" id = "dropdownMenu" data-toggle="dropdown" aria-expanded="true">
+		 Dropdown
+    	<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+	    <li role="presentation" class = "disabled"><a role="menuitem" tabindex="-1" href="#">禁用</a></li>
+	    <li role="presentation" class="divider">
+	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">分隔線</a></li>
+	</ul>
+</div>
+
+
+</body>
+</html>

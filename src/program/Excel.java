@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -13,9 +14,16 @@ import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -134,6 +142,93 @@ public class Excel {
         }  
   
         return excelStream;  
+	}
+	
+	public static Workbook createExcel(List<Map<String,String>> head,List<Map<String,Object>> data,String type) throws IOException{
+		Workbook wb = null;
+		int rowN = 0;
+		int sheetN = 0;
+		//建立xls檔案
+		if(type.matches("^xls$")){
+			wb = new HSSFWorkbook();  
+			HSSFSheet sheet = (HSSFSheet) wb.createSheet("sheet"+sheetN++);  
+			sheet.setColumnWidth(0, 20*256);
+			sheet.setColumnWidth(1, 15*256);
+			sheet.setColumnWidth(2, 20*256);
+			HSSFRow row = sheet.createRow(rowN++);
+			HSSFCell cell ;
+			//欄位樣式
+			HSSFCellStyle style = (HSSFCellStyle) wb.createCellStyle(); 
+
+			//字型大小
+			HSSFFont font = (HSSFFont) wb.createFont();
+			font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD); //粗體
+
+			style.setFont(font);
+			
+			//寫入Header
+			for(int col = 0 ;col < head.size() ;col++){
+				cell = row.createCell(col);
+				cell.setCellStyle(style);
+				cell.setCellValue(head.get(col).get("name"));
+			}
+			
+			for(int r = 0 ; r<data.size() ;r++){
+				row = sheet.createRow(rowN++);
+				for(int col = 0; col < head.size() ;col++){
+					row.createCell(col).setCellValue(nvl(data.get(r).get(head.get(col).get("col")),"").toString());;
+				}
+				//滿頁換Sheet
+				if(rowN==65534){
+					sheet = (HSSFSheet) wb.createSheet("sheet"+sheetN++);
+					rowN = 0;
+				}
+			}
+			
+		
+		}
+		
+		//建立xlsx檔案
+		if(type.matches("^xlsx$")){
+			wb = new XSSFWorkbook();  
+			XSSFSheet sheet = (XSSFSheet) wb.createSheet("sheet"+sheetN++);  
+			sheet.setColumnWidth(0, 20*256);
+			sheet.setColumnWidth(1, 15*256);
+			sheet.setColumnWidth(2, 20*256);
+			XSSFRow row = sheet.createRow(rowN++);
+			XSSFCell cell ;
+			//欄位樣式
+			XSSFCellStyle style = (XSSFCellStyle) wb.createCellStyle(); 
+
+			//字型大小
+			
+			
+			//寫入Header
+			for(int col = 0 ;col < head.size() ;col++){
+				cell = row.createCell(col);
+				cell.setCellStyle(style);
+				cell.setCellValue(head.get(col).get("name"));
+			}
+			
+			for(int r = 0 ; r<data.size() ;r++){
+				row = sheet.createRow(rowN++);
+				for(int col = 0; col < head.size() ;col++){
+					row.createCell(col).setCellValue(nvl(data.get(r).get(head.get(col).get("col")),"").toString());;
+				}
+				//滿頁換Sheet
+				if(rowN==65534){
+					sheet = (XSSFSheet) wb.createSheet("sheet"+sheetN++);
+					rowN = 0;
+				}
+			}
+		}
+		
+		return wb;
+	}
+	public static String nvl(Object msg,String s){
+		if(msg==null)
+			msg = s;
+		return msg.toString();
 	}
 
 /*	public InputStream getExcelStream() {

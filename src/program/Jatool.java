@@ -158,7 +158,7 @@ public class Jatool implements IJatool{
 				"ranger.kao@sim2travel.com","kkk770204",
 				"mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com",
 				"sendMailwithAuthenticator","sendMailwithAuthenticator sample");
-		sendMailwithoutAuthenticator("202.133.250.242",25,"smtp",
+		sendMailwithAuthenticator("202.133.250.242",25,"smtp",
 				"ranger.kao@sim2travel.com","kkk770204",
 				"mailSample","ranger.kao@sim2travel.com,k1988242001@gmail.com",
 				"sendMailwithAuthenticator","sendMailwithAuthenticator sample");
@@ -747,20 +747,27 @@ public class Jatool implements IJatool{
 		return errors.toString();
 	}
 	@Override
-	public void UpdatToFTP(FTPClient ftp,InputStream input,String destFileName) throws IOException{
+	public void UpdatToFTP(FTPClient ftp,String localFileName,String destFileName) throws IOException{
 
-		ftp.setBufferSize(1024);  
-        ftp.setControlEncoding("GBK");
-        // 设置文件类型（二进制）  
-        ftp.setFileType(FTPClient.BINARY_FILE_TYPE);  
+		FileInputStream fis = null;
+		 try {
+			fis =  new FileInputStream(localFileName); 
+			destFileName =new String(destFileName.getBytes("UTF-8"),"iso-8859-1");
+			
+			ftp.setBufferSize(1024);  
+			ftp.setControlEncoding("UTF-8");
+			// 设置文件类型（二进制）  
+			ftp.setFileType(FTPClient.BINARY_FILE_TYPE);  
 
-		if(ftp.storeFile(destFileName, input)){
-			System.out.println("Update Success!");
-		}else{
-			System.out.println("Update fail!");
+			
+			if(ftp.storeFile(destFileName, fis)){
+				System.out.println("Update Success!");
+			}else{
+				System.out.println("Update fail!");
+			}
+		}finally{
+			if(fis!=null) fis.close();
 		}
-
-		input.close();
 		
 	}
 	@Override

@@ -141,7 +141,7 @@ public interface IJatool {
 	int HttpPost(String url, String method, String param, String charset)	throws IOException;
 
 	//FTP 相關
-	void UpdatToFTP(FTPClient ftp, InputStream input, String destFileName)	throws IOException;
+	void UpdatToFTP(FTPClient ftp, String  localFileName, String destFileName)	throws IOException;
 
 	void newFTPDir(FTPClient ftp, String folderName) throws IOException;
 
