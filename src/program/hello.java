@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,7 +92,25 @@ public class hello {
 	
 	public static void main(String[] args) throws Exception{
 		
-		Properties prop = getProperties();
+		String data = "123456789012345";
+		System.out.println(data.substring(3, data.length()));
+		
+		
+		/*Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+		
+		calendar.set(Calendar.DAY_OF_MONTH, 10);
+		
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));	//上個月時間，減掉Month會-30天，採取到1號向前，確定跨月
+		calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR)-1);
+		out.println(calendar.getTime());*/
+		/*SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMdd");
+		
+		Date checkTime = sdf2.parse(sdf2.format(new Date(new Date().getTime()+1000*60*60*24)));
+		out.println("set next checkMail time "+checkTime);*/
+		
+		
+		
+		/*Properties prop = getProperties();
 		PropertyConfigurator.configure(prop);
 		logger =Logger.getLogger(hello.class);
 		logger.info("Logger Load Success!");
@@ -101,7 +120,7 @@ public class hello {
 		
 		String vlr = "12085978751";
 		String v = "12085";
-		out.println(vlr.matches("^"+v));
+		out.println(vlr.matches("^"+v));*/
 		
 		/*Calendar cal = Calendar.getInstance();
 		int week = cal.get(Calendar.DAY_OF_WEEK);

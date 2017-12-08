@@ -67,7 +67,17 @@ public interface IJatool {
 			String subject, String content) throws AddressException,
 			MessagingException;
 
-	//在Unix系統發送郵件
+	/**
+	 * 在Unix系統發送郵件
+	 * 
+	 * @param mailfunction 
+	 * for linux :mail，for Solaris : mailx
+	 * @param sender
+	 * @param receiver
+	 * @param subject
+	 * @param msg
+	 * @throws Exception
+	 */
 	void sendMailforUnixLike(String mailfunction, String sender,
 			String receiver, String subject, String msg) throws Exception;
 
