@@ -91,134 +91,46 @@ public class WebReader {
 	
 	
 	public WebReader(){
+		String baseUrl = "http://www.cisanet.org.tw/eBook/eBook_more?id=";
 		
-		//篩選器
-		//doc.getElementsByTag("tag_name");		//以tag名稱
-		//doc.getElementById("id_name");		//以id名稱
-		//doc.select("div");					//所有dic
-		//doc.select("a[href]");				//具有href屬性的 a
-		//doc.select("img[src$=.png]");			//具有src 且以.png結尾的img
-		//doc.select("div.masthead")			//class=masthead的div
-		//doc.select("h3.r > a");				//具有class=r的h3，之後的a
+		String ids = "5234,5233,5231,5229,5228,5227,5225,5224,5222,5221,5219,5217,5216,5215,5214,5213,5212,5211,"
+				+ "5210,5209,5206,5202,5201,5189,5188,5187,5180,5179,5177,5176,5175,5174,5169,5168,5166,5165,"
+				+ "5160,5159,5157,5156,5152,5150,5149,5146,5143,5142,5141,5140,5139,5138,5137,5136,5135,5133,"
+				+ "5131,5129,5127,5124,5123,5122,5121,5118,5117,5115,5114,5113,5111,5110,5109,5107,5105,5102,"
+				+ "5101,5100,5099,5095,5092,5090,5086,5084,5083,5080,5079,5078,5076,5071,5064,5062,5059,5058,"
+				+ "5051,5049,5048,5047,5046,5044,5041,5040,5036,5032,5031,5029,5028,5023,5022,5021,5013,5003,"
+				+ "5002,5000,4997,4995,4987,945,942,941,940,938,935,936,934,967,966,965,964,896,917,895,892,"
+				+ "891,890,888,887,885,886,883,881,882,877,879,871,872,865,867,864,868,863,861,858,857,852,"
+				+ "851,850,846,849,847,843,840,841,839,838,836,834,833,829,828,824,810,816,814,812,798,794,"
+				+ "797,787,800,784,781,774,775,772,770,767,766,761,755,752,912,748,911,746,747,745,744,743,"
+				+ "910,742,741,739,738,737,735,728,727,732,724,909,721,720,719,718,717,908,907,714,715,713,"
+				+ "712,710,709,707,706,696,697,695,898,693,498,729,860,777,613,740,640,786,602,600,483,482,"
+				+ "579,576,550,480,584,571,566,503,478,477,583,541,476,475,580,575,474,619,562,545,473,471,"
+				+ "543,523,513,520,495,479,472,470,469,630,599,796,597,593,591,590,589,587,586,585,512,647,"
+				+ "578,577,573,570,468,565,564,561,560,467,620,559,558,557,556,466,555,554,553,551,549,548,"
+				+ "547,546,497,607,544,542,494,618,592,540,539,536,535,534,533,532,530,529,526,524,522,634,"
+				+ "567,521,519,604,518,517,516,515,511,510,687,689,688,508,507,681,680,679,678,677,676,675,"
+				+ "674,673,671,906,904,903,902,901,900,669,505,899,668,667,666,665,664,663,504,659,658,656,"
+				+ "655,652,641,502,501,646,645,500,499,644,643,635,633,632,631,629,628,626,650,649,636,627,"
+				+ "624,622,642,615,496,493,611,605,603,638,601,491,490,489,487,905,690,661,653,637,610,606,"
+				+ "581,552,527,514,509,506,488,486,485,484";
 		
 		
-		//**************************登入驗證***************//
-		/*Authenticator.setDefault(new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password.toCharArray());
-            }
-        });*/
 		
-		//******************* HTTPS 連線驗證 ****************//
-		trustEveryone();  
-		
-		/*String [] URLList = new String[] {
-				"https://www.518.com.tw/優強機械有限公司-company-26258.html",
-				"https://www.518.com.tw/綠舟科技股份有限公司-company-2780765.html",
-				"https://www.518.com.tw/佐登妮絲國際股份有限公司-company-208196.html",
-				"https://www.518.com.tw/飛得是企業有限公司-company-159445.html",
-				"https://www.518.com.tw/驚嘆號藝能有限公司-company-2652168.html",
-				"https://www.518.com.tw/首創人力管理顧問有限公司-company-2867723.html",
-				"https://www.518.com.tw/金儀國際科技股份有限公司-company-672423.html",
-				"https://www.518.com.tw/傳仕精密機械股份有限公司-company-4016386.html",
-				"https://www.518.com.tw/御手企業管理社-company-1976116.html",
-				"https://www.518.com.tw/偉霸工業股份有限公司-company-572924.html",
-				"https://www.518.com.tw/中部雷射股份有限公司-company-2268575.html",
-				"https://www.518.com.tw/儷寶化粧品有限公司-company-3009659.html",
-				"https://www.518.com.tw/榮笠企業股份有限公司-company-3652492.html",
-				"https://www.518.com.tw/宇澄科技股份有限公司-company-3784327.html",
-				"https://www.518.com.tw/快樂城企業有限公司-company-3411698.html",
-				"https://www.518.com.tw/鈺晟管理顧問有限公司-company-3755943.html",
-				"https://www.518.com.tw/精英人力資源股份有限公司-company-32579.html",
-				"https://www.518.com.tw/展瑞工業有限公司-company-897275.html",
-				"https://www.518.com.tw/馬路科技顧問股份有限公司-company-2644547.html",
-				"https://www.518.com.tw/揚運國際有限公司-company-44246.html",
-				"https://www.518.com.tw/博賢人力資源有限公司-company-3853489.html",
-				"https://www.518.com.tw/廷御企劃有限公司-company-226679.html",
-				"https://www.518.com.tw/捷德科技股份有限公司-company-550324.html",
-				"https://www.518.com.tw/盈佳數位有限公司-company-3824977.html",
-				"https://www.518.com.tw/天力企業股份有限公司-company-129995.html",
-				"https://www.518.com.tw/巨泓彩色印刷有限公司-company-2529491.html",
-				"https://www.518.com.tw/赤天使貿易股份有限公司-company-3567342.html",
-				"https://www.518.com.tw/海峰機械工業股份有限公司-company-880451.html",
-				"https://www.518.com.tw/天申茗茶(萬益茶舍國際有限公司)-company-3017133.html",
-				"https://www.518.com.tw/貿緯商事有限公司-company-920866.html",
-				"https://www.518.com.tw/歐利生技有限公司-company-3332111.html",
-				"https://www.518.com.tw/滿漢清知識行銷有限公司-company-3744100.html",
-				"https://www.518.com.tw/琦鼎國際股份有限公司-company-4004451.html",
-				"https://www.518.com.tw/登洋五金製品有限公司-company-1437534.html",
-				"https://www.518.com.tw/駿騰國際有限公司-company-3839335.html",
-				"https://www.518.com.tw/銀榮實業股份有限公司(北海東紅高雄辦事處)-company-649105.html",
-				"https://www.518.com.tw/佳燁科技股份有限公司-company-654764.html",
-				"https://www.518.com.tw/貝里斯商群策創意有限公司台灣分公司-company-3598610.html",
-				"https://www.518.com.tw/嘉義縣私立名人幼兒園-company-811935.html",
-				"https://www.518.com.tw/英利生股份有限公司-company-156856.html",
-				"https://www.518.com.tw/六喬實業股份有限公司-company-2104118.html",
-				"https://www.518.com.tw/貝思奇國際文教事業有限公司-company-3937075.html",
-				"https://www.518.com.tw/三巨國際電機有限公司-company-2951952.html",
-				"https://www.518.com.tw/同文同種股份有限公司-company-1607724.html",
-				"https://www.518.com.tw/歐騎企業有限公司-company-3437003.html",
-				"https://www.518.com.tw/福立旺精密機電有限公司-company-4033010.html",
-				"https://www.518.com.tw/頂鈞塑膠模具股份有限公司-company-798889.html",
-				"https://www.518.com.tw/勁威貿易有限公司-company-3714041.html",
-				"https://www.518.com.tw/鼎欣音樂美術珠算文理補習班-company-3704790.html",
-				"https://www.518.com.tw/飛上枝頭文化創意產業有限公司-company-3174933.html",
-				"https://www.518.com.tw/領志科技有限公司-company-3323194.html",
-				"https://www.518.com.tw/鼎縊有限公司-company-935355.html",
-				"https://www.518.com.tw/國銓科技有限公司-company-1910060.html",
-				"https://www.518.com.tw/冠鑫興業股分有限公司-company-750389.html",
-				"https://www.518.com.tw/展艷國際有限公司-company-1051340.html",
-				"https://www.518.com.tw/三德國際股份有限公司-company-2666546.html",
-				"https://www.518.com.tw/私立新寶幼兒園-company-3016458.html",
-				"https://www.518.com.tw/川尚股份有限公司-company-3184401.html",
-				"https://www.518.com.tw/英屬維京群島商樂透遊戲股份有限公司-company-2812121.html",
-				"https://www.518.com.tw/愛麗絲世界有限公司-company-865440.html",
-				"https://www.518.com.tw/承泓管理顧問有限公司-company-1558907.html",
-				"https://www.518.com.tw/成美商標織造股份有限公司-company-2840891.html",
-				"https://www.518.com.tw/瑞昌針織廠股份有限公司-company-988595.html",
-				"https://www.518.com.tw/優達創意教育股份有限公司-company-386255.html",
-				"https://www.518.com.tw/哈克廚房-company-2448861.html",
-				"https://www.518.com.tw/信義房屋仲介股份有限公司-company-553798.html",
-				"https://www.518.com.tw/美訊實業有限公司-company-1558304.html",
-				"https://www.518.com.tw/頂尖餐飲行銷股份有限公司-company-2739723.html",
-				"https://www.518.com.tw/成宇工業股份有限公司-company-878436.html",
-				"https://www.518.com.tw/科大光學企業有限公司-company-855864.html",
-				"https://www.518.com.tw/宗佳企業有限公司-company-637758.html",
-				"https://www.518.com.tw/德興動物醫院-company-447919.html",
-				"https://www.518.com.tw/展新生化科技有限公司-company-1465913.html",
-				"https://www.518.com.tw/中興凡而工業有限公司-company-2291461.html",
-				"https://www.518.com.tw/談話頭小吃店-company-3201487.html",
-				"https://www.518.com.tw/第五大道文理音樂補習班-company-3682540.html",
-				"https://www.518.com.tw/勳風企業有限公司-company-175783.html",
-				"https://www.518.com.tw/巨喡企業有限公司-company-44428.html",
-				"https://www.518.com.tw/台灣英科特國際股份有限公司-company-2433376.html",
-				"https://www.518.com.tw/高權工業股份有限公司-company-3157468.html",
-				"https://www.518.com.tw/萬綺國際股份有限公司-company-1971003.html"
-		};*/
-		
-		String baseUrl = "https://www.yes123.com.tw/admin/job_refer_list.asp";
 		try {
-			
-			
-				Document document = Jsoup.parse(new URL(baseUrl).openStream(), "utf-8", baseUrl);
+			for(String id : ids.split(",")) {
+				Document document = Jsoup.parse(new URL(baseUrl+id).openStream(), "utf-8", baseUrl);
 				
-				for(Element e : document.getElementsByClass("bsname")) {
-
-					String comapnyURL = "https://www.yes123.com.tw/admin/"+e.attr("href");
-					System.out.println(comapnyURL);
-					//Document company = Jsoup.parse(new URL(comapnyURL).openStream(), "utf-8", comapnyURL);
-					Document company = Jsoup.parse(comapnyURL);
-					
-					System.out.println(company.html());
-					logger.info(company.getElementsByClass("company_title").get(0).html());
-					logger.info(company.getElementsByClass("comp_detail_2").get(0).html());
-					
-					
-					return;
-				}
+				logger.info("name"+document.getElementsByClass("txt_13").first().html());
 				
-
+				Elements datas = document.getElementsByClass("memb1Table");
+				
+				for(Element e : datas) {
+					Elements details = e.getElementsByTag("td");
+					logger.info(details.get(0).html()+":"+details.get(2).html());
+				}			
+				sleep(2000);
+			}
 			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

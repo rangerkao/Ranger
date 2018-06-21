@@ -12,9 +12,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -38,6 +40,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,11 +94,20 @@ public class hello {
 	}
 	
 	public static void main(String[] args) throws Exception{
+		/*String url = "http://127.0.0.1:8080/SFMS/SFMSReceiver?message=**Down**S2T_S4--10.42.100.115--192.168.100.44--Trunk[S1]*****************";
+		System.out.println(md5Encode("sammi") );*/
 		
-		String data = "123456789012345";
-		System.out.println(data.substring(3, data.length()));
-		
-		
+		/*double a = 12332.51548522;
+		double b = 12311.51548522;
+		double c = 0;
+	   	double f = 0d;
+	   	
+	   	f = a-b; 
+	   	System.out.println(f);
+	   	DecimalFormat df = new DecimalFormat("###.####");
+	    System.out.println(df.format(f));
+		df.applyPattern("0.0000");
+		System.out.println(df.format(f));*/
 		/*Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
 		
 		calendar.set(Calendar.DAY_OF_MONTH, 10);

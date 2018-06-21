@@ -758,7 +758,6 @@ public class Jatool implements IJatool{
 			ftp.setControlEncoding("UTF-8");
 			// 设置文件类型（二进制）  
 			ftp.setFileType(FTPClient.BINARY_FILE_TYPE);  
-
 			
 			if(ftp.storeFile(destFileName, fis)){
 				System.out.println("Update Success!");
@@ -766,10 +765,30 @@ public class Jatool implements IJatool{
 				System.out.println("Update fail!");
 			}
 		}finally{
-			if(fis!=null) fis.close();
+			try {
+				if(fis!=null) fis.close();
+			} catch (Exception e) {}
 		}
 		
 	}
+	
+	/** 
+     * FTP下載單個文件測試 
+     */ 
+    public static void DownloadFTP(FTPClient ftp,String localFileName,String destFileName) throws IOException { 
+        FileOutputStream fos = null; 
+        try { 
+            fos = new FileOutputStream(localFileName); 
+            ftp.setBufferSize(1024); 
+            //設置檔案類型（二進位） 
+            ftp.setFileType(FTPClient.BINARY_FILE_TYPE); 
+            ftp.retrieveFile(destFileName, fos); 
+        } finally { 
+        	try {
+				if(fos!=null) fos.close();
+			} catch (IOException e) {}
+        } 
+    } 
 	@Override
 	public void newFTPDir(FTPClient ftp,String folderName) throws IOException{
 		if(ftp.makeDirectory(folderName)){
@@ -780,8 +799,6 @@ public class Jatool implements IJatool{
 	}
 	@Override
 	public FTPClient connectFTP() throws Exception{
-		
-
 		FTPClient ftp = new FTPClient();
 		//建立連線
 		ftp.connect("10.42.1.110");
@@ -823,6 +840,12 @@ public class Jatool implements IJatool{
 			 System.out.println((f.isDirectory()?"folder:":"file")+f.getName());
 		}
 		
+	}
+	
+	public void closeFTP(FTPClient ftp) throws IOException {
+		if(ftp!=null) {
+			ftp.disconnect();
+		}
 	}
 
 	@Override
